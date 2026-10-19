@@ -39,7 +39,7 @@ button{font-family:var(--font)}
 /* layout */
 .layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:24px;padding:24px 32px 40px;max-width:1680px;margin:0 auto}
 .tabs{display:flex;gap:6px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:6px;margin-bottom:18px}
-.tab{flex:1;border:none;background:transparent;border-radius:10px;padding:10px 14px;min-height:62px;display:flex;align-items:center;text-align:left;cursor:pointer;color:var(--ink)}
+.tab{flex:1;border:none;background:transparent;border-radius:10px;padding:10px 14px;min-height:62px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;color:var(--ink)}
 .tab .tn{display:block;font-weight:800;font-size:.98rem}
 .tab:hover{background:var(--paper)}
 .tab[aria-selected="true"]{background:var(--navy);color:#fff}
@@ -84,7 +84,7 @@ button{font-family:var(--font)}
 .poll::after{content:"";position:absolute;left:-35px;top:41px;width:8px;height:8px;border-radius:50%;background:var(--lime);border:2px solid var(--navy)}
 .poll .by{font-size:.74rem;font-weight:800;color:var(--blue)}
 .poll .by{padding-right:36px}
-.poll .by span{font-weight:600;color:var(--muted);margin-left:4px;white-space:nowrap}
+.poll .by span{display:block;font-weight:600;color:var(--muted);margin:1px 0 0}
 .poll .q{font-size:1rem;font-weight:700;color:var(--navy);margin:4px 0 10px;line-height:1.3}
 .poll .head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
 .poll .big{font-size:2.2rem;font-weight:800;color:var(--orange);letter-spacing:-.03em;line-height:1}
@@ -94,7 +94,7 @@ button{font-family:var(--font)}
 .poll .leg li{display:flex;justify-content:space-between;gap:6px;padding:1px 0}
 .poll .leg i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:-1px}
 .poll .leg b{color:var(--ink)}
-.poll .ctx{border-top:1px solid var(--line);margin-top:10px;padding-top:9px;font-size:.84rem;color:var(--ink);line-height:1.45}
+.poll .ctx{border-top:1px solid rgba(17,39,67,.14);margin-top:10px;padding-top:9px;font-size:.84rem;color:var(--ink);line-height:1.45}
 .poll .ctx strong{color:var(--navy)}
 .poll .n{font-size:.68rem;color:var(--muted);margin-top:8px}
 .poll.empty{border-left-color:var(--line);background:#f7f8fa}
@@ -102,8 +102,8 @@ button{font-family:var(--font)}
 .gapbar{display:flex;height:10px;border-radius:5px;overflow:hidden;background:var(--off);margin:4px 0 10px}
 
 /* regional */
-.regional{position:sticky;top:16px;height:calc(100vh - 32px);min-height:640px;display:flex;flex-direction:column;padding:20px 20px 16px;overflow:hidden}
-.regional h2{margin:0 0 12px;font-size:1.22rem;font-weight:800;color:#fff;letter-spacing:-.01em}
+.regional{position:sticky;top:16px;height:calc(100vh - 32px);min-height:640px;display:flex;flex-direction:column;padding:18px 18px 16px;overflow:hidden}
+.regional h2{margin:0 0 10px;font-size:1.22rem;font-weight:800;color:#fff;letter-spacing:-.01em}
 .regional .sub{font-size:.84rem;color:var(--onNavyMuted);margin:3px 0 12px}
 .search{display:flex;gap:6px;background:#fff;border-radius:11px;padding:5px}
 .search input{flex:1;min-width:0;border:none;outline:none;font-family:var(--font);font-size:.92rem;padding:8px 10px;color:var(--ink)}
@@ -172,18 +172,78 @@ button{font-family:var(--font)}
 .ind,.poll,.regional{position:relative}
 .dl{position:absolute;top:12px;right:12px;width:30px;height:30px;border-radius:8px;border:1px solid var(--navyLine);background:rgba(255,255,255,.06);color:var(--onNavyMuted);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;z-index:3}
 .dl:hover{color:#fff;background:rgba(255,255,255,.14)}
-.poll .dl{border-color:var(--line);background:#fff;color:var(--muted)}
-.poll .dl:hover{color:var(--navy);background:var(--paper)}
+.poll .dl{border-color:rgba(17,39,67,.18);background:rgba(255,255,255,.6);color:var(--muted)}
+.poll .dl:hover{color:var(--navy);background:#fff}
 .ind h3{padding-right:40px}
 .exporting .pulse{animation:none;opacity:0}
 .exporting{box-shadow:none!important}
+/* ===== Budget 2025 entry ===== */
+.rightcol{position:sticky;top:16px;height:calc(100vh - 80px);min-height:760px;display:flex;flex-direction:column;gap:18px}
+.rightcol .regional{position:relative;top:auto;height:auto;flex:1;min-height:0}
+.regional .search{margin-bottom:12px}
+.regional .legend{margin:8px 0 0}
+.regional .mapbox{margin:4px 0 0}
+.regional .selcard{margin-top:8px;padding-top:10px;min-height:0}
+.regional .explore-btn{margin-top:10px}
+.budget-btn{min-height:76px;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;background:var(--pale);color:var(--navy);border-radius:14px;padding:11px 16px 11px 18px;box-shadow:0 10px 30px rgba(17,39,67,.16);border:2px solid var(--pale);transition:filter .15s}
+.budget-btn:hover{filter:brightness(1.06)}
+.budget-btn b{display:block;font-size:1.02rem;font-weight:800;letter-spacing:-.01em;line-height:1.2}
+.budget-btn small{display:block;font-size:.78rem;font-weight:600;color:#2a3f63}
+.budget-btn .arr{flex:none;width:34px;height:34px;border-radius:50%;background:var(--navy);color:var(--pale);display:flex;align-items:center;justify-content:center}
+.proto a{color:var(--navy);text-decoration:underline;text-underline-offset:2px}
+.proto span{display:inline-block;transition:opacity .25s}
+.selcard:empty{display:none}
+
+/* ===== Budget 2025 page ===== */
+.budget{position:fixed;inset:0;z-index:110;background:#0b1a2e;color:var(--onNavy);display:grid;grid-template-rows:auto auto minmax(0,1fr)}
+.banner.b-top{background:#132a49}
+.b-logo{margin-left:auto;color:#fff}
+.b-top .ex-close{background:var(--navy);border-color:var(--navyLine);color:#fff}
+.b-tag{display:inline-block;background:var(--navy);color:var(--lime);font-weight:800;font-size:.78rem;border-radius:20px;padding:4px 11px;margin-bottom:3px}
+.b-top h2{margin:0;font-size:1.35rem;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.b-src{margin-left:auto;font-size:.8rem;font-weight:700;color:#2a3f63}
+.b-body{display:grid;grid-template-columns:340px minmax(0,1fr);min-height:0}
+.b-out{overflow-y:auto;padding:18px 16px 30px 22px;border-right:1px solid rgba(196,213,75,.18)}
+.b-out h3{margin:0 0 12px;font-size:1.05rem;font-weight:800;color:#fff}
+.ocard{position:relative;background:#132a49;border-radius:14px;padding:14px 14px 10px;margin-bottom:12px;border-top:3px solid var(--lime)}
+.ocard h4{margin:0;padding-right:36px;font-size:.92rem;font-weight:800;color:#fff;line-height:1.3}
+.ocard .sub{font-size:.74rem;color:var(--onNavyMuted);margin:2px 0 6px}
+.ocard .chart{min-height:150px}
+.ocard .src{font-size:.66rem}
+.ocard .stat1{font-size:.78rem;color:var(--onNavy);margin:6px 0 0;font-weight:600}
+.ocard .stat1 b{color:var(--lime)}
+.okey{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:.7rem;color:var(--onNavyMuted);margin:2px 0 4px}
+.okey i{display:inline-block;width:14px;height:0;border-top:2.5px solid;vertical-align:3px;margin-right:5px}
+.okey i.d{border-top-style:dashed}
+.b-main{overflow-y:auto;padding:22px 24px 40px}
+.b-main .row{grid-template-columns:minmax(0,1fr) 280px}
+.b-main .row.full{grid-template-columns:minmax(0,1fr)}
+.ggs{position:relative;max-width:1000px;margin:0 auto 34px;text-align:center}
+.ggs h2{margin:4px 0 2px;font-size:2.3rem;font-weight:800;color:var(--off);letter-spacing:-.02em}
+.ggs .lede{font-size:.95rem;color:var(--onNavyMuted);margin:0 auto 6px;max-width:60ch}
+.ggs svg{width:100%;height:auto;display:block}
+.ggs .src{text-align:left;max-width:760px;margin:6px auto 0}
+.b-sec{display:flex;align-items:baseline;gap:14px;margin:6px 0 16px;border-top:1px solid rgba(196,213,75,.25);padding-top:18px}
+.b-sec h2{margin:0;font-size:1.3rem;font-weight:800;color:#fff}
+.b-sec span{font-size:.85rem;color:var(--onNavyMuted)}
+.bpanel{background:var(--navy);border-top:3px solid var(--lime)}
+.bpanel .chart svg.vb{width:100%;height:auto;display:block}
+.bkey{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.76rem;color:var(--onNavyMuted);margin:10px 0 2px}
+.bkey i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.budget .poll{background:#E3E7ED;border-left-color:var(--lime)}
+.budget .poll::before{background:var(--lime);opacity:.6}
+.hit{cursor:pointer}
+@media (max-width:1100px){.b-body{grid-template-columns:1fr;overflow-y:auto}.b-out,.b-main{overflow:visible}.b-out{border-right:none}}
+@media (max-width:820px){.b-main .row{grid-template-columns:1fr}.b-src{margin-left:0}}
+
 /* chart svg */
 .pulse{transform-box:fill-box;transform-origin:center;animation:ring 2s ease-out infinite}
 @media (prefers-reduced-motion:reduce){.pulse,.live::after{animation:none;opacity:0}}
 
 @media (max-width:1180px){
   .layout{grid-template-columns:1fr}
-  .regional{position:relative;top:0;height:720px}
+  .rightcol{position:relative;top:0;height:auto;min-height:0}
+  .rightcol .regional{flex:none;height:720px}
 }
 @media (max-width:820px){
   .layout{padding:16px}
@@ -209,7 +269,7 @@ button{font-family:var(--font)}
   </div>
   <div class="meta"><span class="live" aria-hidden="true"></span>Latest ONS releases to September 2026</div>
 </header>
-<div class="proto">Prototype</div>
+<div class="proto"><span id="protoTxt">Prototype</span></div>
 
 <main class="layout">
   <section aria-label="National indicators">
@@ -218,7 +278,6 @@ button{font-family:var(--font)}
       <button class="tab" role="tab" data-tab="wages" aria-selected="false"><span class="tn">Wages and the cost of living</span></button>
       <button class="tab" role="tab" data-tab="growth" aria-selected="false"><span class="tn">Growth</span></button>
     </div>
-    <div class="colheads"><span></span><span>What people tell us</span></div>
 
     <!-- WORK -->
     <div class="tabpanel" id="tab-work" role="tabpanel">
@@ -250,7 +309,7 @@ button{font-family:var(--font)}
             <div class="chart" id="ch-dial" style="min-height:260px"></div>
             <div><h4>Since 2015, against the balanced range</h4><div class="chart" id="ch-uv" style="min-height:200px"></div></div>
           </div>
-          <p class="src">Notes: Balanced range of 1.5 to 2.5 follows NEF's labour market tracker. Source: GGF calculations using ONS Labour Market Statistics (September 2026).</p>
+          <p class="src">Notes: Balanced range of 1.5 to 2.5 follows NEF's labour market tracker.<br>Source: GGF calculations using ONS Labour Market Statistics (September 2026).</p>
         </article>
         <aside class="poll" id="poll-gap"></aside>
       </div>
@@ -266,7 +325,7 @@ button{font-family:var(--font)}
             <div class="chart" id="ch-wage"></div>
             <div><h4>Average real pay growth a year</h4><div id="pb-wage"></div></div>
           </div>
-          <p class="src">Notes: Whole economy regular pay deflated by CPI. Source: ONS Average Weekly Earnings (September 2026), OBR Economic and Fiscal Outlook (March 2026).</p>
+          <p class="src">Notes: Whole economy regular pay deflated by CPI.<br>Source: ONS Average Weekly Earnings (September 2026), OBR Economic and Fiscal Outlook (March 2026).</p>
         </article>
         <aside class="poll" id="poll-sol"></aside>
       </div>
@@ -304,7 +363,7 @@ button{font-family:var(--font)}
             <div class="chart" id="ch-prod"></div>
             <div><h4>Average growth a year</h4><div id="pb-prod"></div></div>
           </div>
-          <p class="src">Notes: RTI-based measure, as recommended by ONS. Source: ONS Productivity flash estimate (August 2026). Series A4YM.</p>
+          <p class="src">Notes: RTI-based measure, as recommended by ONS.<br>Source: ONS Productivity flash estimate (August 2026). Series A4YM.</p>
         </article>
         <aside class="poll" id="poll-g2"></aside>
       </div>
@@ -314,7 +373,7 @@ button{font-family:var(--font)}
           <div class="sub">New build dwellings started, England, rolling 12-month total</div>
           <div class="stats" id="st-starts"></div>
           <div class="chart" id="ch-starts"></div>
-          <p class="src">Notes: Dots are published figures; straight lines join them. Latest quarter: 35,910 starts in April to June 2026, seasonally adjusted. The 2023 peak and trough reflect starts brought forward ahead of new building regulations. Source: MHCLG Housing supply: indicators of new supply, England (June and September 2026).</p>
+          <p class="src">Notes: Dots are published figures; straight lines join them. Latest quarter: 35,910 starts in April to June 2026, seasonally adjusted. The 2023 peak and trough reflect starts brought forward ahead of new building regulations.<br>Source: MHCLG Housing supply: indicators of new supply, England (June and September 2026).</p>
         </article>
         <aside class="poll" id="poll-g3"></aside>
       </div>
@@ -322,22 +381,25 @@ button{font-family:var(--font)}
   </section>
 
   <!-- REGIONAL -->
+  <div class="rightcol">
+  <a class="budget-btn" href="#budget-2025"><span><b>Budget 2025</b><small>What the November Budget does</small></span><span class="arr" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></a>
   <aside class="panel regional" aria-label="Good growth by area">
     <h2>Good growth where you live</h2>
     <div class="search">
       <input id="q1" list="laList" placeholder="Search for a council, e.g. Hounslow" aria-label="Search for a local authority">
       <button data-go="q1">Find</button>
     </div>
-    <div class="mapbox" id="miniMap"><div class="mapmsg">Loading local authority boundaries</div></div>
     <div class="cycler">
       <button data-step="-1" aria-label="Previous indicator">&#8249;</button>
       <div class="cn"><b class="indName"></b><span class="indDesc"></span></div>
       <button data-step="1" aria-label="Next indicator">&#8250;</button>
     </div>
     <div class="legend" id="legMini"></div>
+    <div class="mapbox" id="miniMap"><div class="mapmsg">Loading</div></div>
     <div class="selcard" id="selMini"></div>
     <button class="explore-btn" id="openExplore">Explore every indicator by area</button>
   </aside>
+  </div>
 </main>
 <datalist id="laList"></datalist>
 
@@ -368,6 +430,95 @@ button{font-family:var(--font)}
         <div><h3>Weakest</h3><ul class="rank" id="bot5"></ul></div>
       </div>
       <p class="note">Local figures are illustrative. Local real pay uses UK CPI. Boundaries: ONS Open Geography Portal, contains OS data &copy; Crown copyright.</p>
+    </div>
+  </div>
+</div>
+
+<div class="budget hidden" id="budget" role="dialog" aria-modal="true" aria-label="Budget 2025">
+  <header class="banner b-top">
+    <button class="ex-close" id="closeBudget">Back to the tracker</button>
+    <div class="rule" aria-hidden="true"></div>
+    <div>
+      <h1>Budget 2025</h1>
+      <p>What the November Budget does for growth, the public finances and incomes</p>
+    </div>
+    <div class="wm b-logo" aria-label="Good Growth Foundation">Good<br>Growth<br>Foundation</div>
+  </header>
+  <div class="proto">Figures from the OBR Economic and fiscal outlook, November 2025</div>
+  <div class="b-body">
+    <aside class="b-out" aria-label="Economic outlook">
+      <h3>Economic outlook</h3>
+      <div class="okey"><span><i style="border-color:var(--lime)"></i>November 2025 forecast</span><span><i class="d" style="border-color:#C3CCD8"></i>March 2025 forecast</span></div>
+      <div class="ocard"><h4><span style="color:var(--lime)">GDP</span> is forecast to grow more slowly than in March</h4><div class="sub">Real GDP, index 2019 Q4 = 100</div><div class="chart" id="o-gdp"></div><p class="stat1" id="o-gdp-s"></p><p class="src">Source: OBR EFO November 2025, Chart 1.1.</p></div>
+      <div class="ocard"><h4><span style="color:var(--lime)">Wage growth</span> is now expected to be higher in 2026</h4><div class="sub">Nominal hourly earnings growth, per cent</div><div class="chart" id="o-wage"></div><p class="stat1" id="o-wage-s"></p><p class="src">Source: OBR EFO November 2025, Chart 1.2.</p></div>
+      <div class="ocard"><h4><span style="color:var(--lime)">Inflation</span> is forecast to be higher in 2026 than expected in March</h4><div class="sub">CPI inflation, per cent, calendar years</div><div class="chart" id="o-cpi"></div><p class="stat1" id="o-cpi-s"></p><p class="src">Source: OBR EFO November 2025, Chart 1.2.</p></div>
+      <div class="ocard"><h4><span style="color:var(--lime)">Public spending</span> is now forecast to stay higher</h4><div class="sub">Total managed expenditure, per cent of GDP</div><div class="chart" id="o-spend"></div><p class="stat1" id="o-spend-s"></p><p class="src">Source: OBR EFO November 2025, Chart 5.1.</p></div>
+      <div class="ocard"><h4><span style="color:var(--lime)">Taxes</span> are now forecast to rise further</h4><div class="sub">National Accounts taxes, per cent of GDP</div><div class="chart" id="o-tax"></div><p class="stat1" id="o-tax-s"></p><p class="src">Source: OBR EFO November 2025, Chart 4.1.</p></div>
+      <p class="src">Forecast series only, so charts start where the OBR's March 2025 and November 2025 forecasts both begin.</p>
+    </aside>
+    <div class="b-main">
+      <section class="ggs" aria-label="Good Growth Score">
+        <h2>Good Growth Score</h2>
+        <p class="lede">How much of the growth the OBR expects at the end of its forecast reaches people's incomes</p>
+        <div id="ggs"></div>
+        <p class="src">Notes: Final-year forecasts. Each event's figures are growth per person in the last full calendar year of its forecast (2030 for November 2025). Income is real household disposable income (RHDI) per person. Pass-through is income growth divided by GDP growth, and is left blank where GDP growth is 0.1 per cent or below. Grey marks are previous fiscal events; hover to see each.<br>Source: GGF calculations using OBR economy tables (Table 1.5) for each EFO, March 2017 to November 2025.</p>
+      </section>
+
+      <div class="b-sec"><h2>Fiscal policy</h2><span>What the Budget does to the public finances, and what that means for growth and incomes</span></div>
+      <div class="row">
+        <article class="panel ind bpanel">
+          <h3 id="t-fs"></h3>
+          <div class="sub">Fiscal space before Budget measures, against previous fiscal events since 2020, £bn at the time of each forecast. The OBR calls this headroom.</div>
+          <div class="chart" id="b-dial"></div>
+          <p class="src">Notes: Grey needles are previous fiscal events; hover over a needle to see it. Fiscal space is measured against the main fiscal rule in force at each event.<br>Source: OBR fiscal targets tables in each EFO, March 2020 (Table 4.6) to November 2025 (Table 7.1).</p>
+        </article>
+        <aside class="poll" id="bp-fs"></aside>
+      </div>
+      <div class="row full">
+        <article class="panel ind bpanel">
+          <h3>Fiscal space before Budget measures, by Chancellor</h3>
+          <div class="sub">Fiscal space against the main fiscal rule in force, before Budget measures, £bn at the time of each forecast</div>
+          <div class="chart" id="b-pre"></div>
+          <p class="src">Notes: Where two rules applied, the smaller margin is shown. Earlier events used a structural deficit rule and are not comparable. November 2020 and March 2021 have no usable pre-measures margin.<br>Source: OBR fiscal targets tables in each EFO, from March 2020 (Table 4.6) to November 2025 (Table 7.1).</p>
+        </article>
+      </div>
+      <div class="row full">
+        <article class="panel ind bpanel">
+          <h3>What each Budget did to fiscal space</h3>
+          <div class="sub">Fiscal space against the main fiscal rule in force, before and after Budget measures, £bn at the time of each forecast</div>
+          <div class="chart" id="b-ba"></div>
+          <p class="src">Notes: Budget effect is the after figure minus the before figure. Hover over a pair to see the rule used.<br>Source: GGF calculations using OBR fiscal targets tables, March 2020 to November 2025 EFOs.</p>
+        </article>
+      </div>
+      <div class="row">
+        <article class="panel ind bpanel">
+          <h3 id="t-st"></h3>
+          <div class="sub">Size of each fiscal event's policy package, per cent of GDP over five years</div>
+          <div class="chart" id="b-stance"></div>
+          <p class="src">Notes: Grey needles are previous fiscal events since June 2010; hover over a needle to see it.<br>Source: OBR EFO November 2025, Chart 3.1.</p>
+        </article>
+        <aside class="poll" id="bp-st"></aside>
+      </div>
+      <div class="row">
+        <article class="panel ind bpanel">
+          <h3>The Budget gives <span style="color:var(--lime)">GDP</span> a small, short-lived lift</h3>
+          <div class="sub">Policy impacts on the level of real GDP and its components, per cent</div>
+          <div class="bkey" id="k-gdp"></div>
+          <div class="chart" id="b-gdp"></div>
+          <p class="src">Source: OBR EFO November 2025, Chart 3.3.</p>
+        </article>
+        <aside class="poll" id="bp-gdp"></aside>
+      </div>
+      <div class="row">
+        <article class="panel ind bpanel">
+          <h3>Rising <span style="color:var(--orange)">prices</span> continue to hold back growth in <span style="color:var(--lime)">income</span> per person</h3>
+          <div class="sub">Real household disposable income per person, annual growth and contributions, per cent</div>
+          <div class="bkey" id="k-ls"></div>
+          <div class="chart" id="b-ls"></div>
+          <p class="src">Source: OBR EFO November 2025, Chart 2.16 (right-hand panel).</p>
+        </article>
+        <aside class="poll" id="bp-ls"></aside>
+      </div>
     </div>
   </div>
 </div>
@@ -435,9 +586,10 @@ function lineChart(el,cfg){
   svg.append('g').selectAll('text').data(yt).join('text').attr('x',m.l-7).attr('y',d=>y(d)+4).attr('text-anchor','end').attr('fill','#9fb2cc').attr('font-size',11).text(cfg.yf||(d=>d));
   const yrs=(x.domain()[1]-x.domain()[0])/(365.25*864e5);
   const step=yrs>20?4:yrs>9?2:1;
-  const xt=x.ticks(d3.timeYear.every(step));
-  svg.append('g').selectAll('text').data(xt).join('text').attr('x',x).attr('y',H-6).attr('text-anchor','middle').attr('fill','#9fb2cc').attr('font-size',11).text(d3.timeFormat('%Y'));
+  const xt=cfg.xticks||x.ticks(d3.timeYear.every(step));
+  svg.append('g').selectAll('text').data(xt).join('text').attr('x',x).attr('y',H-6).attr('text-anchor','middle').attr('fill','#9fb2cc').attr('font-size',11).text(cfg.xf||d3.timeFormat('%Y'));
   svg.append('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',H-m.b).attr('y2',H-m.b).attr('stroke','rgba(255,255,255,.35)');
+  (cfg.notes||[]).forEach(n=>svg.append('text').attr('x',m.l+6).attr('y',n.pos==='top'?m.t+12:H-m.b-7).attr('fill',n.c||'#9fb2cc').attr('font-size',11).attr('font-weight',700).text(n.t));
   const line=d3.line().x(d=>x(d.d)).y(d=>y(d.v)).curve(d3.curveMonotoneX);
   cfg.series.filter(s=>!s.hidden).forEach(s=>{
     svg.append('path').datum(s.data).attr('d',s.points?d3.line().x(d=>x(d.d)).y(d=>y(d.v))(s.data):line).attr('fill','none').attr('stroke',s.c).attr('stroke-width',s.w||2.6).attr('stroke-dasharray',s.dash?'5 5':null).attr('stroke-linejoin','round');
@@ -452,7 +604,7 @@ function lineChart(el,cfg){
   const main=cfg.series.find(s=>!s.hidden&&!s.dash);
   if(main&&!cfg.noHover){
     const hl=svg.append('line').attr('y1',m.t).attr('y2',H-m.b).attr('stroke','rgba(255,255,255,.35)').style('display','none');
-    const fmt=d3.timeFormat(cfg.df||'%b %Y');
+    const fmt=cfg.dfn||d3.timeFormat(cfg.df||'%b %Y');
     svg.append('rect').attr('x',m.l).attr('y',m.t).attr('width',W-m.l-m.r).attr('height',H-m.t-m.b).attr('fill','transparent')
       .on('mousemove',e=>{const d=x.invert(d3.pointer(e)[0]);hl.style('display',null).attr('x1',x(at(main.data,d).d)).attr('x2',x(at(main.data,d).d));
         const rows=cfg.series.filter(s=>!s.hidden).map(s=>{const p=at(s.data,d);return Math.abs(p.d-d)<1e10?`<div><span style="color:${s.c==='#fff'?C.navy:s.c};font-weight:800">●</span> ${s.name||''} ${(cfg.tf||cfg.yf||(v=>v))(p.v)}</div>`:''}).join('');
@@ -499,7 +651,7 @@ function poll(id,p){
   <ul class="leg">${p.segs.map(s=>`<li><span><i style="background:${s.c}"></i>${s.l}</span><b>${s.v}%</b></li>`).join('')}</ul>
   <div class="ctx">${p.ctx}</div>`;
 }
-const HARD=[C.orange,'#f4a98f'],NEU='#d3d8df',EASY=['#7fd0c0',C.green],DK='#eef0f3';
+const HARD=[C.orange,'#f4a98f'],NEU='#c9cfd8',EASY=['#7fd0c0',C.green],DK='rgba(17,39,67,.08)';
 
 /* ================= render national ================= */
 const rendered={};
@@ -511,7 +663,7 @@ function renderWork(){
   document.getElementById('st-vac').innerHTML=`<div class="stat lead"><b>${fc(v.v)}k</b><span>June to August 2026</span></div><div class="stat"><b>${sgn((v.v/v12.v-1)*100)}%</b><span>change on a year ago</span></div><div class="stat"><b>${sgn((v.v/pk-1)*100)}%</b><span>since the 2022 peak</span></div>`;
   lineChart(document.getElementById('ch-vac'),{series:[{data:D.vac,c:C.lime,live:true,name:'Vacancies'}],y:[0,1400],yf:d=>d===0?'0':fc(d)+'k',tf:v=>fc(v)+'k',aria:'Vacancies 2017 to 2026'});
   dial(document.getElementById('ch-dial'),UV_NOW);
-  lineChart(document.getElementById('ch-uv'),{height:200,series:[{data:D.uv,c:C.lime,live:true,name:'Ratio'}],y:[0,4.5],bands:[{y:[1.5,2.5],label:'Balanced'}],tf:v=>f1(v),aria:'Unemployed per vacancy since 2015'});
+  lineChart(document.getElementById('ch-uv'),{height:200,series:[{data:D.uv,c:C.lime,live:true,name:'Ratio'}],y:[0,4.5],bands:[{y:[1.5,2.5]}],notes:[{t:'Not enough jobs',pos:'top',c:C.orange},{t:'Not enough workers',pos:'bottom',c:C.pale}],tf:v=>f1(v),aria:'Unemployed per vacancy since 2015'});
   poll('poll-job',{q:'How hard is it to find a job at the moment?',big:64,bigl:'say it is hard to find a job',segs:[{l:'Very hard',v:26,c:HARD[0]},{l:'Fairly hard',v:38,c:HARD[1]},{l:'Neither',v:16,c:NEU},{l:'Fairly easy',v:13,c:EASY[0]},{l:'Very easy',v:4,c:EASY[1]},{l:"Don't know",v:3,c:DK}],
     ctx:`Unemployment, at <strong>${f1(u.v)}%</strong>, is below what the OBR expected. Two in three people still find the job market hard going.`,n:'2,000 adults, Sep 2026'});
   poll('poll-emp',{q:'How hard is it to find an employee at the moment?',big:61,bigl:'of employers say hiring is hard',segs:[{l:'Very hard',v:22,c:HARD[0]},{l:'Fairly hard',v:39,c:HARD[1]},{l:'Neither',v:20,c:NEU},{l:'Fairly easy',v:11,c:EASY[0]},{l:'Very easy',v:3,c:EASY[1]},{l:"Don't know",v:5,c:DK}],
@@ -644,7 +796,7 @@ function makeMap(host){
   ctl.append('button').attr('aria-label','Zoom out').text('−').on('click',()=>svg.transition().call(zoom.scaleBy,1/1.6));
   ctl.append('button').attr('aria-label','Reset view').text('⟲').on('click',()=>svg.transition().duration(600).call(zoom.transform,d3.zoomIdentity));
   function draw(){W=host.clientWidth;H=host.clientHeight;if(!W||!H)return;svg.attr('viewBox',`0 0 ${W} ${H}`);
-    const proj=d3.geoTransverseMercator().rotate([2,0]).fitExtent([[8,8],[W-8,H-8]],{type:'FeatureCollection',features:state.feats});
+    const proj=d3.geoTransverseMercator().rotate([2,0]).fitExtent([[4,4],[W-4,H-4]],{type:'FeatureCollection',features:state.feats});
     path=d3.geoPath(proj);
     g.selectAll('path').data(state.feats,d=>d.code).join('path').attr('d',path)
       .on('mousemove',(e,d)=>{const ind=IND[state.i];showTT(e,`<b>${d.name}</b>${ind.n}: ${ind.f(state.la[d.code][ind.k])}`)})
@@ -665,7 +817,7 @@ function legend(id){const ind=IND[state.i],sc=scaleFor(ind);
   const lo=d3.min(state.feats,f=>state.la[f.code][ind.k]),hi=d3.max(state.feats,f=>state.la[f.code][ind.k]);
   document.getElementById(id).innerHTML=`<div class="sw">${cols.map(c=>`<i style="background:${c}"></i>`).join('')}</div><div class="ll"><span>${ind.f(lo)}</span><span></span><span>${ind.f(hi)}</span></div>`}
 function selCard(id){const el=document.getElementById(id),ind=IND[state.i];
-  if(!state.sel){el.innerHTML='Search or click the map to compare an area with the UK.';return}
+  if(!state.sel){el.innerHTML='';return}
   const v=state.la[state.sel][ind.k],rk=rankOf(ind,state.sel),N=state.feats.length;
   const better=ind.hi?v>=ind.uk:v<=ind.uk;
   el.innerHTML=`<div class="nm">${state.by[state.sel].name}</div><div class="val">${ind.f(v)}</div><div class="cmp">${ind.ukName||'UK'} ${ind.f(ind.uk)}. ${better?'Stronger':'Weaker'} than the ${ind.ukName||'UK'} average, ${ordinal(rk)} of ${N} areas.</div>`}
@@ -725,7 +877,7 @@ document.addEventListener('keydown',e=>{if(ex.classList.contains('hidden'))retur
 const DL_ICON='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>';
 function slug(t){return (t||'chart').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,60)}
 function addDownloads(){
-  document.querySelectorAll('.ind,.poll:not(.empty),.regional').forEach(p=>{
+  document.querySelectorAll('.ind,.poll:not(.empty),.regional,.ocard,.ggs').forEach(p=>{
     if(p.querySelector(':scope > .dl'))return;
     const b=document.createElement('button');b.className='dl';b.type='button';b.innerHTML=DL_ICON;
     b.setAttribute('aria-label','Download as image');b.title='Download as image';
@@ -743,9 +895,267 @@ async function exportPanel(p,btn){
   }catch(e){alert('The image could not be saved. Try again, or take a screenshot instead.')}
   p.classList.remove('exporting');btn.disabled=false;
 }
+/* ================= Budget 2025 (all figures from OBR files) ================= */
+const OBR={"gdpLevel":[["2019Q1",98.987,99.235],["2019Q2",99.296,99.446],["2019Q3",100.0,99.994],["2019Q4",100.0,100.0],["2020Q1",97.342,97.255],["2020Q2",77.551,77.895],["2020Q3",90.57,91.11],["2020Q4",91.808,92.356],["2021Q1",90.854,91.362],["2021Q2",97.444,97.742],["2021Q3",99.071,99.39],["2021Q4",100.541,100.759],["2022Q1",101.275,101.781],["2022Q2",101.614,102.348],["2022Q3",101.73,102.452],["2022Q4",102.063,102.719],["2023Q1",102.186,102.777],["2023Q2",102.195,102.819],["2023Q3",102.064,102.573],["2023Q4",101.793,102.243],["2024Q1",102.656,103.102],["2024Q2",103.117,103.759],["2024Q3",103.089,103.962],["2024Q4",103.193,104.212],["2025Q1",103.4,104.902],["2025Q2",103.773,105.192],["2025Q3",104.209,105.406],["2025Q4",104.676,105.691],["2026Q1",105.185,106.106],["2026Q2",105.706,106.527],["2026Q3",106.209,106.956],["2026Q4",106.704,107.379],["2027Q1",107.165,107.789],["2027Q2",107.624,108.192],["2027Q3",108.073,108.592],["2027Q4",108.53,108.981],["2028Q1",108.995,109.376],["2028Q2",109.462,109.771],["2028Q3",109.94,110.18],["2028Q4",110.426,110.588],["2029Q1",110.925,111.007],["2029Q2",111.434,111.445],["2029Q3",111.934,111.871],["2029Q4",112.432,112.293],["2030Q1",112.945,112.727],["2030Q2",null,113.164],["2030Q3",null,113.601],["2030Q4",null,114.044],["2031Q1",null,114.489]],"wages":[["2022Q1",-1.81,-1.301],["2022Q2",1.518,1.974],["2022Q3",5.652,5.383],["2022Q4",7.525,7.652],["2023Q1",7.985,6.858],["2023Q2",9.267,7.425],["2023Q3",8.667,8.156],["2023Q4",6.329,4.323],["2024Q1",4.11,3.514],["2024Q2",3.007,3.451],["2024Q3",1.754,1.903],["2024Q4",4.733,6.157],["2025Q1",5.511,6.815],["2025Q2",4.951,5.705],["2025Q3",5.258,5.995],["2025Q4",2.738,3.574],["2026Q1",2.407,3.075],["2026Q2",2.268,3.454],["2026Q3",2.104,3.17],["2026Q4",2.011,3.029],["2027Q1",2.066,2.668],["2027Q2",2.132,2.365],["2027Q3",2.183,2.214],["2027Q4",2.218,2.088],["2028Q1",2.279,2.154],["2028Q2",2.33,2.261],["2028Q3",2.391,2.305],["2028Q4",2.478,2.31],["2029Q1",2.556,2.315],["2029Q2",2.626,2.333],["2029Q3",2.694,2.38],["2029Q4",2.74,2.452],["2030Q1",2.741,2.491],["2030Q2",null,2.503],["2030Q3",null,2.494],["2030Q4",null,2.468],["2031Q1",null,2.445]],"cpi":[[2019,1.791,1.791,1.791],[2020,0.851,0.851,0.851],[2021,2.588,2.588,2.588],[2022,9.067,9.067,9.067],[2023,7.303,7.303,7.303],[2024,2.53,2.53,2.53],[2025,3.213,3.453,3.453],[2026,2.085,2.828,2.48],[2027,1.989,2.0,2.015],[2028,2.0,1.934,2.035],[2029,2.0,1.998,2.038],[2030,null,2.0,2.003]],"spend":[["1997-98",35.471,null,null,null],["1998-99",34.988,null,null,null],["1999-00",34.601,null,null,null],["2000-01",34.906,null,null,null],["2001-02",36.051,null,null,null],["2002-03",37.417,null,null,null],["2003-04",38.698,null,null,null],["2004-05",39.726,null,null,null],["2005-06",39.696,null,null,null],["2006-07",39.669,null,null,null],["2007-08",40.027,null,null,null],["2008-09",43.042,null,null,null],["2009-10",45.968,null,null,null],["2010-11",45.503,null,null,null],["2011-12",44.351,null,null,null],["2012-13",43.792,null,null,null],["2013-14",42.19,null,null,null],["2014-15",41.636,null,null,null],["2015-16",40.829,null,null,null],["2016-17",40.027,null,null,null],["2017-18",39.663,null,null,null],["2018-19",39.091,null,null,null],["2019-20",39.096,null,null,null],["2020-21",52.268,null,null,null],["2021-22",43.363,null,null,null],["2022-23",44.058,null,null,null],["2023-24",44.131,44.1,44.131,44.131],["2024-25",44.009,43.943,44.009,44.009],["2025-26",null,44.424,44.849,45.016],["2026-27",null,44.231,44.603,44.735],["2027-28",null,43.872,44.307,44.813],["2028-29",null,43.5,44.067,44.494],["2029-30",null,43.293,43.874,44.268],["2030-31",null,null,43.847,44.284]],"tax":[["1997-98",31.023,null,null,null],["1998-99",31.67,null,null,null],["1999-00",32.454,null,null,null],["2000-01",32.97,null,null,null],["2001-02",32.299,null,null,null],["2002-03",31.415,null,null,null],["2003-04",32.225,null,null,null],["2004-05",32.84,null,null,null],["2005-06",33.239,null,null,null],["2006-07",33.635,null,null,null],["2007-08",33.643,null,null,null],["2008-09",32.022,null,null,null],["2009-10",32.153,null,null,null],["2010-11",33.123,null,null,null],["2011-12",33.315,null,null,null],["2012-13",32.666,null,null,null],["2013-14",32.552,null,null,null],["2014-15",32.414,null,null,null],["2015-16",32.619,null,null,null],["2016-17",33.387,null,null,null],["2017-18",33.142,null,null,null],["2018-19",33.569,null,null,null],["2019-20",32.852,null,null,null],["2020-21",33.717,null,null,null],["2021-22",34.668,null,null,null],["2022-23",35.193,null,null,null],["2023-24",34.939,null,null,null],["2024-25",34.679,34.909,34.679,34.679],["2025-26",null,36.325,36.227,36.259],["2026-27",null,36.96,37.025,37.028],["2027-28",null,37.251,37.469,37.627],["2028-29",null,37.068,37.371,37.76],["2029-30",null,37.06,37.467,38.164],["2030-31",null,null,37.492,38.269]],"stance":[["Jun 10",-1.281],["Nov 10",-0.02],["Mar 11",0.039],["Nov 11",-0.516],["Mar 12",-0.103],["Dec 12",-0.304],["Mar 13",-0.134],["Dec 13",-0.296],["Mar 14",0.019],["Dec 14",-0.387],["Mar 15",0.424],["Jul 15",0.032],["Nov 15",0.18],["Mar 16",-0.141],["Nov 16",0.279],["Mar 17",0.049],["Nov 17",0.131],["Mar 18",0.005],["Oct 18",0.649],["Mar 19",0.058],["Mar 20",0.906],["Jul 20",1.975],["Nov 20",-0.314],["Mar 21",-0.205],["Oct 21",0.327],["Mar 22",0.135],["Nov 22",-0.291],["Mar 23",0.574],["Nov 23",0.638],["Mar 24",0.272],["Oct 24",1.016],["Mar 25",-0.121],["Nov 25",-0.043]],"gdpImpact":{"years":["2024-25","2025-26","2026-27","2027-28","2028-29","2029-30","2030-31"],"rows":[["Consumption",0.0,0.004,-0.044,-0.117,-0.19,-0.23,-0.289],["Residential and business investment",0.0,-0.005,-0.02,-0.029,0.004,0.04,0.048],["Government consumption and investment",0.0,0.018,0.163,0.207,0.137,0.114,0.139],["Net trade and other",0.0,-0.01,-0.031,-0.043,0.024,0.068,0.099],["Total",0.0,0.008,0.068,0.018,-0.025,-0.008,-0.002]]},"rhdi":[["2022-23",25.371,25.301,25.301],["2023-24",25.77,25.51,25.51],["2024-25",26.439,26.286,26.286],["2025-26",26.665,26.398,26.415],["2026-27",26.842,26.413,26.494],["2027-28",26.856,26.515,26.542],["2028-29",26.984,26.697,26.63],["2029-30",27.199,26.864,26.708],["2030-31",null,27.022,26.809]],"headroomAvg":29.423,"headroom":[["Nov 10",32.651],["Mar 11",29.023],["Nov 11",18.139],["Mar 12",18.139],["Dec 12",32.651],["Mar 13",14.511],["Dec 13",58.046],["Mar 14",54.418],["Dec 14",83.441],["Mar 15",29.023],["Jul 15",39.907],["Nov 15",18.139],["Mar 16",17.308],["Nov 16",42.812],["Mar 17",41.526],["Nov 17",24.066],["Mar 18",24.852],["Oct 18",24.569],["Mar 19",42.487],["Mar 20",17.167],["Oct 21",23.856],["Mar 22",37.02],["Nov 22",11.367],["Mar 23",7.986],["Nov 23",12.954],["Mar 24",8.946],["Oct 24",9.929],["Mar 25",9.932],["Nov 25",21.699]],"gdpGrowth":[[2024,0.935,1.126],[2025,0.972,1.483],[2026,1.862,1.371],[2027,1.79,1.543],[2028,1.723,1.467],[2029,1.801,1.523],[2030,null,1.549]],"events":[["Mar 20","Sunak",20.751,11.726,"Current budget balanced by 2022-23 (Budget 2020 rule)","March 2020 EFO, Table 4.6"],["Oct 21","Sunak",28.65,17.521,"Debt falling in 2024-25 (smaller of two margins; current budget margin larger)","October 2021 EFO, Table 4.3"],["Mar 22","Sunak",34.876,27.839,"Debt falling in 2024-25 (smaller of two margins)","March 2022 EFO, Table 4.1"],["Nov 22","Hunt",-28.88,9.191,"Debt falling in 2027-28 (smaller of two margins)","November 2022 EFO, Table 7"],["Mar 23","Hunt",14.452,6.493,"Debt falling in fifth year","March 2023 EFO, Table 5.1"],["Nov 23","Hunt",30.95,12.954,"Debt falling in fifth year","November 2023 EFO, Table 5.1"],["Mar 24","Hunt",12.183,8.946,"Debt falling in fifth year","March 2024 EFO, Table 5.1"],["Oct 24","Reeves",22.74,9.929,"Current budget in surplus by 2029-30 (smaller of two margins)","October 2024 EFO, Table 7.1"],["Mar 25","Reeves",-4.062,9.932,"Current budget in surplus by 2029-30 (smaller of two margins)","March 2025 EFO, Table 7.1"],["Nov 25","Reeves",4.185,21.699,"Current budget in surplus by 2029-30 (smaller of two margins)","November 2025 EFO, Table 7.1"]],"growth":[["Mar 2017",2021,1.367,1.198,87.7],["Nov 2017",2022,1.045,1.059,101.4],["Mar 2018",2022,0.94,0.918,97.7],["Oct 2018",2023,1.079,1.103,102.3],["Mar 2019",2023,1.107,1.293,116.7],["Mar 2020",2024,1.082,1.079,99.8],["Nov 2020",2025,1.491,1.058,70.9],["Mar 2021",2025,1.453,1.209,83.2],["Oct 2021",2026,1.411,1.057,74.9],["Mar 2022",2026,1.469,1.28,87.1],["Nov 2022",2027,1.955,1.676,85.7],["Mar 2023",2027,1.532,1.551,101.2],["Nov 2023",2028,1.414,1.646,116.4],["Mar 2024",2028,1.173,1.318,112.4],["Oct 2024",2029,1.052,0.699,66.4],["Mar 2025",2029,1.357,0.768,56.6],["Nov 2025",2030,1.102,0.35,31.8]],"rhdiGrowth":[["2022-23",-1.988,-3.152,4.149,2.955,-0.958,-9.297],["2023-24",1.574,0.826,3.184,1.422,1.387,-5.167],["2024-25",2.597,3.042,4.051,1.329,0.8,-3.139],["2025-26",0.856,0.492,3.42,1.2,-0.458,-3.67],["2026-27",0.664,0.299,2.362,1.282,-1.078,-2.267],["2027-28",0.051,0.183,1.861,1.047,-0.715,-2.01],["2028-29",0.475,0.331,1.797,0.782,-0.187,-2.061],["2029-30",0.799,0.294,1.894,0.663,-0.236,-2.027],["2030-31",null,0.377,1.889,0.646,-0.146,-2.011]],"forecastStart":"2025-26"};
+const CH={Sunak:C.orange,Hunt:'#F5A98C',Reeves:C.pale};
+const GREY='#C3CCD8',TRACK='#22395A',BG='#112743';
+const qd=s=>new Date(+s.slice(0,4),(+s.slice(5)-1)*3+1,15);
+const fyd=s=>new Date(+s.slice(0,4),9,1);
+const fyl=d=>{const y=d.getMonth()>=3?d.getFullYear():d.getFullYear()-1;return y+'-'+String((y+1)%100).padStart(2,'0')};
+const bn=v=>(v<0?'−':'')+'£'+Math.abs(v).toFixed(1)+'bn';
+const tbn=v=>v===0?'£0':(v<0?'−':'')+'£'+Math.abs(v)+'bn';
+const sbn=v=>(v>0?'+':'')+bn(v);
+const pc=v=>(Math.abs(v)<1?v.toFixed(2):v.toFixed(1))+'%';
+function vb(el,W,H,label){el.innerHTML='';return d3.select(el).append('svg').attr('class','vb').attr('viewBox',`0 0 ${W} ${H}`).attr('role','img').attr('aria-label',label)}
+const rad=d=>d*Math.PI/180;
+function tipOn(sel,html){sel.on('mousemove',e=>showTT(e,html)).on('mouseleave',hideTT)}
+
+/* pick a readable subset of labels: keep a label only if it is far enough from the last one kept */
+function pickLabels(items,sep){const s=[...items].sort((a,b)=>a.a-b.a);let last=-1e9;return s.filter(it=>{if(it.a-last>=sep){last=it.a;return true}return false})}
+function radialText(g,x,y,angDeg,txt,size,fill,weight){const right=angDeg>=0;
+  g.append('text').attr('x',x).attr('y',y).attr('dy','.35em').attr('text-anchor',right?'start':'end').attr('transform',`rotate(${right?angDeg-90:angDeg+90},${x},${y})`).attr('font-size',size).attr('font-weight',weight||500).attr('fill',fill).text(txt)}
+
+/* ---- speedometer drawn into a group ---- */
+function speedo(g,o){
+  const{cx,cy,R,r0}=o;
+  const phi=v=>rad(-90+(Math.max(o.min,Math.min(o.max,v))-o.min)/(o.max-o.min)*180);
+  const P=(r,a)=>[cx+r*Math.sin(a),cy-r*Math.cos(a)];
+  const arc=d3.arc().innerRadius(r0).outerRadius(R);
+  g.append('path').attr('transform',`translate(${cx},${cy})`).attr('d',arc({startAngle:-Math.PI/2,endAngle:Math.PI/2})).attr('fill',TRACK);
+  (o.tints||[]).forEach(t=>g.append('path').attr('transform',`translate(${cx},${cy})`).attr('d',arc({startAngle:phi(t.a),endAngle:phi(t.b)})).attr('fill',t.c).attr('opacity',t.o));
+  if(o.min<0){const[a1,a2]=[P(r0,phi(0)),P(R,phi(0))];g.append('line').attr('x1',a1[0]).attr('y1',a1[1]).attr('x2',a2[0]).attr('y2',a2[1]).attr('stroke',C.off).attr('stroke-width',2)}
+  const la=phi(o.latest.v);
+  const isLab=v=>Math.abs(v/o.labelStep-Math.round(v/o.labelStep))<1e-9;
+  for(let i=0;o.min+i*o.step<=o.max+1e-9;i++){const v=+(o.min+i*o.step).toFixed(6),a=phi(v),[x1,y1]=P(r0-5,a),[x2,y2]=P(r0-(isLab(v)?22:13),a);
+    g.append('line').attr('x1',x1).attr('y1',y1).attr('x2',x2).attr('y2',y2).attr('stroke','#8ea2bf').attr('stroke-width',1.6);
+    if(isLab(v)&&Math.abs(a-la)>.1){const[tx,ty]=P(r0-48,a);g.append('text').attr('x',tx).attr('y',ty+6).attr('text-anchor','middle').attr('font-size',o.fs||17).attr('font-weight',600).attr('fill',v<0&&o.negOrange?C.orange:'#9fb2cc').text(o.scaleFmt(v))}}
+  const needle=(a,len,hw)=>{const t=P(len,a),b1=[cx+hw*Math.cos(a),cy+hw*Math.sin(a)],b2=[cx-hw*Math.cos(a),cy-hw*Math.sin(a)];return`M${b1}L${t}L${b2}Z`};
+  const hist=o.events.filter(e=>e.n!==o.latest.n);
+  hist.forEach(e=>{const a=phi(e.v);g.append('path').attr('d',needle(a,r0,7)).attr('fill',GREY).attr('opacity',.17);
+    const[a1,a2]=[P(r0,a),P(R,a)];g.append('line').attr('x1',a1[0]).attr('y1',a1[1]).attr('x2',a2[0]).attr('y2',a2[1]).attr('stroke',GREY).attr('stroke-width',1.6).attr('opacity',.75)});
+  pickLabels(hist.map(e=>({...e,a:phi(e.v)*180/Math.PI})),o.labelSep||12).forEach(l=>{const a=rad(l.a),[x0,y0]=P(R+3,a),[x1,y1]=P(R+12,a),[tx,ty]=P(R+16,a);
+    g.append('line').attr('x1',x0).attr('y1',y0).attr('x2',x1).attr('y2',y1).attr('stroke',GREY).attr('opacity',.6);radialText(g,tx,ty,l.a,l.n,o.lfs||16,'#b8c5d8')});
+  // hover targets for every previous event
+  hist.forEach(e=>{const a=phi(e.v),[x2,y2]=P(R+14,a);tipOn(g.append('line').attr('class','hit').attr('x1',cx).attr('y1',cy).attr('x2',x2).attr('y2',y2).attr('stroke','transparent').attr('stroke-width',14),`<b>${e.n}</b>${o.tipFmt(e.v)}`)});
+  const start=phi(o.start??o.min),len=r0+20,hw=o.hw||17;
+  const nd=g.append('path').attr('fill',o.color).attr('stroke',BG).attr('stroke-width',4).attr('stroke-linejoin','round').attr('paint-order','stroke').attr('d',needle(start,len,hw));
+  nd.transition().delay(o.delay||150).duration(1400).ease(d3.easeCubicOut).attrTween('d',()=>{const i=d3.interpolate(start,la);return t=>needle(i(t),len,hw)});
+  tipOn(nd,`<b>${o.latest.n}</b>${o.tipFmt(o.latest.v)}`);
+  g.append('circle').attr('cx',cx).attr('cy',cy).attr('r',o.hub||30).attr('fill',o.color).attr('stroke',BG).attr('stroke-width',4);g.append('circle').attr('cx',cx).attr('cy',cy).attr('r',(o.hub||30)*.4).attr('fill',C.navy);
+  return{phi,P};
+}
+function countUp(sel,to,fmt,delay){sel.text(fmt(0)).transition().delay(delay||150).duration(1400).ease(d3.easeCubicOut).tween('text',function(){const i=d3.interpolate(0,to);return t=>this.textContent=fmt(i(t))})}
+
+/* ---- standard dial in a panel ---- */
+function panelDial(el,o){
+  const W=1000,H=o.sideL?650:610,cx=500,cy=440,R=330,r0=252;
+  const svg=vb(el,W,H,o.aria),g=svg.append('g');
+  speedo(g,{...o,cx,cy,R,r0});
+  countUp(g.append('text').attr('x',cx).attr('y',cy+112).attr('text-anchor','middle').attr('font-size',84).attr('font-weight',800).attr('fill',o.color).attr('letter-spacing',-2),o.latest.v,o.bigFmt);
+  g.append('text').attr('x',cx).attr('y',cy+150).attr('text-anchor','middle').attr('font-size',23).attr('font-weight',500).attr('fill',C.off).text(o.caption);
+  if(o.sideL){[[cx-R,'start',o.sideL,o.subL,C.orange],[cx+R,'end',o.sideR,o.subR,C.green]].forEach(([x,an,t,s,c])=>{
+    g.append('text').attr('x',x).attr('y',cy+34).attr('text-anchor',an).attr('font-size',18).attr('font-weight',800).attr('fill',c).text(t);
+    g.append('text').attr('x',x).attr('y',cy+56).attr('text-anchor',an).attr('font-size',14.5).attr('fill','#9fb2cc').text(s)})}
+}
+
+/* ---- 270 degree ring ---- */
+function ring(g,o){
+  const{cx,cy,R}=o,r0=R*.7,A0=-135,A1=135;
+  const ang=v=>A0+(Math.max(o.min,Math.min(o.max,v))-o.min)/(o.max-o.min)*(A1-A0);
+  const P=(r,d)=>[cx+r*Math.sin(rad(d)),cy-r*Math.cos(rad(d))];
+  const arc=d3.arc().innerRadius(r0).outerRadius(R);
+  g.append('path').attr('transform',`translate(${cx},${cy})`).attr('d',arc({startAngle:rad(A0),endAngle:rad(A1)})).attr('fill',TRACK);
+  const fill=g.append('path').attr('transform',`translate(${cx},${cy})`).attr('fill',o.color);
+  fill.transition().delay(150).duration(1400).ease(d3.easeCubicOut).attrTween('d',()=>{const i=d3.interpolate(A0,ang(o.latest.v));return t=>arc({startAngle:rad(A0),endAngle:rad(i(t))})});
+  const hist=o.events.filter(e=>e.n!==o.latest.n);
+  hist.forEach(e=>{const d=ang(e.v),[x1,y1]=P(r0+2,d),[x2,y2]=P(R+12,d);g.append('line').attr('x1',x1).attr('y1',y1).attr('x2',x2).attr('y2',y2).attr('stroke',GREY).attr('stroke-width',1.8).attr('opacity',.75)});
+  pickLabels(hist.map(e=>({...e,a:ang(e.v)})),o.labelSep||14).forEach(l=>{const[tx,ty]=P(R+17,l.a);radialText(g,tx,ty,l.a,l.n,14,'#b8c5d8')});
+  hist.forEach(e=>{const d=ang(e.v),[x1,y1]=P(r0-6,d),[x2,y2]=P(R+20,d);tipOn(g.append('line').attr('class','hit').attr('x1',x1).attr('y1',y1).attr('x2',x2).attr('y2',y2).attr('stroke','transparent').attr('stroke-width',12),`<b>${e.n}</b>${o.label}: ${pc(e.v)}`)});
+  // latest: thick white tick, arrives with the fill
+  const lt=g.append('line').attr('stroke','#fff').attr('stroke-width',7).attr('stroke-linecap','butt');
+  const setT=d=>{const[x1,y1]=P(r0-8,d),[x2,y2]=P(R+8,d);lt.attr('x1',x1).attr('y1',y1).attr('x2',x2).attr('y2',y2)};setT(A0);
+  lt.transition().delay(150).duration(1400).ease(d3.easeCubicOut).tween('t',()=>{const i=d3.interpolate(A0,ang(o.latest.v));return t=>setT(i(t))});
+  // scale labels
+  [[o.min,A0,'start'],[o.max,A1,'end']].forEach(([v,d,an])=>{const[x,y]=P(R+4,d);g.append('text').attr('x',x+(an==='start'?-6:6)).attr('y',y+26).attr('text-anchor','middle').attr('font-size',15).attr('fill','#9fb2cc').text(v.toFixed(1)+'%')});
+  const mid=(o.min+o.max)/2,[mx,my]=P(r0-22,0);g.append('text').attr('x',mx).attr('y',my+4).attr('text-anchor','middle').attr('font-size',15).attr('fill','#9fb2cc').text(mid.toFixed(1)+'%');
+  countUp(g.append('text').attr('x',cx).attr('y',cy+22).attr('text-anchor','middle').attr('font-size',62).attr('font-weight',800).attr('fill',o.color).attr('letter-spacing',-1),o.latest.v,pc);
+  g.append('text').attr('x',cx).attr('y',cy+70).attr('text-anchor','middle').attr('font-size',22).attr('fill',C.off).text(o.label);
+}
+
+/* ---- Good Growth Score composition ---- */
+function renderGGS(){
+  const gr=OBR.growth,L=gr[gr.length-1];
+  const ev=k=>gr.filter(r=>r[k]!=null).map(r=>({n:r[0],v:r[k]}));
+  const W=1160,H=1225,svg=vb(document.getElementById('ggs'),W,H,`Good Growth Score: ${Math.round(L[4])} per cent pass-through of GDP growth into incomes, November 2025`),g=svg.append('g');
+  const cy=545,R=450,r0=R*.78;
+  speedo(g,{cx:580,cy,R,r0,min:0,max:150,step:10,labelStep:50,events:ev(4),latest:{n:L[0],v:L[4]},scaleFmt:v=>v+'%',tipFmt:v=>`Pass-through: ${Math.round(v)}%`,color:C.lime,labelSep:9,lfs:16,hw:22,hub:32,fs:18});
+  countUp(g.append('text').attr('x',580).attr('y',cy+118).attr('text-anchor','middle').attr('font-size',104).attr('font-weight',800).attr('fill',C.lime).attr('letter-spacing',-3),L[4],v=>Math.round(v)+'%');
+  g.append('text').attr('x',580).attr('y',cy+165).attr('text-anchor','middle').attr('font-size',25).attr('fill',C.off).text('Pass-through of future GDP into incomes');
+  const rmax=Math.ceil(d3.max(gr,r=>Math.max(r[2],r[3]))*2)/2;
+  ring(g,{cx:330,cy:1015,R:200,min:0,max:rmax,events:ev(2),latest:{n:L[0],v:L[2]},color:C.orange,label:'GDP growth'});
+  ring(g,{cx:830,cy:1015,R:200,min:0,max:rmax,events:ev(3),latest:{n:L[0],v:L[3]},color:C.green,label:'Income growth'});
+}
+
+/* ---- chancellor brackets ---- */
+function brackets(g,ev,x,y,latestName){
+  const groups=[];ev.forEach((e,i)=>{const l=groups[groups.length-1];if(l&&l.c===e[1])l.j=i;else groups.push({c:e[1],i,j:i})});
+  groups.forEach(gr=>{const x0=x(gr.i)+8,x1=x(gr.j)+x.step()-8;const last=ev[gr.j][0]===latestName;
+    g.append('line').attr('x1',x0).attr('x2',x1).attr('y1',y).attr('y2',y).attr('stroke',CH[gr.c]).attr('stroke-width',5).attr('stroke-linecap','round');
+    g.append('text').attr('x',(x0+x1)/2).attr('y',y+28).attr('text-anchor','middle').attr('font-size',16).attr('font-weight',last?800:600).attr('fill',last?C.pale:C.off).text(gr.c)});
+}
+function yAxis(g,y,W,m,fmt){y.ticks(6).forEach(t=>{g.append('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(t)).attr('y2',y(t)).attr('stroke','#fff').attr('opacity',t===0?0:.08);
+  g.append('text').attr('x',m.l-12).attr('y',y(t)+5).attr('text-anchor','end').attr('font-size',14).attr('fill','#9fb2cc').text(fmt(t))})}
+
+/* ---- pre-measures bars ---- */
+function preBars(el){
+  const ev=OBR.events,latest=ev[ev.length-1][0],W=1000,H=430,m={l:80,r:16,t:34,b:96};
+  const svg=vb(el,W,H,'Fiscal space before Budget measures at each fiscal event');
+  const xb=d3.scaleBand().domain(d3.range(ev.length)).range([m.l,W-m.r]).paddingInner(.28).paddingOuter(.14);
+  const x=i=>xb(i)-xb.step()*xb.paddingInner()/2;x.step=()=>xb.step();
+  const vals=ev.map(e=>e[2]);const y=d3.scaleLinear().domain([Math.min(0,d3.min(vals))*1.15,d3.max(vals)*1.15]).nice().range([H-m.b,m.t]);
+  const g=svg.append('g');
+  const li=ev.length-1;g.append('rect').attr('x',x(li)).attr('width',xb.step()).attr('y',m.t-14).attr('height',H-m.b-m.t+44).attr('fill','#fff').attr('opacity',.07);
+  yAxis(g,y,W,m,tbn);
+  ev.forEach((e,i)=>{const v=e[2],L=e[0]===latest,y0=y(Math.max(0,v)),h=Math.abs(y(v)-y(0));
+    tipOn(g.append('rect').attr('x',xb(i)).attr('width',xb.bandwidth()).attr('y',y0).attr('height',Math.max(h,1.5)).attr('fill',CH[e[1]]).attr('stroke',L?'#fff':'none').attr('stroke-width',L?2.5:0),`<b>${e[0]}</b>${bn(v)} before measures<br>${e[4]}<br><span style="color:#5d6b7e">${e[5]}</span>`);
+    g.append('text').attr('x',xb(i)+xb.bandwidth()/2).attr('y',v>=0?y(v)-9:y(v)+22).attr('text-anchor','middle').attr('font-size',L?19:15).attr('font-weight',L?800:600).attr('fill',L?C.pale:C.off).text(bn(v));
+    g.append('text').attr('x',xb(i)+xb.bandwidth()/2).attr('y',H-m.b+28).attr('text-anchor','middle').attr('font-size',16).attr('font-weight',L?800:500).attr('fill',L?C.pale:C.off).text(e[0])});
+  g.append('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(0)).attr('y2',y(0)).attr('stroke',C.off).attr('opacity',.7);
+  brackets(g,ev,x,H-m.b+50,latest);
+}
+
+/* ---- before and after ---- */
+function baBars(el){
+  const ev=OBR.events,latest=ev[ev.length-1][0],W=1000,H=590,m={l:80,r:16,t:150,b:96};
+  const svg=vb(el,W,H,'Fiscal space before and after Budget measures at each fiscal event');
+  const xb=d3.scaleBand().domain(d3.range(ev.length)).range([m.l,W-m.r]).paddingInner(0).paddingOuter(0);
+  const x=i=>xb(i);x.step=()=>xb.step();
+  const vals=ev.flatMap(e=>[e[2],e[3]]);const y=d3.scaleLinear().domain([Math.min(0,d3.min(vals))*1.12,d3.max(vals)*1.15]).nice().range([H-m.b,m.t]);
+  const g=svg.append('g');
+  g.append('rect').attr('x',m.l).attr('y',10).attr('width',20).attr('height',13).attr('fill','none').attr('stroke',C.off).attr('stroke-width',2);
+  g.append('text').attr('x',m.l+30).attr('y',22).attr('font-size',15).attr('fill',C.off).text('Before Budget measures');
+  g.append('rect').attr('x',m.l+230).attr('y',10).attr('width',20).attr('height',13).attr('fill',C.off);
+  g.append('text').attr('x',m.l+260).attr('y',22).attr('font-size',15).attr('fill',C.off).text('After Budget measures');
+  const bY=40,bH=54;g.append('rect').attr('x',10).attr('y',bY).attr('width',W-20).attr('height',bH).attr('rx',10).attr('fill',C.off).attr('fill-opacity',.04).attr('stroke',C.off).attr('stroke-opacity',.3);
+  g.append('text').attr('x',22).attr('y',bY+23).attr('font-size',14.5).attr('font-weight',800).attr('fill',C.off).text('Budget');
+  g.append('text').attr('x',22).attr('y',bY+41).attr('font-size',14.5).attr('font-weight',800).attr('fill',C.off).text('effect');
+  const li=ev.length-1;
+  g.append('rect').attr('x',x(li)).attr('width',W-m.r-x(li)).attr('y',bY+bH+8).attr('height',H-m.b-bY-bH-8).attr('fill','#fff').attr('opacity',.08);
+  yAxis(g,y,W,m,tbn);
+  ev.forEach((e,i)=>{if(i>0)g.append('line').attr('x1',x(i)).attr('x2',x(i)).attr('y1',bY+bH+8).attr('y2',H-m.b+40).attr('stroke','#fff').attr('opacity',.14)});
+  const bw=xb.step()*.4,gp=xb.step()*.04;
+  ev.forEach((e,i)=>{const cx=x(i)+xb.step()/2,L=e[0]===latest,col=CH[e[1]],eff=e[3]-e[2];
+    const ly=v=>v>=0?y(v)-8:y(v)+20;let lb=ly(e[2]),la=ly(e[3]);
+    if(Math.abs(lb-la)<17&&e[2]>=0&&e[3]>=0){if(e[2]>e[3])lb=Math.min(lb,la-17);else la=Math.min(la,lb-17)}
+    if(Math.abs(lb-la)<17&&e[2]<0&&e[3]<0){if(e[2]<e[3])lb=Math.max(lb,la+17);else la=Math.max(la,lb+17)}
+    [[e[2],cx-gp/2-bw,false,lb],[e[3],cx+gp/2,true,la]].forEach(([v,bx,after,lyv])=>{const y0=y(Math.max(0,v)),h=Math.max(Math.abs(y(v)-y(0)),1.5);
+      tipOn(g.append('rect').attr('x',bx+(after?0:1.25)).attr('width',bw-(after?0:2.5)).attr('y',y0+(after?0:1.25)).attr('height',Math.max(h-(after?0:2.5),1)).attr('fill',after?col:C.navy).attr('stroke',after?(L?'#fff':'none'):col).attr('stroke-width',after?(L?2.5:0):2.5),
+        `<b>${e[0]}</b>Before ${bn(e[2])}, after ${bn(e[3])}<br>${e[4]}<br><span style="color:#5d6b7e">${e[5]}</span>`);
+      const clash=L&&!after&&e[3]>=0&&v>=0&&y(e[3])<lyv+2;
+      g.append('text').attr('x',clash?bx+bw:bx+bw/2).attr('y',lyv).attr('text-anchor',clash?'end':'middle').attr('font-size',L?13.5:12).attr('font-weight',L?800:500).attr('fill',L?C.pale:C.off).text(bn(v))});
+    g.append('text').attr('x',cx).attr('y',bY+bH/2+(L?8:6)).attr('text-anchor','middle').attr('font-size',L?19:15).attr('font-weight',800).attr('fill',eff>=0?C.green:C.orange).text(sbn(eff));
+    g.append('text').attr('x',cx).attr('y',H-m.b+28).attr('text-anchor','middle').attr('font-size',16).attr('font-weight',L?800:500).attr('fill',L?C.pale:C.off).text(e[0])});
+  g.append('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(0)).attr('y2',y(0)).attr('stroke',C.off).attr('opacity',.7);
+  brackets(g,ev,x,H-m.b+52,latest);
+}
+
+/* ---- forecast shading ---- */
+function fcBand(g,xb,W,m,H){const f=OBR.forecastStart;if(!xb.domain().includes(f))return;const x0=xb(f)-xb.step()*xb.paddingInner()/2;
+  g.append('rect').attr('x',x0).attr('y',m.t).attr('width',W-m.r-x0).attr('height',H-m.b-m.t).attr('fill','#fff').attr('opacity',.05);
+  g.append('line').attr('x1',x0).attr('x2',x0).attr('y1',m.t).attr('y2',H-m.b).attr('stroke',C.off).attr('stroke-dasharray','5 5').attr('opacity',.55);
+  g.append('text').attr('x',x0+8).attr('y',m.t+15).attr('font-size',14).attr('font-weight',700).attr('fill',C.off).attr('opacity',.85).text('Forecast')}
+/* ---- policy impacts on GDP ---- */
+const GCOL={'Consumption':C.orange,'Residential and business investment':C.pale,'Government consumption and investment':C.green,'Net trade and other':GREY};
+function gdpImpact(el){
+  const{years,rows}=OBR.gdpImpact,comp=rows.filter(r=>r[0]!=='Total'),tot=rows.find(r=>r[0]==='Total');
+  document.getElementById('k-gdp').innerHTML=comp.map(r=>`<span><i style="background:${GCOL[r[0]]}"></i>${r[0]}</span>`).join('')+`<span><i style="background:${C.lime};border-radius:50%"></i>Total</span>`;
+  const W=1000,H=380,m={l:70,r:16,t:26,b:40};const svg=vb(el,W,H,'Policy impacts on real GDP');
+  const xb=d3.scaleBand().domain(years).range([m.l,W-m.r]).padding(.38);
+  let lo=0,hi=0;years.forEach((y_,j)=>{let p=0,n=0;comp.forEach(r=>{const v=r[j+1];if(v>0)p+=v;else n+=v});lo=Math.min(lo,n);hi=Math.max(hi,p)});
+  const y=d3.scaleLinear().domain([lo*1.15,hi*1.15]).nice().range([H-m.b,m.t]);const g=svg.append('g');fcBand(g,xb,W,m,H);
+  const sp=v=>(v>0?'+':v<0?'−':'')+Math.abs(v).toFixed(2)+'%';
+  yAxis(g,y,W,m,v=>(v>0?'+':v<0?'−':'')+Math.abs(v).toFixed(1)+'%');
+  years.forEach((yr,j)=>{let p=0,n=0;comp.forEach(r=>{const v=r[j+1]||0;const y0=v>=0?p:n,y1=y0+v;if(v>=0)p=y1;else n=y1;
+      if(Math.abs(v)>1e-6)tipOn(g.append('rect').attr('x',xb(yr)).attr('width',xb.bandwidth()).attr('y',y(Math.max(y0,y1))).attr('height',Math.abs(y(y0)-y(y1))).attr('fill',GCOL[r[0]]),`<b>${yr}</b>${r[0]}: ${sp(v)}`)});
+    g.append('text').attr('x',xb(yr)+xb.bandwidth()/2).attr('y',H-m.b+26).attr('text-anchor','middle').attr('font-size',15).attr('fill',C.off).text(yr)});
+  g.append('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(0)).attr('y2',y(0)).attr('stroke',C.off).attr('opacity',.7);
+  const pts=years.map((yr,j)=>[xb(yr)+xb.bandwidth()/2,y(tot[j+1])]);
+  g.append('path').attr('d',d3.line()(pts)).attr('fill','none').attr('stroke',C.lime).attr('stroke-width',2.5);
+  pts.forEach((p,j)=>tipOn(g.append('circle').attr('cx',p[0]).attr('cy',p[1]).attr('r',6.5).attr('fill',C.lime).attr('stroke',C.navy).attr('stroke-width',2),`<b>${years[j]}</b>Total: ${sp(tot[j+1])}`));
+}
+
+/* ---- outlook: new forecast against old ---- */
+function fySeries(arr,col){return arr.filter(r=>r[col]!=null).map(r=>({d:fyd(r[0]),v:r[col]}))}
+const OLD={c:GREY,dash:true,w:1.8,name:'March 2025'},NEW={c:C.lime,w:2.6,name:'November 2025'};
+function renderOutlook(){
+  const mini={height:150,l:44,r:12};const yrT=(a,b)=>d3.range(a,b+1,2).map(y=>new Date(y,0,1));
+  const gl=OBR.gdpLevel;
+  lineChart(document.getElementById('o-gdp'),{...mini,series:[{...OLD,data:gl.filter(r=>r[1]!=null).map(r=>({d:qd(r[0]),v:r[1]}))},{...NEW,data:gl.map(r=>({d:qd(r[0]),v:r[2]}))}],y:[75,115],tf:v=>f1(v),df:'Q%q %Y',xticks:yrT(2019,2031),aria:'Real GDP forecasts'});
+  const g26=OBR.gdpGrowth.find(r=>r[0]===2026);
+  document.getElementById('o-gdp-s').innerHTML=`Growth in 2026: <b>${f1(g26[2])}%</b>, against ${f1(g26[1])}% in March.`;
+  const w=OBR.wages;
+  lineChart(document.getElementById('o-wage'),{...mini,series:[{...OLD,data:w.filter(r=>r[1]!=null).map(r=>({d:qd(r[0]),v:r[1]}))},{...NEW,data:w.map(r=>({d:qd(r[0]),v:r[2]}))}],yf:d=>d+'%',tf:v=>f1(v)+'%',df:'Q%q %Y',xticks:yrT(2022,2030),aria:'Wage growth forecasts'});
+  const w26=w.find(r=>r[0]==='2026Q4');
+  document.getElementById('o-wage-s').innerHTML=`End of 2026: <b>${f1(w26[2])}%</b>, against ${f1(w26[1])}% in March.`;
+  const cp=OBR.cpi;
+  lineChart(document.getElementById('o-cpi'),{...mini,series:[{...OLD,data:cp.filter(r=>r[1]!=null).map(r=>({d:new Date(r[0],6,1),v:r[1]}))},{...NEW,data:cp.filter(r=>r[3]!=null).map(r=>({d:new Date(r[0],6,1),v:r[3]}))}],yf:d=>d+'%',tf:v=>f1(v)+'%',df:'%Y',xticks:yrT(2015,2030),aria:'CPI inflation forecasts'});
+  const c26=cp.find(r=>r[0]===2026);
+  document.getElementById('o-cpi-s').innerHTML=`2026: <b>${f1(c26[3])}%</b>, against ${f1(c26[1])}% in March.`;
+  const share=(id,arr)=>{lineChart(document.getElementById(id),{...mini,series:[{...OLD,data:fySeries(arr,2)},{...NEW,data:fySeries(arr,4)}],yf:d=>d+'%',tf:v=>f1(v)+'%',dfn:fyl,xf:d=>fyl(d),xticks:arr.filter(q=>q[4]!=null).filter((q,i)=>i%2===0).map(q=>fyd(q[0])),aria:id});
+    const r=arr.find(q=>q[0]==='2029-30');document.getElementById(id+'-s').innerHTML=`2029-30: <b>${f1(r[4])}%</b> of GDP, against ${f1(r[2])}% in March.`};
+  share('o-spend',OBR.spend.filter(r=>r[2]!=null||r[4]!=null));share('o-tax',OBR.tax.filter(r=>r[2]!=null||r[4]!=null));
+}
+const LSC={'Labour income':C.green,'Non-labour income':C.pale,'Net benefits and taxes':GREY,'Prices':C.orange};
+function renderLS(){
+  const rows=OBR.rhdiGrowth,keys=Object.keys(LSC),yrs=rows.map(r=>r[0]);
+  document.getElementById('k-ls').innerHTML=keys.map(k=>`<span><i style="background:${LSC[k]}"></i>${k}</span>`).join('')+`<span><i style="background:${C.lime};border-radius:50%"></i>Growth in income per person</span>`;
+  const W=1000,H=400,m={l:60,r:16,t:26,b:40},svg=vb(document.getElementById('b-ls'),W,H,'Real household disposable income per person growth and contributions');
+  const xb=d3.scaleBand().domain(yrs).range([m.l,W-m.r]).padding(.32);
+  let lo=0,hi=0;rows.forEach(r=>{let p=0,n=0;r.slice(3).forEach(v=>{if(v>0)p+=v;else n+=v});lo=Math.min(lo,n);hi=Math.max(hi,p)});
+  const y=d3.scaleLinear().domain([lo*1.05,hi*1.08]).nice().range([H-m.b,m.t]),g=svg.append('g');fcBand(g,xb,W,m,H);
+  const sp=v=>(v>0?'+':v<0?'−':'')+Math.abs(v).toFixed(1)+'%';
+  yAxis(g,y,W,m,v=>(v>0?'+':v<0?'−':'')+Math.abs(v)+'%');
+  rows.forEach(r=>{let p=0,n=0;keys.forEach((k,ki)=>{const v=r[3+ki];if(v==null)return;const y0=v>=0?p:n,y1=y0+v;if(v>=0)p=y1;else n=y1;
+      tipOn(g.append('rect').attr('x',xb(r[0])).attr('width',xb.bandwidth()).attr('y',y(Math.max(y0,y1))).attr('height',Math.abs(y(y0)-y(y1))).attr('fill',LSC[k]),`<b>${r[0]}</b>${k}: ${sp(v)}`)});
+    g.append('text').attr('x',xb(r[0])+xb.bandwidth()/2).attr('y',H-m.b+26).attr('text-anchor','middle').attr('font-size',15).attr('fill',C.off).text(r[0])});
+  g.append('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(0)).attr('y2',y(0)).attr('stroke',C.off).attr('opacity',.7);
+  rows.forEach(r=>{const cx=xb(r[0])+xb.bandwidth()/2;
+    if(r[2]!=null)tipOn(g.append('circle').attr('cx',cx).attr('cy',y(r[2])).attr('r',7).attr('fill',C.lime).attr('stroke',C.navy).attr('stroke-width',2),`<b>${r[0]}</b>Growth in income per person: ${sp(r[2])}`)});
+}
+function renderBudget(){
+  renderGGS();
+  const ev=OBR.events,L=ev[ev.length-1];
+  document.getElementById('t-fs').innerHTML=`The Budget started with just <span style="color:var(--lime)">${bn(L[2])}</span> of fiscal space before its measures`;
+  const ext=Math.ceil(d3.max(ev,e=>Math.abs(e[2]))/10)*10;
+  panelDial(document.getElementById('b-dial'),{min:-ext,max:ext,step:5,labelStep:20,negOrange:true,tints:[{a:-ext,b:0,c:C.orange,o:.4}],events:ev.map(e=>({n:e[0],v:e[2]})),latest:{n:L[0],v:L[2]},start:0,labelSep:34,scaleFmt:tbn,tipFmt:v=>`${bn(v)} before measures`,color:C.lime,bigFmt:bn,caption:'Fiscal space before Budget measures',aria:'Dial of fiscal space before November 2025 Budget measures against previous fiscal events'});
+  preBars(document.getElementById('b-pre'));
+  baBars(document.getElementById('b-ba'));
+  const st=OBR.stance,ls=st[st.length-1],neg=ls[1]<0,pct=Math.abs(ls[1]).toFixed(2),sc=neg?C.orange:C.green;
+  document.getElementById('t-st').innerHTML=`Overall, the Budget was close to neutral: a net <span style="color:${sc}">${neg?'tightening':'loosening'}</span> of ${pct} per cent of GDP`;
+  panelDial(document.getElementById('b-stance'),{min:-2,max:2,step:.25,labelStep:1,labelSep:14,events:st.map(e=>({n:e[0],v:e[1]})),latest:{n:ls[0],v:ls[1]},start:0,scaleFmt:v=>(v>0?'+':v<0?'−':'')+Math.abs(v)+'%',tipFmt:v=>`${(v>0?'+':v<0?'−':'')+Math.abs(v).toFixed(2)}% of GDP`,tints:[{a:-2,b:0,c:C.orange,o:.38},{a:0,b:2,c:C.green,o:.3}],color:sc,bigFmt:v=>(v<0?'−':v>0?'+':'')+Math.abs(v).toFixed(2)+'%',caption:'Size of the Budget package, per cent of GDP',sideL:'Tightening',subL:'Tax rises or spending cuts',sideR:'Loosening',subR:'Tax cuts or more spending',aria:'Dial of the size of the November 2025 Budget policy package against previous fiscal events'});
+  gdpImpact(document.getElementById('b-gdp'));
+  renderLS();
+  renderOutlook();
+  const tot=OBR.gdpImpact.rows.find(r=>r[0]==='Total'),pk=d3.max(tot.slice(1));
+  poll('bp-fs',{q:'Has the Chancellor left enough room to deal with future shocks?',big:47,bigl:'say not enough room has been left',segs:[{l:'Not enough',v:47,c:HARD[0]},{l:'About right',v:19,c:NEU},{l:'Too much',v:7,c:EASY[1]},{l:"Don't know",v:27,c:DK}],ctx:`Before its measures the Budget had <strong>${bn(L[2])}</strong> of fiscal space. Its measures took that to <strong>${bn(L[3])}</strong>.`,n:'2,000 adults, Dec 2025'});
+  poll('bp-st',{q:'Should the government focus on lower borrowing or more spending on public services?',big:41,good:true,bigl:'want more spending on public services',segs:[{l:'More spending',v:41,c:EASY[1]},{l:'Lower borrowing',v:36,c:HARD[0]},{l:'Neither',v:9,c:NEU},{l:"Don't know",v:14,c:DK}],ctx:`The Budget's tax rises and spending broadly cancel out, a net change of <strong>${(neg?'−':'+')+pct}%</strong> of GDP.`,n:'2,000 adults, Dec 2025'});
+  poll('bp-gdp',{q:'Will the Budget help or hurt the economy?',big:39,bigl:'think it will hurt the economy',segs:[{l:'Hurt',v:39,c:HARD[0]},{l:'No difference',v:27,c:NEU},{l:'Help',v:21,c:EASY[1]},{l:"Don't know",v:13,c:DK}],ctx:`The OBR expects the Budget to raise GDP by at most <strong>${pk.toFixed(2)}%</strong>, fading to around zero by 2030-31.`,n:'2,000 adults, Dec 2025'});
+  const g30=OBR.rhdiGrowth.find(r=>r[0]==='2029-30');
+  poll('bp-ls',{q:'Will the Budget leave you better or worse off?',big:51,bigl:'expect to be worse off',segs:[{l:'Worse off',v:51,c:HARD[0]},{l:'No difference',v:31,c:NEU},{l:'Better off',v:9,c:EASY[1]},{l:"Don't know",v:9,c:DK}],ctx:`The OBR expects income per person to grow just <strong>${g30[2].toFixed(1)}%</strong> in 2029-30, with prices taking <strong>${Math.abs(g30[6]).toFixed(1)}%</strong> off.`,n:'2,000 adults, Dec 2025'});
+  addDownloads();
+}
+const BUD=document.getElementById('budget');
+function openBudget(){BUD.classList.remove('hidden');document.body.style.overflow='hidden';hideTT();BUD.querySelector('.b-main').scrollTop=0;requestAnimationFrame(()=>{renderBudget();document.getElementById('closeBudget').focus()})}
+function closeBudget(){BUD.classList.add('hidden');if(ex.classList.contains('hidden'))document.body.style.overflow='';hideTT()}
+function route(){if(location.hash==='#budget-2025')openBudget();else if(!BUD.classList.contains('hidden'))closeBudget()}
+addEventListener('hashchange',route);
+document.getElementById('closeBudget').onclick=()=>{history.pushState(null,'',location.pathname+location.search);closeBudget()};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!BUD.classList.contains('hidden'))document.getElementById('closeBudget').click()});
+(()=>{const el=document.getElementById('protoTxt');let on=false;setInterval(()=>{el.style.opacity=0;setTimeout(()=>{on=!on;el.innerHTML=on?'<a href="#budget-2025">Analysis of the 2025 Budget here</a>':'Prototype';el.style.opacity=1},250)},3000)})();
+
 /* ================= boot + resize ================= */
-showTab('work');addDownloads();
-let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{RENDER[curTab]();mini&&mini.draw();if(big&&!ex.classList.contains('hidden')){big.draw();refreshBig()}},180)});
+showTab('work');addDownloads();route();
+let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{RENDER[curTab]();mini&&mini.draw();if(big&&!ex.classList.contains('hidden')){big.draw();refreshBig()}if(!BUD.classList.contains('hidden'))renderBudget()},180)});
 </script>
 </body>
 </html>
