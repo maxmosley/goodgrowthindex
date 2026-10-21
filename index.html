@@ -58,6 +58,8 @@ button{font-family:var(--font)}
 .stat.lead b{color:var(--lime)}
 .chart{width:100%;min-height:220px;position:relative}
 .src{font-size:.7rem;color:var(--onNavyMuted);margin:8px 0 0}
+.src a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.src a:hover{color:#fff}
 .split{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:22px;align-items:start}
 .split h4{margin:6px 0 10px;font-size:.84rem;color:var(--onNavy);font-weight:700}
 
@@ -223,7 +225,21 @@ button{font-family:var(--font)}
 .b-main{overflow-y:auto;padding:16px 24px 40px}
 .b-main .row{grid-template-columns:minmax(0,1fr) 280px}
 .b-main .row.full{grid-template-columns:minmax(0,1fr)}
-.ggs{position:relative;max-width:1000px;margin:0 auto 34px;text-align:center}
+.ggs{position:relative;max-width:1440px;margin:0 auto 34px}
+.ggs-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr);gap:34px;align-items:start}
+.ggs-main{text-align:center}
+.ggs-rate{position:sticky;top:12px;text-align:left;padding:6px 0 0 26px;border-left:1px solid rgba(196,213,75,.3)}
+.ggs-rate .rl{font-size:.78rem;font-weight:800;color:var(--lime);letter-spacing:.02em}
+.ggs-rate .grade{display:flex;align-items:center;gap:16px;margin:8px 0 6px}
+.ggs-rate .big{font-size:4.6rem;font-weight:800;line-height:.9;color:var(--orange)}
+.ggs-rate .scale{display:flex;gap:4px}
+.ggs-rate .scale span{width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9rem;color:var(--navy);opacity:.35}
+.ggs-rate .scale span.on{opacity:1;outline:2px solid #fff;outline-offset:2px}
+.ggs-rate .key{font-size:.7rem;color:var(--onNavyMuted);margin:0 0 16px}
+.ggs-rate h3{margin:0 0 4px;font-size:.92rem;font-weight:800;color:#fff}
+.ggs-rate p{margin:0 0 14px;font-size:.88rem;line-height:1.55;color:var(--onNavy)}
+.ggs-rate p b{color:#fff}
+@media (max-width:1100px){.ggs-grid{grid-template-columns:1fr}.ggs-rate{position:relative;border-left:none;border-top:1px solid rgba(196,213,75,.3);padding:16px 0 0}}
 .ggs h2{margin:0 0 2px;font-size:1.9rem;font-weight:800;color:var(--off);letter-spacing:-.02em}
 .ggs .lede{font-size:.9rem;color:var(--onNavyMuted);margin:0 auto 4px;max-width:70ch}
 .ggs svg{width:100%;max-width:max(560px,calc((100vh - 290px) * 1.6));height:auto;display:block;margin:0 auto}
@@ -292,7 +308,7 @@ button{font-family:var(--font)}
           <div class="sub">Unemployment rate, aged 16 and over, seasonally adjusted</div>
           <div class="stats" id="st-unemp"></div>
           <div class="chart" id="ch-unemp"></div>
-          <p class="src">Source: ONS Labour Market Statistics (October 2026), OBR Economic and Fiscal Outlook (March 2026). Series MGSX.</p>
+          <p class="src">Source: ONS Labour Market Statistics (October 2026), OBR Economic and Fiscal Outlook (March 2026). Series <a href="https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment/timeseries/mgsx/lms" target="_blank" rel="noopener">MGSX</a>.</p>
         </article>
         <aside class="poll" id="poll-job"></aside>
       </div>
@@ -302,7 +318,7 @@ button{font-family:var(--font)}
           <div class="sub">Total UK vacancies, thousands, three-month average</div>
           <div class="stats" id="st-vac"></div>
           <div class="chart" id="ch-vac"></div>
-          <p class="src">Source: ONS Vacancy Survey (October 2026). Series AP2Y. Excludes agriculture, forestry and fishing.</p>
+          <p class="src">Source: ONS Vacancy Survey (October 2026). Series <a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/timeseries/ap2y/unem" target="_blank" rel="noopener">AP2Y</a>. Excludes agriculture, forestry and fishing.</p>
         </article>
         <aside class="poll" id="poll-emp"></aside>
       </div>
@@ -330,7 +346,7 @@ button{font-family:var(--font)}
             <div class="chart" id="ch-wage"></div>
             <div><h4>Average real pay growth a year</h4><div id="pb-wage"></div></div>
           </div>
-          <p class="src">Notes: Whole economy regular pay deflated by CPI.<br>Source: ONS Average Weekly Earnings (October 2026), OBR Economic and Fiscal Outlook (March 2026).</p>
+          <p class="src">Notes: Whole economy regular pay deflated by CPI.<br>Source: ONS Average Weekly Earnings (October 2026), series <a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/timeseries/kai7/emp" target="_blank" rel="noopener">KAI7</a> deflated by <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bt/mm23" target="_blank" rel="noopener">D7BT</a>, OBR Economic and Fiscal Outlook (March 2026).</p>
         </article>
         <aside class="poll" id="poll-sol"></aside>
       </div>
@@ -340,7 +356,7 @@ button{font-family:var(--font)}
           <div class="sub">CPI index, 2015 = 100. Chips show the annual rate; tap to hide a series.</div>
           <div class="chips" id="cpi-chips"></div>
           <div class="chart" id="ch-cpi"></div>
-          <p class="src">Source: ONS Consumer Price Inflation (September 2026), series D7BT, D7G8 and MM23 components.</p>
+          <p class="src">Source: ONS Consumer Price Inflation (September 2026), series <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bt/mm23" target="_blank" rel="noopener">D7BT</a>, <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23" target="_blank" rel="noopener">D7BU</a> and MM23 components 04.5 and 07.2.2.</p>
         </article>
         <aside class="poll" id="poll-wageup"></aside>
       </div>
@@ -356,7 +372,7 @@ button{font-family:var(--font)}
             <div class="chart" id="ch-gdp"></div>
             <div><h4>Average growth a year</h4><div id="pb-gdp"></div></div>
           </div>
-          <p class="src">Source: ONS Quarterly National Accounts (September 2026). Series ABMI.</p>
+          <p class="src">Source: ONS Quarterly National Accounts (September 2026). Series <a href="https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/abmi/qna" target="_blank" rel="noopener">ABMI</a>.</p>
         </article>
         <aside class="poll" id="poll-g1"></aside>
       </div>
@@ -368,7 +384,7 @@ button{font-family:var(--font)}
             <div class="chart" id="ch-prod"></div>
             <div><h4>Average growth a year</h4><div id="pb-prod"></div></div>
           </div>
-          <p class="src">Notes: RTI-based measure, as recommended by ONS.<br>Source: ONS Productivity flash estimate (August 2026). Series A4YM.</p>
+          <p class="src">Notes: RTI-based measure, as recommended by ONS.<br>Source: ONS Productivity flash estimate (August 2026). Series <a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/labourproductivity/timeseries/a4ym/prdy" target="_blank" rel="noopener">A4YM</a>.</p>
         </article>
         <aside class="poll" id="poll-g2"></aside>
       </div>
@@ -462,19 +478,23 @@ button{font-family:var(--font)}
     </aside>
     <div class="b-main">
       <section class="ggs" aria-label="Good Growth Score">
+       <div class="ggs-grid"><div class="ggs-main">
         <h2>Good Growth Score</h2>
-        <p class="lede">How much of the growth the OBR expects at the end of its forecast reaches people's incomes</p>
+        <p class="lede">What the Budget does to the link between future growth and incomes, and where it leaves it</p>
         <div id="ggs"></div>
-        <p class="src">Notes: Final-year forecasts. Each event's figures are growth per person in the last full calendar year of its forecast (2030 for November 2025). Income is real household disposable income (RHDI) per person. Pass-through is income growth divided by GDP growth, and is left blank where GDP growth is 0.1 per cent or below. Grey marks are previous fiscal events; hover to see each.<br>Source: GGF calculations using OBR economy tables (Table 1.5) for each EFO, March 2017 to November 2025.</p>
+        <p class="src">Notes: Growth per person in the final year of each forecast, in fiscal years (2030-31 for November 2025). Income is real household disposable income (RHDI) per person. The Good Growth Score is income growth divided by GDP growth; 100% means incomes keep pace with the economy. Top: change in the score caused by the Budget's measures; October 2024 is the only earlier fiscal event that publishes the before-measures figures needed. Middle: change in final-year growth caused by the measures, in percentage points. Bottom: the score after each Budget and Autumn Statement (Spring Statements excluded). Hover to see each.<br>Source: GGF calculations using OBR economy tables (Table 1.5) for each Budget, March 2017 to November 2025. Before measures: RHDI from Chart 2.16 (November 2025) and Chart 2.14 (October 2024), with GDP derived from the OBR's policy impact on real GDP (Chart 3.3; October 2024 Chart A).</p>
+       </div>
+       <aside class="ggs-rate" id="ggsRate" aria-label="Rating"></aside>
+       </div>
       </section>
 
       <div class="b-sec"><h2>Fiscal policy</h2><span>What the Budget does to the public finances, and what that means for growth and incomes</span></div>
       <div class="row">
         <article class="panel ind bpanel">
           <h3 id="t-fs"></h3>
-          <div class="sub">Fiscal space before Budget measures, against previous fiscal events since 2020, £bn at the time of each forecast. The OBR calls this headroom.</div>
+          <div class="sub">Fiscal space before Budget measures, against previous Budgets and Autumn Statements since 2020, £bn at the time of each forecast. The OBR calls this headroom.</div>
           <div class="chart" id="b-dial"></div>
-          <p class="src">Notes: Grey needles are previous fiscal events; hover over a needle to see it. Fiscal space is measured against the main fiscal rule in force at each event.<br>Source: OBR fiscal targets tables in each EFO, March 2020 (Table 4.6) to November 2025 (Table 7.1).</p>
+          <p class="src">Notes: Grey needles are previous Budgets and Autumn Statements; hover over a needle to see it. Spring Statements are excluded. Fiscal space is measured against the main fiscal rule in force at each event.<br>Source: OBR fiscal targets tables in each EFO, March 2020 (Table 4.6) to November 2025 (Table 7.1).</p>
         </article>
         <aside class="poll" id="bp-fs"></aside>
       </div>
@@ -483,7 +503,7 @@ button{font-family:var(--font)}
           <h3>Fiscal space before Budget measures, by Chancellor</h3>
           <div class="sub">Fiscal space against the main fiscal rule in force, before Budget measures, £bn at the time of each forecast</div>
           <div class="chart" id="b-pre"></div>
-          <p class="src">Notes: Where two rules applied, the smaller margin is shown. Earlier events used a structural deficit rule and are not comparable. November 2020 and March 2021 have no usable pre-measures margin.<br>Source: OBR fiscal targets tables in each EFO, from March 2020 (Table 4.6) to November 2025 (Table 7.1).</p>
+          <p class="src">Notes: Where two rules applied, the smaller margin is shown. Earlier events used a structural deficit rule and are not comparable. March 2021 has no usable pre-measures margin. Budgets and Autumn Statements only; Spring Statements are excluded.<br>Source: OBR fiscal targets tables in each EFO, from March 2020 (Table 4.6) to November 2025 (Table 7.1).</p>
         </article>
       </div>
       <div class="row full">
@@ -499,7 +519,7 @@ button{font-family:var(--font)}
           <h3 id="t-st"></h3>
           <div class="sub">Size of each fiscal event's policy package, per cent of GDP over five years</div>
           <div class="chart" id="b-stance"></div>
-          <p class="src">Notes: Grey needles are previous fiscal events since June 2010; hover over a needle to see it.<br>Source: OBR EFO November 2025, Chart 3.1.</p>
+          <p class="src">Notes: Grey needles are previous Budgets and Autumn Statements since June 2010; hover over a needle to see it. Spring Statements, spending reviews and the July 2020 Summer Economic Update are excluded.<br>Source: OBR EFO November 2025, Chart 3.1.</p>
         </article>
         <aside class="poll" id="bp-st"></aside>
       </div>
@@ -547,7 +567,8 @@ const sgn=v=>(v>0?'+':v<0?'−':'')+f1(Math.abs(v));
 
 /* ================= national data (illustrative history, ONS headline end points) ================= */
 const D={};
-D.unemp=jitter(monthly([['2020-01',3.9],['2020-03',4.1],['2020-06',4.1],['2020-09',4.8],['2020-11',5.2],['2021-01',5.1],['2021-06',4.8],['2021-12',4.0],['2022-03',3.8],['2022-07',3.6],['2022-12',3.8],['2023-06',4.3],['2023-12',4.0],['2024-04',4.4],['2024-09',4.2],['2025-02',4.4],['2025-07',4.8],['2025-10',5.1],['2025-12',5.2],['2026-03',5.0],['2026-04',4.8],['2026-07',4.7]]),.14,1,1);
+// ONS MGSX, unemployment rate 16+, SA. Shown at the middle month of each three-month period (ONS LMS release 20 October 2026)
+D.unemp=[['2020-01',3.9],['2020-02',4.1],['2020-03',4.1],['2020-04',4.1],['2020-05',4.1],['2020-06',4.4],['2020-07',4.6],['2020-08',5.0],['2020-09',5.2],['2020-10',5.2],['2020-11',5.3],['2020-12',5.2],['2021-01',5.0],['2021-02',4.9],['2021-03',4.8],['2021-04',4.8],['2021-05',4.7],['2021-06',4.6],['2021-07',4.5],['2021-08',4.4],['2021-09',4.3],['2021-10',4.2],['2021-11',4.2],['2021-12',4.1],['2022-01',3.9],['2022-02',3.8],['2022-03',3.8],['2022-04',3.7],['2022-05',3.8],['2022-06',3.6],['2022-07',3.6],['2022-08',3.7],['2022-09',3.8],['2022-10',3.9],['2022-11',3.9],['2022-12',3.9],['2023-01',4.0],['2023-02',4.0],['2023-03',3.9],['2023-04',4.0],['2023-05',4.2],['2023-06',4.4],['2023-07',4.3],['2023-08',4.1],['2023-09',4.0],['2023-10',4.0],['2023-11',3.9],['2023-12',4.1],['2024-01',4.2],['2024-02',4.3],['2024-03',4.4],['2024-04',4.4],['2024-05',4.2],['2024-06',4.2],['2024-07',4.1],['2024-08',4.3],['2024-09',4.2],['2024-10',4.4],['2024-11',4.4],['2024-12',4.4],['2025-01',4.5],['2025-02',4.6],['2025-03',4.6],['2025-04',4.7],['2025-05',4.7],['2025-06',4.7],['2025-07',4.8],['2025-08',5.0],['2025-09',5.1],['2025-10',5.1],['2025-11',5.2],['2025-12',5.2],['2026-01',4.9],['2026-02',5.0],['2026-03',4.9],['2026-04',4.9],['2026-05',4.9],['2026-06',4.9],['2026-07',4.7]].map(([d,v])=>({d:pd(d),v}));
 D.unempF=monthly([['2025-12',5.2],['2026-06',5.3],['2027-06',4.9],['2028-06',4.4],['2029-06',4.2],['2030-06',4.1]]);
 D.vac=jitter(monthly([['2017-01',760],['2018-06',840],['2019-06',820],['2020-01',800],['2020-05',340],['2020-12',600],['2021-06',900],['2022-05',1300],['2023-01',1120],['2023-12',930],['2024-06',880],['2025-01',800],['2025-08',728],['2026-02',719],['2026-05',712],['2026-08',691]]),14,2,0);
 D.uv=jitter(monthly([['2015-01',2.6],['2016-01',2.2],['2017-01',2.0],['2018-01',1.7],['2019-01',1.6],['2019-12',1.6],['2020-08',4.1],['2021-06',1.8],['2022-06',0.9],['2023-01',1.1],['2024-01',1.6],['2025-01',2.0],['2025-07',2.4],['2025-10',2.5],['2026-04',2.5],['2026-07',2.4]]),.06,3,1);
@@ -565,7 +586,7 @@ D.prod=every(jitter(monthly([['2000-01',78],['2008-01',92],['2009-06',89],['2013
 D.starts=[['2007-12',183.6],['2009-06',75.35],['2018-09',169.2],['2020-03',148.52],['2020-09',123.03],['2023-06',192.21],['2024-06',90.81],['2026-03',130.17],['2026-06',136.33]].map(([d,v])=>({d:pd(d),v}));
 const STARTS_Q2_2026=35910, STARTS_YOY=15; // MHCLG: year to June 2026, +15% on year to June 2025
 // ONS published unemployment-to-vacancy ratio, June to August 2026 (Vacancies and jobs in the UK, October 2026)
-const UV_NOW=2.4;
+let UV_NOW=2.4;
 
 /* ================= charts ================= */
 const tt=document.getElementById('tt');
@@ -670,12 +691,14 @@ const HARD=[C.orange,'#f4a98f'],NEU='#c9cfd8',EASY=['#7fd0c0',C.green],DK='rgba(
 
 /* ================= render national ================= */
 const rendered={};
+const MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const q3=d=>{const a=new Date(d.getFullYear(),d.getMonth()-1,1),b=new Date(d.getFullYear(),d.getMonth()+1,1);return `${MON[a.getMonth()]}${a.getFullYear()!==b.getFullYear()?' '+a.getFullYear():''} to ${MON[b.getMonth()]} ${b.getFullYear()}`};
 function renderWork(){
   const u=last(D.unemp),u12=at(D.unemp,new Date(u.d.getFullYear()-1,u.d.getMonth(),1));
-  document.getElementById('st-unemp').innerHTML=`<div class="stat lead"><b>${f1(u.v)}%</b><span>June to August 2026</span></div><div class="stat"><b>${sgn(u.v-u12.v)}pp</b><span>change on a year ago</span></div><div class="stat"><b>5.3%</b><span>OBR forecast for 2026</span></div>`;
+  document.getElementById('st-unemp').innerHTML=`<div class="stat lead"><b>${f1(u.v)}%</b><span>${q3(u.d)}</span></div><div class="stat"><b>${sgn(u.v-u12.v)}pp</b><span>change on a year ago</span></div><div class="stat"><b>5.3%</b><span>OBR forecast for 2026</span></div>`;
   lineChart(document.getElementById('ch-unemp'),{series:[{data:D.unempF,c:C.pale,dash:true,w:2,label:'OBR forecast',labelDy:-12,name:'OBR'},{data:D.unemp,c:C.lime,live:true,name:'Unemployment'}],x:[pd('2020-01'),pd('2030-06')],y:[3,6],yf:d=>d+'%',tf:v=>f1(v)+'%',aria:'Unemployment rate 2020 to 2026 with OBR forecast to 2030'});
   const v=last(D.vac),v12=at(D.vac,new Date(v.d.getFullYear()-1,v.d.getMonth(),1)),pk=d3.max(D.vac,d=>d.v);
-  document.getElementById('st-vac').innerHTML=`<div class="stat lead"><b>${fc(v.v)}k</b><span>July to September 2026</span></div><div class="stat"><b>${sgn((v.v/v12.v-1)*100)}%</b><span>change on a year ago</span></div><div class="stat"><b>${sgn((v.v/pk-1)*100)}%</b><span>since the 2022 peak</span></div>`;
+  document.getElementById('st-vac').innerHTML=`<div class="stat lead"><b>${fc(v.v)}k</b><span>${q3(v.d)}</span></div><div class="stat"><b>${sgn((v.v/v12.v-1)*100)}%</b><span>change on a year ago</span></div><div class="stat"><b>${sgn((v.v/pk-1)*100)}%</b><span>since the 2022 peak</span></div>`;
   lineChart(document.getElementById('ch-vac'),{series:[{data:D.vac,c:C.lime,live:true,name:'Vacancies'}],y:[0,1400],yf:d=>d===0?'0':fc(d)+'k',tf:v=>fc(v)+'k',aria:'Vacancies 2017 to 2026'});
   dial(document.getElementById('ch-dial'),UV_NOW);
   lineChart(document.getElementById('ch-uv'),{height:200,series:[{data:D.uv,c:C.lime,live:true,name:'Ratio'}],y:[0,4.5],bands:[{y:[1.5,2.5]}],notes:[{t:'Not enough jobs',pos:'top',c:C.orange},{t:'Not enough workers',pos:'bottom',c:C.orange}],tf:v=>f1(v),aria:'Unemployed per vacancy since 2015'});
@@ -921,6 +944,18 @@ async function exportPanel(p,btn){
 }
 /* ================= Budget 2025 (all figures from OBR files) ================= */
 const OBR={"gdpLevel":[["2019Q1",98.987,99.235],["2019Q2",99.296,99.446],["2019Q3",100.0,99.994],["2019Q4",100.0,100.0],["2020Q1",97.342,97.255],["2020Q2",77.551,77.895],["2020Q3",90.57,91.11],["2020Q4",91.808,92.356],["2021Q1",90.854,91.362],["2021Q2",97.444,97.742],["2021Q3",99.071,99.39],["2021Q4",100.541,100.759],["2022Q1",101.275,101.781],["2022Q2",101.614,102.348],["2022Q3",101.73,102.452],["2022Q4",102.063,102.719],["2023Q1",102.186,102.777],["2023Q2",102.195,102.819],["2023Q3",102.064,102.573],["2023Q4",101.793,102.243],["2024Q1",102.656,103.102],["2024Q2",103.117,103.759],["2024Q3",103.089,103.962],["2024Q4",103.193,104.212],["2025Q1",103.4,104.902],["2025Q2",103.773,105.192],["2025Q3",104.209,105.406],["2025Q4",104.676,105.691],["2026Q1",105.185,106.106],["2026Q2",105.706,106.527],["2026Q3",106.209,106.956],["2026Q4",106.704,107.379],["2027Q1",107.165,107.789],["2027Q2",107.624,108.192],["2027Q3",108.073,108.592],["2027Q4",108.53,108.981],["2028Q1",108.995,109.376],["2028Q2",109.462,109.771],["2028Q3",109.94,110.18],["2028Q4",110.426,110.588],["2029Q1",110.925,111.007],["2029Q2",111.434,111.445],["2029Q3",111.934,111.871],["2029Q4",112.432,112.293],["2030Q1",112.945,112.727],["2030Q2",null,113.164],["2030Q3",null,113.601],["2030Q4",null,114.044],["2031Q1",null,114.489]],"wages":[["2022Q1",-1.81,-1.301],["2022Q2",1.518,1.974],["2022Q3",5.652,5.383],["2022Q4",7.525,7.652],["2023Q1",7.985,6.858],["2023Q2",9.267,7.425],["2023Q3",8.667,8.156],["2023Q4",6.329,4.323],["2024Q1",4.11,3.514],["2024Q2",3.007,3.451],["2024Q3",1.754,1.903],["2024Q4",4.733,6.157],["2025Q1",5.511,6.815],["2025Q2",4.951,5.705],["2025Q3",5.258,5.995],["2025Q4",2.738,3.574],["2026Q1",2.407,3.075],["2026Q2",2.268,3.454],["2026Q3",2.104,3.17],["2026Q4",2.011,3.029],["2027Q1",2.066,2.668],["2027Q2",2.132,2.365],["2027Q3",2.183,2.214],["2027Q4",2.218,2.088],["2028Q1",2.279,2.154],["2028Q2",2.33,2.261],["2028Q3",2.391,2.305],["2028Q4",2.478,2.31],["2029Q1",2.556,2.315],["2029Q2",2.626,2.333],["2029Q3",2.694,2.38],["2029Q4",2.74,2.452],["2030Q1",2.741,2.491],["2030Q2",null,2.503],["2030Q3",null,2.494],["2030Q4",null,2.468],["2031Q1",null,2.445]],"cpi":[[2019,1.791,1.791,1.791],[2020,0.851,0.851,0.851],[2021,2.588,2.588,2.588],[2022,9.067,9.067,9.067],[2023,7.303,7.303,7.303],[2024,2.53,2.53,2.53],[2025,3.213,3.453,3.453],[2026,2.085,2.828,2.48],[2027,1.989,2.0,2.015],[2028,2.0,1.934,2.035],[2029,2.0,1.998,2.038],[2030,null,2.0,2.003]],"spend":[["1997-98",35.471,null,null,null],["1998-99",34.988,null,null,null],["1999-00",34.601,null,null,null],["2000-01",34.906,null,null,null],["2001-02",36.051,null,null,null],["2002-03",37.417,null,null,null],["2003-04",38.698,null,null,null],["2004-05",39.726,null,null,null],["2005-06",39.696,null,null,null],["2006-07",39.669,null,null,null],["2007-08",40.027,null,null,null],["2008-09",43.042,null,null,null],["2009-10",45.968,null,null,null],["2010-11",45.503,null,null,null],["2011-12",44.351,null,null,null],["2012-13",43.792,null,null,null],["2013-14",42.19,null,null,null],["2014-15",41.636,null,null,null],["2015-16",40.829,null,null,null],["2016-17",40.027,null,null,null],["2017-18",39.663,null,null,null],["2018-19",39.091,null,null,null],["2019-20",39.096,null,null,null],["2020-21",52.268,null,null,null],["2021-22",43.363,null,null,null],["2022-23",44.058,null,null,null],["2023-24",44.131,44.1,44.131,44.131],["2024-25",44.009,43.943,44.009,44.009],["2025-26",null,44.424,44.849,45.016],["2026-27",null,44.231,44.603,44.735],["2027-28",null,43.872,44.307,44.813],["2028-29",null,43.5,44.067,44.494],["2029-30",null,43.293,43.874,44.268],["2030-31",null,null,43.847,44.284]],"tax":[["1997-98",31.023,null,null,null],["1998-99",31.67,null,null,null],["1999-00",32.454,null,null,null],["2000-01",32.97,null,null,null],["2001-02",32.299,null,null,null],["2002-03",31.415,null,null,null],["2003-04",32.225,null,null,null],["2004-05",32.84,null,null,null],["2005-06",33.239,null,null,null],["2006-07",33.635,null,null,null],["2007-08",33.643,null,null,null],["2008-09",32.022,null,null,null],["2009-10",32.153,null,null,null],["2010-11",33.123,null,null,null],["2011-12",33.315,null,null,null],["2012-13",32.666,null,null,null],["2013-14",32.552,null,null,null],["2014-15",32.414,null,null,null],["2015-16",32.619,null,null,null],["2016-17",33.387,null,null,null],["2017-18",33.142,null,null,null],["2018-19",33.569,null,null,null],["2019-20",32.852,null,null,null],["2020-21",33.717,null,null,null],["2021-22",34.668,null,null,null],["2022-23",35.193,null,null,null],["2023-24",34.939,null,null,null],["2024-25",34.679,34.909,34.679,34.679],["2025-26",null,36.325,36.227,36.259],["2026-27",null,36.96,37.025,37.028],["2027-28",null,37.251,37.469,37.627],["2028-29",null,37.068,37.371,37.76],["2029-30",null,37.06,37.467,38.164],["2030-31",null,null,37.492,38.269]],"stance":[["Jun 10",-1.281],["Nov 10",-0.02],["Mar 11",0.039],["Nov 11",-0.516],["Mar 12",-0.103],["Dec 12",-0.304],["Mar 13",-0.134],["Dec 13",-0.296],["Mar 14",0.019],["Dec 14",-0.387],["Mar 15",0.424],["Jul 15",0.032],["Nov 15",0.18],["Mar 16",-0.141],["Nov 16",0.279],["Mar 17",0.049],["Nov 17",0.131],["Mar 18",0.005],["Oct 18",0.649],["Mar 19",0.058],["Mar 20",0.906],["Jul 20",1.975],["Nov 20",-0.314],["Mar 21",-0.205],["Oct 21",0.327],["Mar 22",0.135],["Nov 22",-0.291],["Mar 23",0.574],["Nov 23",0.638],["Mar 24",0.272],["Oct 24",1.016],["Mar 25",-0.121],["Nov 25",-0.043]],"gdpImpact":{"years":["2024-25","2025-26","2026-27","2027-28","2028-29","2029-30","2030-31"],"rows":[["Consumption",0.0,0.004,-0.044,-0.117,-0.19,-0.23,-0.289],["Residential and business investment",0.0,-0.005,-0.02,-0.029,0.004,0.04,0.048],["Government consumption and investment",0.0,0.018,0.163,0.207,0.137,0.114,0.139],["Net trade and other",0.0,-0.01,-0.031,-0.043,0.024,0.068,0.099],["Total",0.0,0.008,0.068,0.018,-0.025,-0.008,-0.002]]},"rhdi":[["2022-23",25.371,25.301,25.301],["2023-24",25.77,25.51,25.51],["2024-25",26.439,26.286,26.286],["2025-26",26.665,26.398,26.415],["2026-27",26.842,26.413,26.494],["2027-28",26.856,26.515,26.542],["2028-29",26.984,26.697,26.63],["2029-30",27.199,26.864,26.708],["2030-31",null,27.022,26.809]],"headroomAvg":29.423,"headroom":[["Nov 10",32.651],["Mar 11",29.023],["Nov 11",18.139],["Mar 12",18.139],["Dec 12",32.651],["Mar 13",14.511],["Dec 13",58.046],["Mar 14",54.418],["Dec 14",83.441],["Mar 15",29.023],["Jul 15",39.907],["Nov 15",18.139],["Mar 16",17.308],["Nov 16",42.812],["Mar 17",41.526],["Nov 17",24.066],["Mar 18",24.852],["Oct 18",24.569],["Mar 19",42.487],["Mar 20",17.167],["Oct 21",23.856],["Mar 22",37.02],["Nov 22",11.367],["Mar 23",7.986],["Nov 23",12.954],["Mar 24",8.946],["Oct 24",9.929],["Mar 25",9.932],["Nov 25",21.699]],"gdpGrowth":[[2024,0.935,1.126],[2025,0.972,1.483],[2026,1.862,1.371],[2027,1.79,1.543],[2028,1.723,1.467],[2029,1.801,1.523],[2030,null,1.549]],"events":[["Mar 20","Sunak",20.751,11.726,"Current budget balanced by 2022-23 (Budget 2020 rule)","March 2020 EFO, Table 4.6"],["Oct 21","Sunak",28.65,17.521,"Debt falling in 2024-25 (smaller of two margins; current budget margin larger)","October 2021 EFO, Table 4.3"],["Mar 22","Sunak",34.876,27.839,"Debt falling in 2024-25 (smaller of two margins)","March 2022 EFO, Table 4.1"],["Nov 22","Hunt",-28.88,9.191,"Debt falling in 2027-28 (smaller of two margins)","November 2022 EFO, Table 7"],["Mar 23","Hunt",14.452,6.493,"Debt falling in fifth year","March 2023 EFO, Table 5.1"],["Nov 23","Hunt",30.95,12.954,"Debt falling in fifth year","November 2023 EFO, Table 5.1"],["Mar 24","Hunt",12.183,8.946,"Debt falling in fifth year","March 2024 EFO, Table 5.1"],["Oct 24","Reeves",22.74,9.929,"Current budget in surplus by 2029-30 (smaller of two margins)","October 2024 EFO, Table 7.1"],["Mar 25","Reeves",-4.062,9.932,"Current budget in surplus by 2029-30 (smaller of two margins)","March 2025 EFO, Table 7.1"],["Nov 25","Reeves",4.185,21.699,"Current budget in surplus by 2029-30 (smaller of two margins)","November 2025 EFO, Table 7.1"]],"growth":[["Mar 2017",2021,1.367,1.198,87.7],["Nov 2017",2022,1.045,1.059,101.4],["Mar 2018",2022,0.94,0.918,97.7],["Oct 2018",2023,1.079,1.103,102.3],["Mar 2019",2023,1.107,1.293,116.7],["Mar 2020",2024,1.082,1.079,99.8],["Nov 2020",2025,1.491,1.058,70.9],["Mar 2021",2025,1.453,1.209,83.2],["Oct 2021",2026,1.411,1.057,74.9],["Mar 2022",2026,1.469,1.28,87.1],["Nov 2022",2027,1.955,1.676,85.7],["Mar 2023",2027,1.532,1.551,101.2],["Nov 2023",2028,1.414,1.646,116.4],["Mar 2024",2028,1.173,1.318,112.4],["Oct 2024",2029,1.052,0.699,66.4],["Mar 2025",2029,1.357,0.768,56.6],["Nov 2025",2030,1.102,0.35,31.8]],"rhdiGrowth":[["2022-23",-1.988,-3.152,4.149,2.955,-0.958,-9.297],["2023-24",1.574,0.826,3.184,1.422,1.387,-5.167],["2024-25",2.597,3.042,4.051,1.329,0.8,-3.139],["2025-26",0.856,0.492,3.42,1.2,-0.458,-3.67],["2026-27",0.664,0.299,2.362,1.282,-1.078,-2.267],["2027-28",0.051,0.183,1.861,1.047,-0.715,-2.01],["2028-29",0.475,0.331,1.797,0.782,-0.187,-2.061],["2029-30",0.799,0.294,1.894,0.663,-0.236,-2.027],["2030-31",null,0.377,1.889,0.646,-0.146,-2.011]],"forecastStart":"2025-26","fcStartQ":"2025-07","fcStartCY":"2025-01","fcStartFY":"2025-04"};
+// Budgets and Autumn Statements only: Spring Statements, spending reviews, the July 2020 Summer Economic Update
+// and OBR forecasts with no fiscal event are left out of every chart on this page.
+const BUDGETS=new Set([
+  // Budgets
+  'Jun 10','Mar 11','Mar 12','Mar 13','Mar 14','Mar 15','Jul 15','Mar 16','Mar 17','Nov 17','Oct 18','Mar 20','Mar 21','Oct 21','Mar 23','Mar 24','Oct 24','Nov 25',
+  // Autumn Statements
+  'Nov 11','Dec 12','Dec 13','Dec 14','Nov 15','Nov 16','Nov 22','Nov 23']);
+const isBudget=n=>BUDGETS.has(String(n).replace(/^([A-Za-z]{3}) (?:\d{2})?(\d{2})$/,'$1 $2'));
+['events','growth','headroom'].forEach(k=>{if(OBR[k])OBR[k]=OBR[k].filter(e=>isBudget(e[0]))});
+if(OBR.stance)OBR.stance=OBR.stance.filter(e=>isBudget(e[0]));
+/* Good Growth Score block: GGF calculations from OBR files. Final forecast year, fiscal years, per person. After-measures growth: each Budget's economy tables, Table 1.5. Before measures: RHDI per person from Chart 2.16 (Nov 2025) and Chart 2.14 (Oct 2024); GDP per person with the OBR policy impact on real GDP removed (Chart 3.3; Oct 2024 Chart A). Budgets only; Statements excluded. */
+OBR.ggsBudget={"latest":{"n":"Nov 2025","year":"2030-31","gdpPre":1.1012,"gdpPost":1.1073,"rhdiPre":0.5874,"rhdiPost":0.3775,"ptPre":53.34,"ptPost":34.09,"eff":-19.25},"effHistory":[{"n":"Oct 2024","year":"2029-30","gdpPre":1.1654,"gdpPost":1.0853,"rhdiPre":0.8874,"rhdiPost":0.6994,"ptPre":76.15,"ptPost":64.44,"eff":-11.7}],"after":[{"n":"Mar 2017","year":"2021-22","gdp":1.354,"rhdi":1.165,"pt":86.05},{"n":"Nov 2017","year":"2022-23","gdp":1.039,"rhdi":1.0,"pt":96.21},{"n":"Oct 2018","year":"2023-24","gdp":1.113,"rhdi":1.068,"pt":96.0},{"n":"Mar 2020","year":"2024-25","gdp":1.165,"rhdi":1.146,"pt":98.33},{"n":"Mar 2021","year":"2025-26","gdp":1.458,"rhdi":1.117,"pt":76.58},{"n":"Oct 2021","year":"2026-27","gdp":1.439,"rhdi":1.003,"pt":69.69},{"n":"Nov 2022","year":"2027-28","gdp":1.811,"rhdi":1.515,"pt":83.64},{"n":"Mar 2023","year":"2027-28","gdp":1.492,"rhdi":1.476,"pt":98.92},{"n":"Nov 2023","year":"2028-29","gdp":1.38,"rhdi":1.624,"pt":117.67},{"n":"Mar 2024","year":"2028-29","gdp":1.161,"rhdi":1.371,"pt":118.11},{"n":"Oct 2024","year":"2029-30","gdp":1.085,"rhdi":0.699,"pt":64.44},{"n":"Nov 2025","year":"2030-31","gdp":1.107,"rhdi":0.377,"pt":34.09}]};
 const CH={Sunak:C.orange,Hunt:'#F5A98C',Reeves:C.pale};
 const GREY='#C3CCD8',TRACK='#22395A',BG='#112743';
 const qd=s=>new Date(+s.slice(0,4),(+s.slice(5)-1)*3+1,15);
@@ -961,7 +996,7 @@ function speedo(g,o){
     g.append('line').attr('x1',x0).attr('y1',y0).attr('x2',x1).attr('y2',y1).attr('stroke',GREY).attr('opacity',.6);radialText(g,tx,ty,l.a,l.n,o.lfs||16,'#b8c5d8')});
   // hover targets for every previous event
   hist.forEach(e=>{const a=phi(e.v),[x2,y2]=P(R+14,a);tipOn(g.append('line').attr('class','hit').attr('x1',cx).attr('y1',cy).attr('x2',x2).attr('y2',y2).attr('stroke','transparent').attr('stroke-width',14),`<b>${e.n}</b>${o.tipFmt(e.v)}`)});
-  const start=phi(o.start??o.min),len=r0+20,hw=o.hw||17;
+  const start=phi(o.start??o.min),len=o.len||(r0+20),hw=o.hw||17;
   const nd=g.append('path').attr('fill',o.color).attr('stroke',BG).attr('stroke-width',4).attr('stroke-linejoin','round').attr('paint-order','stroke').attr('d',needle(start,len,hw));
   nd.transition().delay(o.delay||150).duration(1400).ease(d3.easeCubicOut).attrTween('d',()=>{const i=d3.interpolate(start,la);return t=>needle(i(t),len,hw)});
   tipOn(nd,`<b>${o.latest.n}</b>${o.tipFmt(o.latest.v)}`);
@@ -1006,18 +1041,81 @@ function ring(g,o){
   g.append('text').attr('x',cx).attr('y',cy+70).attr('text-anchor','middle').attr('font-size',22).attr('fill',C.off).text(o.label);
 }
 
-/* ---- Good Growth Score composition ---- */
-function renderGGS(){
-  const gr=OBR.growth,L=gr[gr.length-1];
-  const ev=k=>gr.filter(r=>r[k]!=null).map(r=>({n:r[0],v:r[k]}));
-  const W=1160,H=1225,svg=vb(document.getElementById('ggs'),W,H,`Good Growth Score: ${Math.round(L[4])} per cent pass-through of GDP growth into incomes, November 2025`),g=svg.append('g');
-  const cy=545,R=450,r0=R*.78;
-  speedo(g,{cx:580,cy,R,r0,min:0,max:150,step:10,labelStep:50,events:ev(4),latest:{n:L[0],v:L[4]},scaleFmt:v=>v+'%',tipFmt:v=>`Pass-through: ${Math.round(v)}%`,color:C.lime,labelSep:9,lfs:16,hw:22,hub:32,fs:18});
-  countUp(g.append('text').attr('x',580).attr('y',cy+118).attr('text-anchor','middle').attr('font-size',104).attr('font-weight',800).attr('fill',C.lime).attr('letter-spacing',-3),L[4],v=>Math.round(v)+'%');
-  g.append('text').attr('x',580).attr('y',cy+165).attr('text-anchor','middle').attr('font-size',25).attr('fill',C.off).text('Pass-through of future GDP into incomes');
-  const rmax=Math.ceil(d3.max(gr,r=>Math.max(r[2],r[3]))*2)/2;
-  ring(g,{cx:330,cy:1015,R:200,min:0,max:rmax,events:ev(2),latest:{n:L[0],v:L[2]},color:C.orange,label:'GDP growth'});
-  ring(g,{cx:830,cy:1015,R:200,min:0,max:rmax,events:ev(3),latest:{n:L[0],v:L[3]},color:C.green,label:'Income growth'});
+/* ---- Good Growth Score composition: the Budget's effect, what changed, where it leaves the score ---- */
+/* 270 degree ring centred on zero, for a change in percentage points */
+function changeRing(g,o){
+  const{cx,cy,R}=o,r0=R*.7,vm=o.vm||.5,A=135;
+  const ang=v=>Math.max(-vm,Math.min(vm,v))/vm*A;
+  const P=(r,d)=>[cx+r*Math.sin(rad(d)),cy-r*Math.cos(rad(d))];
+  const arc=d3.arc().innerRadius(r0).outerRadius(R);
+  const flat=Math.abs(o.d)<.05,col=flat?C.off:(o.d>0?C.green:C.orange);
+  g.append('path').attr('transform',`translate(${cx},${cy})`).attr('d',arc({startAngle:rad(-A),endAngle:rad(A)})).attr('fill',TRACK);
+  if(!flat){const f=g.append('path').attr('transform',`translate(${cx},${cy})`).attr('fill',col);
+    f.transition().delay(150).duration(1400).ease(d3.easeCubicOut).attrTween('d',()=>{const i=d3.interpolate(0,ang(o.d));return t=>{const a=i(t);return arc({startAngle:rad(Math.min(0,a)),endAngle:rad(Math.max(0,a))})}})}
+  {const[x1,y1]=P(r0,0),[x2,y2]=P(R,0);g.append('line').attr('x1',x1).attr('y1',y1).attr('x2',x2).attr('y2',y2).attr('stroke',C.off).attr('stroke-width',2).attr('opacity',.6)}
+  const lt=g.append('line').attr('stroke','#fff').attr('stroke-width',7).attr('stroke-linecap','butt');
+  const setT=d=>{const[x1,y1]=P(r0-8,d),[x2,y2]=P(R+8,d);lt.attr('x1',x1).attr('y1',y1).attr('x2',x2).attr('y2',y2)};setT(0);
+  lt.transition().delay(150).duration(1400).ease(d3.easeCubicOut).tween('t',()=>{const i=d3.interpolate(0,ang(o.d));return t=>setT(i(t))});
+  [[-vm,-A],[vm,A]].forEach(([v,d])=>{const[x,y]=P(R+4,d);g.append('text').attr('x',x+(v<0?-6:6)).attr('y',y+26).attr('text-anchor','middle').attr('font-size',15).attr('fill','#9fb2cc').text((v>0?'+':'−')+Math.abs(v).toFixed(1))});
+  {const[mx,my]=P(r0-22,0);g.append('text').attr('x',mx).attr('y',my+4).attr('text-anchor','middle').attr('font-size',15).attr('fill','#9fb2cc').text('0')}
+  const sg=v=>(v>0.005?'+':v<-0.005?'−':'')+Math.abs(v).toFixed(2)+' pts';
+  countUp(g.append('text').attr('x',cx).attr('y',cy+20).attr('text-anchor','middle').attr('font-size',54).attr('font-weight',800).attr('fill',col).attr('letter-spacing',-1),o.d,sg);
+  g.append('text').attr('x',cx).attr('y',cy+66).attr('text-anchor','middle').attr('font-size',22).attr('fill',C.off).text(o.label);
+  tipOn(g.append('circle').attr('class','hit').attr('cx',cx).attr('cy',cy).attr('r',R+10).attr('fill','transparent'),`<b>${o.label}</b>Before measures: ${pc(o.pre)}<br>After measures: ${pc(o.post)}`);
+}
+function renderRating(){
+  const B=OBR.ggsBudget,L=B.latest,prev=B.after.filter(a=>a.n!==L.n),avg=d3.mean(prev,a=>a.pt);
+  const low=prev.every(a=>a.pt>L.ptPost),first=prev[0].n.replace(/^(\w{3})/,m=>({Mar:'March',Nov:'November',Oct:'October',Jun:'June',Jul:'July',Dec:'December'}[m]||m));
+  const grade=v=>v>=100?'A':v>=75?'B':v>=50?'C':v>=25?'D':'E',gr=grade(L.ptPost);
+  const col={A:C.green,B:'#7fd0c0',C:C.lime,D:'#F5A98C',E:C.orange};
+  const p1=v=>v.toFixed(1)+'%',p2=v=>v.toFixed(2)+'%';
+  document.getElementById('ggsRate').innerHTML=`
+    <div class="rl">GGF RATING, NOVEMBER 2025 BUDGET</div>
+    <div class="grade"><div class="big" style="color:${col[gr]}">${gr}</div>
+      <div class="scale">${'ABCDE'.split('').map(k=>`<span class="${k===gr?'on':''}" style="background:${col[k]}">${k}</span>`).join('')}</div></div>
+    <p class="key">A: incomes keep pace with the economy (100% or more). B: 75 to 99%. C: 50 to 74%. D: 25 to 49%. E: below 25%.</p>
+    <h3>The link weakens</h3>
+    <p>Before the Budget's measures, incomes were forecast to grow at about ${Math.round(L.ptPre)}% of the rate of the economy by ${L.year}. After them, the figure is <b>${Math.round(L.ptPost)}%</b>, a fall of ${Math.round(-L.eff)} points.</p>
+    <h3>What drove it</h3>
+    <p>Growth in the economy is almost unchanged, at about ${p1(L.gdpPost)} a year per person. Growth in incomes falls from ${p2(L.rhdiPre)} to ${p2(L.rhdiPost)}, mainly because tax rises take effect in the later years of the forecast.</p>
+    <h3>Where it leaves growth and incomes</h3>
+    <p>By ${L.year}, each 1% of growth in the economy per person is expected to raise household incomes per person by about ${(L.ptPost/100).toFixed(2)}%.</p>
+    <h3>How it compares</h3>
+    <p>${low?`This is the lowest score of any Budget or Autumn Statement since ${first}. `:''}The average across earlier events is ${Math.round(avg)}%.</p>
+    <h3>Policies behind the result</h3>
+    <p>Keeping income tax thresholds frozen for longer and raising tax rates on dividends, savings and property income reduce income growth in the final years. Removing the two-child limit in Universal Credit raises incomes for some families, but is smaller by ${L.year}.</p>`;
+}
+function renderGGS(){renderRating();
+  const B=OBR.ggsBudget,L=B.latest,W=1160,cx=580,R=430,r0=R*.78;
+  const cyA=525,by0=cyA+215,by1=by0+440,cyB=by1+95+R,H=cyB+200;
+  const svg=vb(document.getElementById('ggs'),W,H,`Good Growth Score. The ${L.n} Budget changes the score by ${Math.round(L.eff)} points, leaving it at ${Math.round(L.ptPost)} per cent`),g=svg.append('g');
+  const pts=v=>(v>0.5?'+':v<-0.5?'−':'')+Math.abs(Math.round(v))+' points';
+  const ec=L.eff<0?C.orange:C.green;
+
+  // 1. the Budget's effect on the score
+  speedo(g,{cx,cy:cyA,R,r0,min:-30,max:30,step:5,labelStep:15,negOrange:true,start:0,
+    tints:[{a:-30,b:0,c:C.orange,o:.42},{a:0,b:30,c:C.green,o:.42}],
+    events:[...B.effHistory.map(e=>({n:e.n,v:e.eff})),{n:L.n,v:L.eff}],latest:{n:L.n,v:L.eff},
+    scaleFmt:v=>v===0?'0':(v>0?'+':'−')+Math.abs(v),tipFmt:v=>`Change in the score: ${pts(v)}`,
+    color:C.lime,labelSep:9,lfs:16,hw:16,hub:28,fs:18,len:R-14});
+  [[cx-R,'start','Weaker',C.orange],[cx+R,'end','Stronger',C.green]].forEach(([x,an,t,c])=>g.append('text').attr('x',x).attr('y',cyA+38).attr('text-anchor',an).attr('font-size',20).attr('font-weight',800).attr('fill',c).text(t));
+  countUp(g.append('text').attr('x',cx).attr('y',cyA+112).attr('text-anchor','middle').attr('font-size',96).attr('font-weight',800).attr('fill',ec).attr('letter-spacing',-3),L.eff,pts);
+  g.append('text').attr('x',cx).attr('y',cyA+158).attr('text-anchor','middle').attr('font-size',25).attr('fill',C.off).text('Change in the link between future growth and living standards');
+
+  // 2. what changed
+  g.append('rect').attr('x',70).attr('y',by0).attr('width',W-140).attr('height',by1-by0).attr('rx',18).attr('fill','rgba(235,235,235,.045)').attr('stroke','rgba(235,235,235,.32)').attr('stroke-width',1.5);
+  const dG=L.gdpPost-L.gdpPre,dR=L.rhdiPost-L.rhdiPre;
+  const word=(d,up,down,same)=>Math.abs(d)<.05?same:(d>0?up:down);
+  g.append('text').attr('x',cx).attr('y',by0+60).attr('text-anchor','middle').attr('font-size',31).attr('font-weight',800).attr('fill',C.off)
+    .text(`${word(dG,'Growth rises','Growth falls','Growth is unchanged')} while living standards growth ${word(dR,'rises','falls','is unchanged')}`);
+  changeRing(g,{cx:330,cy:by0+255,R:165,d:dG,pre:L.gdpPre,post:L.gdpPost,label:'GDP growth'});
+  changeRing(g,{cx:830,cy:by0+255,R:165,d:dR,pre:L.rhdiPre,post:L.rhdiPost,label:'RHDI growth'});
+
+  // 3. where it leaves the score, against previous Budgets
+  speedo(g,{cx,cy:cyB,R,r0,min:0,max:150,step:10,labelStep:50,events:B.after.map(e=>({n:e.n,v:e.pt})),latest:{n:L.n,v:L.ptPost},
+    scaleFmt:v=>v+'%',tipFmt:v=>`Good Growth Score: ${Math.round(v)}%`,color:C.lime,labelSep:9,lfs:16,hw:16,hub:28,fs:18,len:R-14,delay:600});
+  countUp(g.append('text').attr('x',cx).attr('y',cyB+118).attr('text-anchor','middle').attr('font-size',104).attr('font-weight',800).attr('fill',C.lime).attr('letter-spacing',-3),L.ptPost,v=>Math.round(v)+'%',600);
+  g.append('text').attr('x',cx).attr('y',cyB+165).attr('text-anchor','middle').attr('font-size',25).attr('fill',C.off).text(`Every 1% of growth lifts incomes ${(L.ptPost/100).toFixed(2)}%`);
 }
 
 /* ---- chancellor brackets ---- */
@@ -1050,17 +1148,13 @@ function preBars(el){
 
 /* ---- before and after ---- */
 function baBars(el){
-  const ev=OBR.events,latest=ev[ev.length-1][0],W=1000,H=590,m={l:80,r:16,t:150,b:96};
+  const ev=OBR.events,latest=ev[ev.length-1][0],W=1000,H=556,m={l:80,r:16,t:116,b:96};
   const svg=vb(el,W,H,'Fiscal space before and after Budget measures at each fiscal event');
   const xb=d3.scaleBand().domain(d3.range(ev.length)).range([m.l,W-m.r]).paddingInner(0).paddingOuter(0);
   const x=i=>xb(i);x.step=()=>xb.step();
   const vals=ev.flatMap(e=>[e[2],e[3]]);const y=d3.scaleLinear().domain([Math.min(0,d3.min(vals))*1.12,d3.max(vals)*1.15]).nice().range([H-m.b,m.t]);
   const g=svg.append('g');
-  g.append('rect').attr('x',m.l).attr('y',10).attr('width',20).attr('height',13).attr('fill','none').attr('stroke',C.off).attr('stroke-width',2);
-  g.append('text').attr('x',m.l+30).attr('y',22).attr('font-size',15).attr('fill',C.off).text('Before Budget measures');
-  g.append('rect').attr('x',m.l+230).attr('y',10).attr('width',20).attr('height',13).attr('fill',C.off);
-  g.append('text').attr('x',m.l+260).attr('y',22).attr('font-size',15).attr('fill',C.off).text('After Budget measures');
-  const bY=40,bH=54;g.append('rect').attr('x',10).attr('y',bY).attr('width',W-20).attr('height',bH).attr('rx',10).attr('fill',C.off).attr('fill-opacity',.04).attr('stroke',C.off).attr('stroke-opacity',.3);
+  const bY=6,bH=54;g.append('rect').attr('x',10).attr('y',bY).attr('width',W-20).attr('height',bH).attr('rx',10).attr('fill',C.off).attr('fill-opacity',.04).attr('stroke',C.off).attr('stroke-opacity',.3);
   g.append('text').attr('x',22).attr('y',bY+23).attr('font-size',14.5).attr('font-weight',800).attr('fill',C.off).text('Budget');
   g.append('text').attr('x',22).attr('y',bY+41).attr('font-size',14.5).attr('font-weight',800).attr('fill',C.off).text('effect');
   const li=ev.length-1;
@@ -1151,12 +1245,12 @@ function renderBudget(){
   const ev=OBR.events,L=ev[ev.length-1];
   document.getElementById('t-fs').innerHTML=`The Budget started with just <span style="color:var(--lime)">${bn(L[2])}</span> of fiscal space before its measures`;
   const ext=Math.ceil(d3.max(ev,e=>Math.abs(e[2]))/10)*10;
-  panelDial(document.getElementById('b-dial'),{min:-ext,max:ext,step:5,labelStep:20,negOrange:true,tints:[{a:-ext,b:0,c:C.orange,o:.4}],events:ev.map(e=>({n:e[0],v:e[2]})),latest:{n:L[0],v:L[2]},start:0,labelSep:34,scaleFmt:tbn,tipFmt:v=>`${bn(v)} before measures`,color:C.lime,bigFmt:bn,caption:'Fiscal space before Budget measures',aria:'Dial of fiscal space before November 2025 Budget measures against previous fiscal events'});
+  panelDial(document.getElementById('b-dial'),{min:-ext,max:ext,step:5,labelStep:20,negOrange:true,tints:[{a:-ext,b:0,c:C.orange,o:.4}],events:ev.map(e=>({n:e[0],v:e[2]})),latest:{n:L[0],v:L[2]},start:0,labelSep:34,scaleFmt:tbn,tipFmt:v=>`${bn(v)} before measures`,color:C.lime,bigFmt:bn,caption:'Fiscal space before Budget measures',aria:'Dial of fiscal space before November 2025 Budget measures against previous Budgets and Autumn Statements'});
   preBars(document.getElementById('b-pre'));
   baBars(document.getElementById('b-ba'));
   const st=OBR.stance,ls=st[st.length-1],neg=ls[1]<0,pct=Math.abs(ls[1]).toFixed(2),sc=neg?C.orange:C.green;
   document.getElementById('t-st').innerHTML=`Overall, the Budget was close to neutral: a net <span style="color:${sc}">${neg?'tightening':'loosening'}</span> of ${pct} per cent of GDP`;
-  panelDial(document.getElementById('b-stance'),{min:-2,max:2,step:.25,labelStep:1,labelSep:14,events:st.map(e=>({n:e[0],v:e[1]})),latest:{n:ls[0],v:ls[1]},start:0,scaleFmt:v=>(v>0?'+':v<0?'−':'')+Math.abs(v)+'%',tipFmt:v=>`${(v>0?'+':v<0?'−':'')+Math.abs(v).toFixed(2)}% of GDP`,tints:[{a:-2,b:0,c:C.orange,o:.38},{a:0,b:2,c:C.green,o:.3}],color:sc,bigFmt:v=>(v<0?'−':v>0?'+':'')+Math.abs(v).toFixed(2)+'%',caption:'Size of the Budget package, per cent of GDP',sideL:'Tightening',subL:'Tax rises or spending cuts',sideR:'Loosening',subR:'Tax cuts or more spending',aria:'Dial of the size of the November 2025 Budget policy package against previous fiscal events'});
+  panelDial(document.getElementById('b-stance'),{min:-2,max:2,step:.25,labelStep:1,labelSep:14,events:st.map(e=>({n:e[0],v:e[1]})),latest:{n:ls[0],v:ls[1]},start:0,scaleFmt:v=>(v>0?'+':v<0?'−':'')+Math.abs(v)+'%',tipFmt:v=>`${(v>0?'+':v<0?'−':'')+Math.abs(v).toFixed(2)}% of GDP`,tints:[{a:-2,b:0,c:C.orange,o:.38},{a:0,b:2,c:C.green,o:.3}],color:sc,bigFmt:v=>(v<0?'−':v>0?'+':'')+Math.abs(v).toFixed(2)+'%',caption:'Size of the Budget package, per cent of GDP',sideL:'Tightening',subL:'Tax rises or spending cuts',sideR:'Loosening',subR:'Tax cuts or more spending',aria:'Dial of the size of the November 2025 Budget policy package against previous Budgets and Autumn Statements'});
   gdpImpact(document.getElementById('b-gdp'));
   renderLS();
   renderOutlook();
@@ -1177,8 +1271,32 @@ document.getElementById('closeBudget').onclick=()=>{history.pushState(null,'',lo
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!BUD.classList.contains('hidden'))document.getElementById('closeBudget').click()});
 (()=>{const el=document.getElementById('protoTxt');let on=false;setInterval(()=>{el.style.opacity=0;setTimeout(()=>{on=!on;el.innerHTML=on?'<a href="#budget-2025">Analysis of the 2025 Budget here</a>':'Prototype';el.style.opacity=1},250)},3000)})();
 
+
+/* ================= real ONS series from data/ons.json (written by update_ons.R) ================= */
+const DATA_STATUS={live:false,updated:null};
+function onsPeriod(p){p=String(p).trim();const mo={JAN:1,FEB:2,MAR:3,APR:4,MAY:5,JUN:6,JUL:7,AUG:8,SEP:9,OCT:10,NOV:11,DEC:12};
+  let m=p.match(/^(\d{4}) ([A-Z]{3})$/);if(m)return new Date(+m[1],mo[m[2]]-1,1);
+  m=p.match(/^(\d{4}) Q([1-4])$/);if(m)return new Date(+m[1],(+m[2]-1)*3+1,1);return null}
+function ser(j,code,from){const a=(j.series||{})[code];if(!a||!a.length)return null;
+  const out=a.map(([p,v])=>({d:onsPeriod(p),v:+v})).filter(x=>x.d&&isFinite(x.v)&&(!from||x.d>=pd(from)));return out.length?out:null}
+function applyONS(j){
+  const un=ser(j,'MGSX','2020-01');if(un)D.unemp=un;
+  const va=ser(j,'AP2Y','2017-01');if(va)D.vac=va;
+  const uc=ser(j,'MGSC','2015-01'),vv=ser(j,'AP2Y','2015-01');
+  if(uc&&vv){const m=new Map(vv.map(x=>[+x.d,x.v]));const r=uc.filter(x=>m.has(+x.d)).map(x=>({d:x.d,v:+(x.v/m.get(+x.d)).toFixed(2)}));if(r.length){D.uv=r;UV_NOW=+last(r).v.toFixed(1)}}
+  const k=ser(j,'KAI7','2000-01'),c=ser(j,'D7BT','2000-01');
+  if(k&&c){const cm=new Map(c.map(x=>[+x.d,x.v])),cl=last(c).v;const w=k.filter(x=>cm.has(+x.d)).map(x=>({d:x.d,v:x.v*cl/cm.get(+x.d)}));
+    if(w.length){const f0=D.wageF[0].v;D.wage=w;D.wageF=D.wageF.map(p=>({d:p.d,v:p.v*last(w).v/f0}));D.wageF[0]={d:last(w).d,v:last(w).v}}}
+  [['all','D7BT'],['food','D7BU'],['energy','CPI_04_5'],['fuel','CPI_07_2_2']].forEach(([key,code])=>{const x=ser(j,code,'2019-01');if(x)D.cpi[key]=x});
+  const g=ser(j,'ABMI','2000-01');if(g)D.gdp=g.map(x=>({d:x.d,v:x.v/1000}));
+  const pr=ser(j,'A4YM','2000-01');if(pr)D.prod=pr;
+  DATA_STATUS.live=true;DATA_STATUS.updated=j.updated||null;
+  const meta=document.querySelector('.banner .meta');if(meta&&j.updated)meta.lastChild.textContent='ONS data updated '+j.updated;
+}
+async function loadONS(){try{const r=await fetch('data/ons.json',{cache:'no-store'});if(!r.ok)return;applyONS(await r.json());RENDER[curTab]()}catch(e){}}
+
 /* ================= boot + resize ================= */
-showTab('work');addDownloads();route();
+showTab('work');addDownloads();route();loadONS();
 let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{RENDER[curTab]();mini&&mini.draw();if(big&&!ex.classList.contains('hidden')){big.draw();refreshBig()}if(!BUD.classList.contains('hidden'))renderBudget()},180)});
 </script>
 </body>
