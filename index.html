@@ -339,6 +339,7 @@ button{font-family:var(--font)}
   .row.has-poll>.poll{flex-basis:88%}
   .row.has-poll .swipe-hint{display:flex;align-items:center;gap:6px;position:absolute;top:14px;right:14px;z-index:4;background:var(--blue);color:#fff;font-size:.72rem;font-weight:800;border-radius:20px;padding:5px 10px;border:none;cursor:pointer;font-family:var(--font);animation:nudge 2.4s ease-in-out infinite}
   .row.has-poll .ind h3,.row.has-poll .ind .sub{padding-right:96px}
+  .row.has-poll .ind .chart{min-height:0}
   .row.has-poll .poll .back-hint{display:block}
   /* poll cards fill the height of the chart beside them */
   .row.has-poll>.poll{display:flex;flex-direction:column;justify-content:flex-start;padding:18px 16px 14px;--ps:1}
@@ -1418,7 +1419,7 @@ const GCOL={'Consumption':C.orange,'Residential and business investment':C.pale,
 function gdpImpact(el){
   const{years,rows}=OBR.gdpImpact,comp=rows.filter(r=>r[0]!=='Total'),tot=rows.find(r=>r[0]==='Total');
   document.getElementById('k-gdp').innerHTML=comp.map(r=>`<span><i style="background:${GCOL[r[0]]}"></i>${r[0]}</span>`).join('')+`<span><i style="background:${C.lime};border-radius:50%"></i>Total</span>`;
-  const W=1000,H=380,m={l:70,r:16,t:26,b:40};const svg=vb(el,W,H,'Policy impacts on real GDP');
+  const W=1000,H=380+hAdd(el.id),m={l:70,r:16,t:26,b:40};const svg=vb(el,W,H,'Policy impacts on real GDP');
   const xb=d3.scaleBand().domain(years).range([m.l,W-m.r]).padding(.38);
   let lo=0,hi=0;years.forEach((y_,j)=>{let p=0,n=0;comp.forEach(r=>{const v=r[j+1];if(v>0)p+=v;else n+=v});lo=Math.min(lo,n);hi=Math.max(hi,p)});
   const y=d3.scaleLinear().domain([lo*1.15,hi*1.15]).nice().range([H-m.b,m.t]);const g=svg.append('g');fcBand(g,xb,W,m,H);
@@ -1458,7 +1459,7 @@ const LSC={'Labour income':C.green,'Non-labour income':C.pale,'Net benefits and 
 function renderLS(){
   const rows=OBR.rhdiGrowth,keys=Object.keys(LSC),yrs=rows.map(r=>r[0]);
   document.getElementById('k-ls').innerHTML=keys.map(k=>`<span><i style="background:${LSC[k]}"></i>${k}</span>`).join('')+`<span><i style="background:${C.lime};border-radius:50%"></i>Growth in income per person</span>`;
-  const W=1000,H=400,m={l:60,r:16,t:26,b:40},svg=vb(document.getElementById('b-ls'),W,H,'Real household disposable income per person growth and contributions');
+  const W=1000,H=400+hAdd('b-ls'),m={l:60,r:16,t:26,b:40},svg=vb(document.getElementById('b-ls'),W,H,'Real household disposable income per person growth and contributions');
   const xb=d3.scaleBand().domain(yrs).range([m.l,W-m.r]).padding(.32);
   let lo=0,hi=0;rows.forEach(r=>{let p=0,n=0;r.slice(3).forEach(v=>{if(v>0)p+=v;else n+=v});lo=Math.min(lo,n);hi=Math.max(hi,p)});
   const y=d3.scaleLinear().domain([lo*1.05,hi*1.08]).nice().range([H-m.b,m.t]),g=svg.append('g');fcBand(g,xb,W,m,H);
@@ -1473,7 +1474,7 @@ function renderLS(){
 }
 /* ---- inflation fan chart ---- */
 function renderCPIb(){
-  const F=OBR.cpiFan.filter(r=>r[0]>=2019),W=1000,H=360,m={l:50,r:20,t:16,b:34};
+  const F=OBR.cpiFan.filter(r=>r[0]>=2019),W=1000,H=360+hAdd('b-cpi'),m={l:50,r:20,t:16,b:34};
   const svg=vb(document.getElementById('b-cpi'),W,H,'CPI inflation forecasts with fan chart'),g=svg.append('g');
   const x=d3.scaleLinear().domain([2019,2030]).range([m.l,W-m.r]);
   const fanR=F.filter(r=>r[4]),lo=d3.min(fanR,r=>r[4][0]),hi=d3.max(F,r=>Math.max(r[3]||0,r[2]||0,r[4]?r[4][8]:0));
@@ -1528,7 +1529,7 @@ function renderGrowthB(){
   const t=OBR.trade,pt=k=>t.filter(q=>q[k]!=null).map(q=>({d:new Date(q[0],0,1),v:q[k]}));
   const tr=(id,a,b,nm)=>lineChart(document.getElementById(id),{height:250,series:[{data:pt(a),c:GREY,dash:true,name:'March 2025'},{data:pt(b),c:C.lime,w:2.8,name:'November 2025'}],bands:[{fc:OBR.fcStartCY}],tf:v=>f1(v),df:'%Y',r:24,aria:nm});
   tr('b-exp',1,2,'Exports');tr('b-imp',3,4,'Imports');
-  const h=OBR.housing,W=1000,H=330,m={l:60,r:16,t:16,b:40};
+  const h=OBR.housing,W=1000,H=330+hAdd('b-house'),m={l:60,r:16,t:16,b:40};
   const svg=vb(document.getElementById('b-house'),W,H,'Net additions to the housing stock'),g=svg.append('g');
   const xb=d3.scaleBand().domain(h.map(q=>q[0])).range([m.l,W-m.r]).padding(.3);
   const y=d3.scaleLinear().domain([0,d3.max(h,q=>Math.max(q[1]||0,q[2]||0))*1.12]).nice().range([H-m.b,m.t]);
@@ -1637,17 +1638,28 @@ function setupSwipe(){
 /* Mobile: make the chart and poll in each swipeable pair fill the same box.
    The shorter one grows: poll text and squares scale up; line charts get taller. */
 const isMobile=()=>window.matchMedia('(max-width:820px)').matches;
+// extra height (in chart units) given to fixed-shape charts so they fill their box on phones
+const HADD={};function hAdd(id){return HADD[id]||0}
+const REDRAW={'b-gdp':()=>gdpImpact(document.getElementById('b-gdp')),'b-ls':()=>renderLS(),'b-cpi':()=>renderCPIb(),'b-house':()=>renderGrowthB()};
 function fitRow(r){
   const art=r.querySelector(':scope > .ind'),pl=r.querySelector(':scope > .poll');if(!art||!pl||!r.offsetParent)return;
+  const line=[...art.querySelectorAll('.chart')].find(c=>c._cfg&&c.querySelector('svg:not(.vb)'));
+  const fixed=[...art.querySelectorAll('.chart')].find(c=>REDRAW[c.id]);
+  // start from the natural sizes
   pl.style.setProperty('--ps',1);
-  const ch=[...art.querySelectorAll('.chart')].find(c=>c._cfg&&c.querySelector('svg:not(.vb)'));
-  if(ch&&ch._base)lineChart(ch,{...ch._cfg,height:ch._base});
+  if(line&&line._base)lineChart(line,{...line._cfg,height:line._base});
+  if(fixed&&HADD[fixed.id]){HADD[fixed.id]=0;REDRAW[fixed.id]()}
   r.style.alignItems='flex-start';
-  const natural=el=>el.getBoundingClientRect().height;
-  let ha=natural(art),hp=natural(pl);
-  if(hp<ha){let s=1;while(s<1.9&&natural(pl)<ha-4){s+=.05;pl.style.setProperty('--ps',s.toFixed(2))}
-    if(natural(pl)>ha+2){s-=.05;pl.style.setProperty('--ps',s.toFixed(2))}}
-  else if(ha<hp&&ch){if(!ch._base)ch._base=ch._cfg.height||230;lineChart(ch,{...ch._cfg,height:ch._base+(hp-ha)})}
+  const hgt=el=>el.getBoundingClientRect().height;
+  const ha=hgt(art),hp=hgt(pl);
+  if(hp<ha){let s=1;while(s<1.9&&hgt(pl)<ha-4){s+=.05;pl.style.setProperty('--ps',s.toFixed(2))}
+    if(hgt(pl)>ha+2){s-=.05;pl.style.setProperty('--ps',s.toFixed(2))}}
+  else if(ha<hp){
+    const gap=hp-ha;
+    if(line){if(!line._base)line._base=line._cfg.height||230;lineChart(line,{...line._cfg,height:line._base+gap})}
+    else if(fixed){const sv=fixed.querySelector('svg.vb');const w=sv?sv.getBoundingClientRect().width:1000;HADD[fixed.id]=gap*1000/w;REDRAW[fixed.id]();
+      const left=hgt(pl)-hgt(art);if(Math.abs(left)>2){HADD[fixed.id]+=left*1000/w;REDRAW[fixed.id]()}}
+  }
   r.style.alignItems='';
 }
 function fitRows(){if(!isMobile())return;document.querySelectorAll('.row.has-poll').forEach(fitRow)}
