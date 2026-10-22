@@ -340,6 +340,17 @@ button{font-family:var(--font)}
   .row.has-poll .swipe-hint{display:flex;align-items:center;gap:6px;position:absolute;top:14px;right:14px;z-index:4;background:var(--blue);color:#fff;font-size:.72rem;font-weight:800;border-radius:20px;padding:5px 10px;border:none;cursor:pointer;font-family:var(--font);animation:nudge 2.4s ease-in-out infinite}
   .row.has-poll .ind h3,.row.has-poll .ind .sub{padding-right:96px}
   .row.has-poll .poll .back-hint{display:block}
+  /* poll cards fill the height of the chart beside them */
+  .row.has-poll>.poll{display:flex;flex-direction:column;justify-content:space-evenly;padding:18px 16px 14px}
+  .row.has-poll .poll .q{font-size:1.02rem}
+  .row.has-poll .poll .head{gap:16px;margin:6px 0}
+  .row.has-poll .poll .head svg{width:44%;max-width:170px;height:auto}
+  .row.has-poll .poll .big{font-size:2.8rem}
+  .row.has-poll .poll .bigl{font-size:.9rem}
+  .row.has-poll .poll .leg{font-size:.82rem;row-gap:4px}
+  .row.has-poll .poll .leg li{padding:2px 0}
+  .row.has-poll .poll .flag{font-size:.7rem}
+  .row.has-poll .poll .gapbar{height:14px}
   @keyframes nudge{0%,70%,100%{transform:translateX(0)}80%{transform:translateX(-5px)}90%{transform:translateX(0)}}
 }
 .back-hint{display:none;font-size:.7rem;font-weight:700;color:var(--blue);background:none;border:none;padding:0 0 6px;cursor:pointer;font-family:var(--font)}
