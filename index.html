@@ -347,6 +347,9 @@ button{font-family:var(--font)}
   .row.has-poll .swipe-hint{display:flex;align-items:center;gap:6px;position:absolute;top:14px;right:14px;z-index:4;background:var(--blue);color:#fff;font-size:.72rem;font-weight:800;border-radius:20px;padding:5px 10px;border:none;cursor:pointer;font-family:var(--font);animation:nudge 2.4s ease-in-out infinite}
   .row.has-poll .ind h3,.row.has-poll .ind .sub{padding-right:96px}
   .row.has-poll .ind .chart{min-height:0}
+  /* dial and ratio chart stack on phones (overrides the inline two-column grid) */
+  .ind .split{grid-template-columns:1fr!important;gap:14px}
+  #ch-dial{max-width:320px;margin:0 auto;width:100%;min-height:0!important}
   .row.has-poll .poll .back-hint{display:block}
   /* poll cards fill the height of the chart beside them */
   .row.has-poll>.poll{display:flex;flex-direction:column;justify-content:flex-start;padding:18px 16px 14px;--ps:1}
