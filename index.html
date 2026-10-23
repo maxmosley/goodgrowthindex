@@ -196,6 +196,7 @@ button{font-family:var(--font)}
 .exporting .pulse{animation:none;opacity:0}
 .ggs.exporting svg{max-width:100%}
 .exporting{box-shadow:none!important}
+.exporting .dl,.exporting .swipe-hint{display:none!important}
 /* ===== Budget 2025 entry ===== */
 .rightcol{position:sticky;top:16px;height:calc(100vh - 80px);min-height:760px;display:flex;flex-direction:column;gap:18px}
 .rightcol .regional{position:relative;top:auto;height:auto;flex:1;min-height:0}
@@ -238,7 +239,7 @@ button{font-family:var(--font)}
 .ocard .src{font-size:.66rem}
 .ocard .stat1{font-size:.78rem;color:var(--onNavy);margin:6px 0 0;font-weight:600}
 .ocard .stat1 b{color:var(--lime)}
-.okey{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:.7rem;color:var(--onNavyMuted);margin:2px 0 4px}
+.okey{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:.7rem;color:var(--onNavyMuted);margin:6px 0 0}
 .okey i{display:inline-block;width:14px;height:0;border-top:2.5px solid;vertical-align:3px;margin-right:5px}
 .okey i.d{border-top-style:dotted;border-top-width:3px}
 .b-main{overflow-y:auto;padding:16px 24px 40px}
@@ -285,7 +286,7 @@ button{font-family:var(--font)}
 @media (max-width:820px){.b-tabs{grid-template-columns:1fr}}
 .bpanel{background:var(--navy);border-top:3px solid var(--lime)}
 .bpanel .chart svg.vb{width:100%;height:auto;display:block}
-.bkey{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.76rem;color:var(--onNavyMuted);margin:10px 0 2px}
+.bkey{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.76rem;color:var(--onNavyMuted);margin:8px 0 0}
 .bkey i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px}
 .budget .poll{background:#E3E7ED;border-left-color:var(--blue)}
 .budget .poll::before{background:var(--blue);opacity:1}
@@ -384,7 +385,7 @@ button{font-family:var(--font)}
 .att-key i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px}
 .att-key i.b{border:2px solid var(--lime)} .att-key i.a{background:var(--lime)}
 .att-head,.att-row{display:grid;grid-template-columns:minmax(120px,170px) minmax(0,1fr) 120px;gap:0 20px}
-.att-head{font-weight:700;font-size:.84rem;color:var(--onNavy);margin:10px 0 4px}
+.att-head{font-weight:700;font-size:.84rem;color:var(--onNavy);margin:2px 0 4px}
 .att-head .e{grid-column:3}
 .att-row{grid-template-areas:"who bars eff";align-items:center;padding:10px 0;border-top:1px solid var(--navyLine)}
 .att-who{grid-area:who;text-align:left}
@@ -438,7 +439,7 @@ button{font-family:var(--font)}
       <div class="row">
         <article class="panel ind">
           <h3><span style="color:var(--lime)">Unemployment</span> has eased back below the <span style="color:var(--pale)">OBR's forecast</span></h3>
-          <div class="sub">Unemployment rate, aged 16 and over, seasonally adjusted</div>
+          <div class="sub">Unemployment rate, aged 16 and over</div>
                     <div class="chart" id="ch-unemp"></div>
           <p class="src">Source: ONS Labour Market Statistics (October 2026), OBR Economic and Fiscal Outlook (March 2026). Series <a href="https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment/timeseries/mgsx/lms" target="_blank" rel="noopener">MGSX</a>.</p>
         </article>
@@ -447,7 +448,7 @@ button{font-family:var(--font)}
       <div class="row">
         <article class="panel ind">
           <h3><span style="color:var(--lime)">Job vacancies</span> have been falling for four years</h3>
-          <div class="sub">Total UK vacancies, thousands, three-month average</div>
+          <div class="sub">UK vacancies, thousands</div>
                     <div class="chart" id="ch-vac"></div>
           <p class="src">Source: ONS Vacancy Survey (October 2026). Series <a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/timeseries/ap2y/unem" target="_blank" rel="noopener">AP2Y</a>. Excludes agriculture, forestry and fishing.</p>
         </article>
@@ -456,7 +457,7 @@ button{font-family:var(--font)}
       <div class="row">
         <article class="panel ind">
           <h3>There are <span style="color:var(--lime)">2.4 people</span> looking for work for every vacancy</h3>
-          <div class="sub">Number of unemployed people per vacancy</div>
+          <div class="sub">Unemployed people per vacancy</div>
           <div class="split" style="margin-top:12px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)">
             <div class="chart" id="ch-dial" style="min-height:260px"></div>
             <div><h4>Since 2015, against the balanced range</h4><div class="chart" id="ch-uv" style="min-height:200px"></div></div>
@@ -472,7 +473,7 @@ button{font-family:var(--font)}
       <div class="row">
         <article class="panel ind">
           <h3><span style="color:var(--lime)">Real wages</span> are still below their 2008 level</h3>
-          <div class="sub">Real average weekly earnings, index 2008 Q1 = 100, with the OBR's March 2026 forecast</div>
+          <div class="sub">Real weekly earnings, index 2008 Q1 = 100</div>
           <div class="split" style="margin-top:12px">
             <div class="chart" id="ch-wage"></div>
             <div><h4>Average real pay growth a year</h4><div id="pb-wage"></div></div>
@@ -484,7 +485,7 @@ button{font-family:var(--font)}
       <div class="row">
         <article class="panel ind">
           <h3><span style="color:var(--pale)">Food</span> prices are rising faster than <span style="color:var(--lime)">prices overall</span></h3>
-          <div class="sub">CPI inflation, per cent change on a year earlier. Tap a series to show or hide it.</div>
+          <div class="sub">CPI inflation, per cent a year</div>
           <div class="chips" id="cpi-chips"></div>
           <div class="chart" id="ch-cpi"></div>
           <p class="src">Notes: ONS outturn to 2025 Q4.<br>Source: OBR <a href="https://obr.uk/efo/economic-and-fiscal-outlook-march-2026/" target="_blank" rel="noopener">Economic and fiscal outlook, March 2026</a>, economy tables 1.7 and 1.19, using ONS Consumer Price Inflation.</p>
@@ -498,7 +499,7 @@ button{font-family:var(--font)}
       <div class="row">
         <article class="panel ind">
           <h3>The <span style="color:var(--lime)">economy</span> is growing at about 1% a year, as it has since 2008</h3>
-          <div class="sub">Real GDP, chained volume measure, £bn a quarter</div>
+          <div class="sub">Real GDP, £bn a quarter</div>
           <div class="split" style="margin-top:12px">
             <div class="chart" id="ch-gdp"></div>
             <div><h4>Average growth a year</h4><div id="pb-gdp"></div></div>
@@ -522,7 +523,7 @@ button{font-family:var(--font)}
       <div class="row">
         <article class="panel ind">
           <h3><span style="color:var(--lime)">Housebuilding starts</span> are recovering, but remain well below their 2023 peak</h3>
-          <div class="sub">New build dwellings started, England, rolling 12-month total</div>
+          <div class="sub">New homes started, England, 12-month total</div>
                     <div class="chart" id="ch-starts"></div>
           <p class="src">Notes: Dots are published figures; straight lines join them. Latest quarter: 35,910 starts in April to June 2026, seasonally adjusted. The 2023 peak and trough reflect starts brought forward ahead of new building regulations.<br>Source: MHCLG Housing supply: indicators of new supply, England (June and September 2026).</p>
         </article>
@@ -600,11 +601,11 @@ button{font-family:var(--font)}
     <aside class="b-out" aria-label="Economic outlook">
       <h3>Economic outlook</h3>
       <div class="okey"><span><i style="border-color:var(--lime)"></i>November 2025 forecast</span><span><i class="d" style="border-color:#C3CCD8"></i>March 2025 forecast</span></div>
-      <div class="ocard"><h4><span style="color:var(--lime)">GDP</span> is forecast to grow more slowly than in March</h4><div class="sub">Real GDP, index 2019 Q4 = 100</div><div class="chart" id="o-gdp"></div><p class="src">Source: OBR EFO November 2025, Chart 1.1.</p></div>
-      <div class="ocard"><h4><span style="color:var(--lime)">Wage growth</span> is now expected to be higher in 2026</h4><div class="sub">Nominal hourly earnings growth, per cent</div><div class="chart" id="o-wage"></div><p class="src">Source: OBR EFO November 2025, Chart 1.2.</p></div>
-      <div class="ocard"><h4><span style="color:var(--lime)">Inflation</span> is forecast to be higher in 2026 than expected in March</h4><div class="sub">CPI inflation, per cent, calendar years</div><div class="chart" id="o-cpi"></div><p class="src">Source: OBR EFO November 2025, Chart 1.2.</p></div>
-      <div class="ocard"><h4><span style="color:var(--lime)">Public spending</span> is now forecast to stay higher</h4><div class="sub">Total managed expenditure, per cent of GDP</div><div class="chart" id="o-spend"></div><p class="src">Source: OBR EFO November 2025, Chart 5.1.</p></div>
-      <div class="ocard"><h4><span style="color:var(--lime)">Taxes</span> are now forecast to rise further</h4><div class="sub">National Accounts taxes, per cent of GDP</div><div class="chart" id="o-tax"></div><p class="src">Source: OBR EFO November 2025, Chart 4.1.</p></div>
+      <div class="ocard"><h4><span style="color:var(--lime)">GDP</span> is forecast to grow more slowly than in March</h4><div class="sub">Real GDP growth and level</div><div class="chart" id="o-gdp"></div><p class="src">Source: OBR EFO November 2025, Chart 1.1.</p></div>
+      <div class="ocard"><h4><span style="color:var(--lime)">Wage growth</span> is now expected to be higher in 2026</h4><div class="sub">Hourly wage growth and CPI inflation</div><div class="chart" id="o-wage"></div><p class="src">Source: OBR EFO November 2025, Chart 1.2.</p></div>
+      <div class="ocard"><h4><span style="color:var(--lime)">Inflation</span> is forecast to be higher in 2026 than expected in March</h4><div class="sub">Hourly wage growth and CPI inflation</div><div class="chart" id="o-cpi"></div><p class="src">Source: OBR EFO November 2025, Chart 1.2.</p></div>
+      <div class="ocard"><h4><span style="color:var(--lime)">Public spending</span> is now forecast to stay higher</h4><div class="sub">Public spending as a share of GDP</div><div class="chart" id="o-spend"></div><p class="src">Source: OBR EFO November 2025, Chart 5.1.</p></div>
+      <div class="ocard"><h4><span style="color:var(--lime)">Taxes</span> are now forecast to rise further</h4><div class="sub">National Accounts taxes as a share of GDP</div><div class="chart" id="o-tax"></div><p class="src">Source: OBR EFO November 2025, Chart 4.1.</p></div>
     </aside>
     <div class="b-main">
       <section class="ggs" aria-label="Good Growth Score">
@@ -627,7 +628,7 @@ button{font-family:var(--font)}
       <div class="row">
         <article class="panel ind bpanel">
           <h3 id="t-fs"></h3>
-          <div class="sub">Fiscal space before Budget measures, against previous Budgets and Autumn Statements since 2020, £bn at the time of each forecast. The OBR calls this headroom.</div>
+          <div class="sub">Fiscal space before Budget measures, £bn</div>
           <div class="chart" id="b-dial"></div>
           <p class="src">Notes: Grey needles are previous Budgets and Autumn Statements; hover over a needle to see it. Spring Statements are excluded. Fiscal space is measured against the main fiscal rule in force at each event.<br>Source: OBR fiscal targets tables in each EFO, March 2020 (Table 4.6) to November 2025 (Table 7.1).</p>
         </article>
@@ -636,7 +637,7 @@ button{font-family:var(--font)}
       <div class="row full">
         <article class="panel ind bpanel">
           <h3>Fiscal space before Budget measures, by Chancellor</h3>
-          <div class="sub">Fiscal space against the main fiscal rule in force, before Budget measures, £bn at the time of each forecast</div>
+          <div class="sub">Fiscal space before Budget measures, £bn</div>
           <div class="chart" id="b-pre"></div>
           <p class="src">Notes: Where two rules applied, the smaller margin is shown. Earlier events used a structural deficit rule and are not comparable. March 2021 has no usable pre-measures margin. Budgets and Autumn Statements only; Spring Statements are excluded.<br>Source: OBR fiscal targets tables in each EFO, from March 2020 (Table 4.6) to November 2025 (Table 7.1).</p>
         </article>
@@ -644,7 +645,7 @@ button{font-family:var(--font)}
       <div class="row full">
         <article class="panel ind bpanel">
           <h3>What each Budget did to fiscal space</h3>
-          <div class="sub">Fiscal space against the main fiscal rule in force, before and after Budget measures, £bn at the time of each forecast</div>
+          <div class="sub">Fiscal space before and after Budget measures, £bn</div>
           <div class="chart" id="b-ba"></div>
           <p class="src">Notes: Budget effect is the after figure minus the before figure. Hover over a pair to see the rule used.<br>Source: GGF calculations using OBR fiscal targets tables, March 2020 to November 2025 EFOs.</p>
         </article>
@@ -652,7 +653,7 @@ button{font-family:var(--font)}
       <div class="row">
         <article class="panel ind bpanel">
           <h3 id="t-st"></h3>
-          <div class="sub">Size of each fiscal event's policy package, £bn a year in today's terms</div>
+          <div class="sub">Size of fiscal policy packages, £bn a year in today’s terms</div>
           <div class="chart" id="b-stance"></div>
           <p class="src">Notes: Grey needles are previous Budgets and Autumn Statements since June 2010; hover over a needle to see it. Spring Statements, spending reviews and the July 2020 Summer Economic Update are excluded. Each package is the OBR's average effect over five years as a share of GDP, converted to £ using 2025-26 nominal GDP of £3,094bn so that events are comparable. Money raised is shown as positive and money spent as negative.<br>Source: GGF calculations using OBR EFO November 2025, Chart 3.1 and Economy Table 1.4.</p>
         </article>
@@ -673,7 +674,7 @@ button{font-family:var(--font)}
       <div class="row">
         <article class="panel ind bpanel">
           <h3>The Budget gives <span style="color:var(--lime)">GDP</span> a small, short-lived lift</h3>
-          <div class="sub">Policy impacts on the level of real GDP and its components, per cent</div>
+          <div class="sub">Policy impacts on real GDP and its components</div>
           <div class="bkey" id="k-gdp"></div>
           <div class="chart" id="b-gdp"></div>
           <p class="src">Source: OBR EFO November 2025, Chart 3.3.</p>
@@ -683,14 +684,14 @@ button{font-family:var(--font)}
       <div class="row two">
         <article class="panel ind bpanel">
           <h3><span style="color:var(--lime)">Exports</span> are now forecast to be stronger than in March</h3>
-          <div class="sub">Real exports, index 2019 = 100</div>
+          <div class="sub">Trade (exports)</div>
           <div class="okey"><span><i style="border-color:var(--lime)"></i>November 2025 forecast</span><span><i class="d" style="border-color:#C3CCD8"></i>March 2025 forecast</span></div>
           <div class="chart" id="b-exp"></div>
           <p class="src">Source: OBR EFO November 2025, Chart 2.20.</p>
         </article>
         <article class="panel ind bpanel">
           <h3><span style="color:var(--lime)">Imports</span> are now forecast to be stronger than in March</h3>
-          <div class="sub">Real imports, index 2019 = 100</div>
+          <div class="sub">Trade (imports)</div>
           <div class="okey"><span><i style="border-color:var(--lime)"></i>November 2025 forecast</span><span><i class="d" style="border-color:#C3CCD8"></i>March 2025 forecast</span></div>
           <div class="chart" id="b-imp"></div>
           <p class="src">Source: OBR EFO November 2025, Chart 2.20.</p>
@@ -699,7 +700,7 @@ button{font-family:var(--font)}
       <div class="row full">
         <article class="panel ind bpanel">
           <h3><span style="color:var(--lime)">Business investment</span> is now forecast to be higher than in March</h3>
-          <div class="sub">Business investment, per cent of GDP</div>
+          <div class="sub">Business investment</div>
           <div class="okey"><span><i style="border-color:var(--lime)"></i>November 2025 forecast</span><span><i class="d" style="border-color:#C3CCD8"></i>March 2025 forecast</span></div>
           <div class="chart" id="b-bi"></div>
           <p class="src">Source: OBR EFO November 2025, Chart 2.19.</p>
@@ -708,7 +709,7 @@ button{font-family:var(--font)}
       <div class="row">
         <article class="panel ind bpanel">
           <h3 id="t-house"></h3>
-          <div class="sub">Net additions to the housing stock, thousands, financial years</div>
+          <div class="sub">Net additions to the housing stock</div>
           <div class="okey"><span><i style="border-color:var(--lime)"></i>November 2025 forecast</span><span><i class="d" style="border-color:#fff"></i>March 2025 forecast</span></div>
           <div class="chart" id="b-house"></div>
           <p class="src">Source: OBR EFO November 2025, Chart 2.22.</p>
@@ -731,7 +732,7 @@ button{font-family:var(--font)}
       <div class="row">
         <article class="panel ind bpanel">
           <h3>Rising <span style="color:var(--orange)">prices</span> continue to hold back growth in <span style="color:var(--lime)">income</span> per person</h3>
-          <div class="sub">Real household disposable income per person, annual growth and contributions, per cent</div>
+          <div class="sub">Real household disposable income per person</div>
           <div class="bkey" id="k-ls"></div>
           <div class="chart" id="b-ls"></div>
           <p class="src">Source: OBR EFO November 2025, Chart 2.16 (right-hand panel).</p>
@@ -758,14 +759,14 @@ button{font-family:var(--font)}
       <div class="row two">
         <article class="panel ind bpanel">
           <h3 id="t-rlev"></h3>
-          <div class="sub">Real household disposable income per person, £ thousands, financial years</div>
+          <div class="sub">Real household disposable income per person</div>
           <div class="okey"><span><i style="border-color:var(--lime)"></i>After Budget measures</span><span><i class="d" style="border-color:#fff"></i>Before Budget measures</span></div>
           <div class="chart" id="b-rlev"></div>
           <p class="src">Notes: Shading shows the gap between the forecasts before and after Budget measures, green where the Budget raises income and orange where it lowers it.<br>Source: OBR EFO November 2025, Chart 2.16 (left-hand panel).</p>
         </article>
         <article class="panel ind bpanel">
           <h3 id="t-save"></h3>
-          <div class="sub">Household saving rate, per cent of income</div>
+          <div class="sub">Saving rate, unadjusted</div>
           <div class="okey"><span><i style="border-color:var(--lime)"></i>November 2025 forecast</span><span><i class="d" style="border-color:#C3CCD8"></i>March 2025 forecast</span></div>
           <div class="chart" id="b-save"></div>
           <p class="src">Notes: Unadjusted saving rate. The OBR also publishes a lower rate adjusted for pension equity changes, not shown here.<br>Source: OBR EFO November 2025, Chart 2.17.</p>
@@ -775,7 +776,7 @@ button{font-family:var(--font)}
 <div class="row">
         <article class="panel ind bpanel">
           <h3><span style="color:var(--lime)">Inflation</span> in 2026 is lower after Budget measures than before them</h3>
-          <div class="sub">CPI inflation, per cent, calendar years. Shaded bands show the OBR's range of uncertainty after Budget measures.</div>
+          <div class="sub">CPI inflation</div>
                     <div class="okey"><span><i style="border-color:var(--lime)"></i>After Budget measures</span><span><i class="d" style="border-color:var(--lime)"></i>Before Budget measures</span><span><i style="border-color:var(--pale);border-top-width:8px;vertical-align:0;opacity:.35"></i>Range of uncertainty</span></div>
           <div class="chart" id="b-cpi"></div>
           <p class="src">Notes: Bands run from the 10th to the 90th percentile in steps of 10.<br>Source: OBR EFO November 2025, Charts 1.2 and 2.12.</p>
@@ -1233,6 +1234,8 @@ function addDownloads(){
 // In a claude.ai artifact, saves go through the viewer's downloads capability; elsewhere a normal download link is used
 let DLS=null;(async()=>{try{if(window.claude&&claude.use)DLS=await claude.use('downloads')}catch(e){}})();
 const LOGO_SRC=document.querySelector('.wm-img').src;
+// GGF logo mark (white), used top right on downloaded images
+const MARK_SRC='data:image/png;base64,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';
 function solidBg(el){let n=el;while(n&&n!==document.documentElement){const c=getComputedStyle(n).backgroundColor;if(c&&c!=='transparent'&&!/rgba\(.*,\s*0\)$/.test(c))return c;n=n.parentElement}return '#ffffff'}
 async function exportPanel(p,btn){
   if(!window.htmlToImage){alert('The image tool did not load. Check your connection and reload the page.');return}
@@ -1242,22 +1245,60 @@ async function exportPanel(p,btn){
   p.classList.add('exporting');btn.disabled=true;hideTT();
   // boxes without their own background (the Good Growth Score) get the page colour and the same rounded corners
   if(clear){setStyle(p,'background',solidBg(p));setStyle(p,'borderRadius','16px');setStyle(p,'padding','22px 26px 18px')}
-  // the wordmark spans from the top of the narrative title to the bottom of the technical subtitle,
-  // and sits the same distance from the right edge as the text does from the left
+  /* ===== Download layout rules (every chart, poll card and the Good Growth Score) =====
+     A. Fixed brand marks, sized from the box's inner width W so every image looks the same at any size:
+        - GGF logo mark, top right:      height = clamp(30px, 5.2% of W, 44px)
+        - 3-line wordmark, bottom right: height = clamp(40px, 6.6% of W, 58px)
+        Both sit exactly one text-margin (the box's left padding) in from the right edge.
+     B. The mark's top lines up with the top of the narrative title; the wordmark's bottom lines up with
+        the bottom of the last notes/source line.
+     C. Text makes room, never the marks: the title (and the subtitle if it reaches the mark) wraps to a
+        16px gap from the mark; the notes wrap to a 16px gap from the wordmark and are given at least the
+        wordmark's height so nothing sits under it.
+     D. Charts are trimmed to their drawn content: empty space above or below each chart's drawing is cut,
+        and no chart box keeps a minimum height, so titles, legends and charts sit at their normal spacing. */
+  const cs=getComputedStyle(p),edge=parseFloat(cs.paddingLeft)||16,GAP=16,W=p.clientWidth-2*edge;
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+  // D. trim each chart drawing to its content (vertical only, so axes and left edges stay put)
+  p.querySelectorAll('svg').forEach(svg=>{
+    if(svg.closest('.exmark')||svg.closest('.head'))return;   // leave poll squares alone
+    let bb;try{bb=svg.getBBox()}catch(e){return}
+    if(!bb||!bb.height)return;
+    const vb=svg.viewBox&&svg.viewBox.baseVal&&svg.viewBox.baseVal.width?svg.viewBox.baseVal:null;
+    const vw=vb?vb.width:svg.width.baseVal.value,vh=vb?vb.height:svg.height.baseVal.value,vx=vb?vb.x:0,vy=vb?vb.y:0;
+    const y0=Math.max(vy,bb.y-6),y1=Math.min(vy+vh,bb.y+bb.height+6);
+    if(y1-y0>vh-8)return;                                       // nothing worth trimming
+    saved.push([svg,'__vb',svg.getAttribute('viewBox')],[svg,'__h',svg.getAttribute('height')],[svg,'__w',svg.getAttribute('width')]);
+    svg.setAttribute('viewBox',`${vx} ${y0} ${vw} ${y1-y0}`);
+    if(!vb){svg.setAttribute('width',vw);svg.setAttribute('height',y1-y0);setStyle(svg,'width','100%');setStyle(svg,'height','auto')}
+    else{svg.removeAttribute('height')}
+  });
+  p.querySelectorAll('.chart').forEach(c=>setStyle(c,'minHeight','0'));
   const top=light?p.querySelector('.by'):p.querySelector('h3,h4,h2');
-  const bottom=light?p.querySelector('.q'):(p.querySelector('.sub,.lede')||top);
-  const cs=getComputedStyle(p),edge=parseFloat(cs.paddingLeft)||16,pad=light?6:0,ratio=900/445;
-  const mark=document.createElement('div');mark.className='exmark';
-  const im=new Image();im.src=LOGO_SRC;mark.appendChild(im);
-  mark.style.cssText=`position:absolute;z-index:5;line-height:0;right:${edge}px;${light?`background:#112743;border-radius:8px;padding:${pad}px ${pad+2}px;`:''}`;
-  p.appendChild(mark);if(im.decode)await im.decode().catch(()=>{});
-  const place=()=>{const pr=p.getBoundingClientRect(),t=top.getBoundingClientRect(),b=bottom.getBoundingClientRect();
-    const maxW=(p.clientWidth-2*edge)*.32,span=Math.max(28,Math.min(light?64:96,(maxW-2*(pad+2))/ratio+2*pad,b.bottom-t.top)),h=span-2*pad;
-    im.style.cssText=`height:${h}px;width:auto;display:block`;mark.style.top=(t.top-pr.top)+'px';return h*ratio+2*(pad+2)};
-  const heads=[top,bottom].filter((el,k,a)=>el&&a.indexOf(el)===k);
-  heads.forEach(el=>setStyle(el,'paddingRight','0px'));
-  for(let k=0;k<4;k++){const w=place();heads.forEach(el=>el.style.paddingRight=(w+14)+'px')}
-  place();
+  const subt=light?p.querySelector('.q'):p.querySelector('.sub,.lede');
+  const notes=[...p.querySelectorAll('.src,.flag')].filter(n=>n.offsetParent).pop();
+  const addMark=async(src,h,css)=>{const d=document.createElement('div');d.className='exmark';const im=new Image();im.src=src;
+    im.style.cssText=`height:${h}px;width:auto;display:block;${css||''}`;d.appendChild(im);
+    d.style.cssText=`position:absolute;z-index:5;line-height:0;right:${edge}px;`;p.appendChild(d);
+    if(im.decode)await im.decode().catch(()=>{});return d};
+  // A/B/C. bottom wordmark
+  const wmH=Math.round(clamp(W*.066,40,58)),wmW=wmH*900/445;
+  const wm=await addMark(LOGO_SRC,wmH,light?'filter:brightness(0) saturate(100%) invert(12%) sepia(30%) saturate(2000%) hue-rotate(190deg)':'');
+  if(notes){setStyle(notes,'paddingRight',(wmW+GAP)+'px');
+    // short notes are pushed down so their last line ends level with the bottom of the wordmark
+    const ncs=getComputedStyle(notes),pt=parseFloat(ncs.paddingTop)||0,pb=parseFloat(ncs.paddingBottom)||0;
+    const textH=notes.getBoundingClientRect().height-pt-pb;
+    if(textH<wmH)setStyle(notes,'paddingTop',(pt+wmH-textH)+'px');
+    const pr=p.getBoundingClientRect(),nr=notes.getBoundingClientRect();
+    wm.style.top=(nr.bottom-pb-wmH-pr.top)+'px';}
+  else wm.style.bottom=edge+'px';
+  // A/B/C. top logo mark
+  const mkH=Math.round(clamp(W*.052,light?24:30,light?30:44)),mkW=mkH*672/273;
+  if(top){const mk=await addMark(MARK_SRC,mkH,light?'filter:brightness(0) saturate(100%) invert(12%) sepia(30%) saturate(2000%) hue-rotate(190deg)':'');
+    setStyle(top,'paddingRight',(mkW+GAP)+'px');
+    const pr=p.getBoundingClientRect(),tr=top.getBoundingClientRect(),capPad=parseFloat(getComputedStyle(top).fontSize)*.12;
+    mk.style.top=(tr.top-pr.top+capPad)+'px';
+    if(subt&&subt.getBoundingClientRect().top<mk.getBoundingClientRect().bottom+4)setStyle(subt,'paddingRight',(mkW+GAP)+'px');}
   try{
     const blob=await htmlToImage.toBlob(p,{pixelRatio:Math.min(8,Math.max(3,window.devicePixelRatio||1,1800/p.offsetWidth)),cacheBust:true,
       filter:n=>!(n.classList&&(n.classList.contains('dl')||n.classList.contains('swipe-hint')||n.classList.contains('mapctl')||n.classList.contains('explore-btn')||n.classList.contains('search')||(n.dataset&&n.dataset.step)))});
@@ -1265,8 +1306,8 @@ async function exportPanel(p,btn){
     if(DLS){try{await DLS.save({filename:fname,data:blob})}catch(err){if(err&&err.code!=='declined')alert('The image could not be saved here.')}}
     else{const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=fname;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),4000)}
   }catch(e){alert('The image could not be saved. Try again, or take a screenshot instead.')}
-  saved.reverse().forEach(([el,k,v])=>el.style[k]=v);
-  p.classList.remove('exporting');btn.disabled=false;mark.remove();
+  saved.reverse().forEach(([el,k,v])=>{if(k.startsWith('__')){const at=k.slice(2)==='vb'?'viewBox':k.slice(2)==='h'?'height':'width';if(v==null)el.removeAttribute(at);else el.setAttribute(at,v)}else el.style[k]=v});
+  p.classList.remove('exporting');btn.disabled=false;p.querySelectorAll('.exmark').forEach(e=>e.remove());
 }
 /* ================= Budget 2025 (all figures from OBR files) ================= */
 const OBR={"gdpLevel":[["2019Q1",98.987,99.235],["2019Q2",99.296,99.446],["2019Q3",100.0,99.994],["2019Q4",100.0,100.0],["2020Q1",97.342,97.255],["2020Q2",77.551,77.895],["2020Q3",90.57,91.11],["2020Q4",91.808,92.356],["2021Q1",90.854,91.362],["2021Q2",97.444,97.742],["2021Q3",99.071,99.39],["2021Q4",100.541,100.759],["2022Q1",101.275,101.781],["2022Q2",101.614,102.348],["2022Q3",101.73,102.452],["2022Q4",102.063,102.719],["2023Q1",102.186,102.777],["2023Q2",102.195,102.819],["2023Q3",102.064,102.573],["2023Q4",101.793,102.243],["2024Q1",102.656,103.102],["2024Q2",103.117,103.759],["2024Q3",103.089,103.962],["2024Q4",103.193,104.212],["2025Q1",103.4,104.902],["2025Q2",103.773,105.192],["2025Q3",104.209,105.406],["2025Q4",104.676,105.691],["2026Q1",105.185,106.106],["2026Q2",105.706,106.527],["2026Q3",106.209,106.956],["2026Q4",106.704,107.379],["2027Q1",107.165,107.789],["2027Q2",107.624,108.192],["2027Q3",108.073,108.592],["2027Q4",108.53,108.981],["2028Q1",108.995,109.376],["2028Q2",109.462,109.771],["2028Q3",109.94,110.18],["2028Q4",110.426,110.588],["2029Q1",110.925,111.007],["2029Q2",111.434,111.445],["2029Q3",111.934,111.871],["2029Q4",112.432,112.293],["2030Q1",112.945,112.727],["2030Q2",null,113.164],["2030Q3",null,113.601],["2030Q4",null,114.044],["2031Q1",null,114.489]],"wages":[["2022Q1",-1.81,-1.301],["2022Q2",1.518,1.974],["2022Q3",5.652,5.383],["2022Q4",7.525,7.652],["2023Q1",7.985,6.858],["2023Q2",9.267,7.425],["2023Q3",8.667,8.156],["2023Q4",6.329,4.323],["2024Q1",4.11,3.514],["2024Q2",3.007,3.451],["2024Q3",1.754,1.903],["2024Q4",4.733,6.157],["2025Q1",5.511,6.815],["2025Q2",4.951,5.705],["2025Q3",5.258,5.995],["2025Q4",2.738,3.574],["2026Q1",2.407,3.075],["2026Q2",2.268,3.454],["2026Q3",2.104,3.17],["2026Q4",2.011,3.029],["2027Q1",2.066,2.668],["2027Q2",2.132,2.365],["2027Q3",2.183,2.214],["2027Q4",2.218,2.088],["2028Q1",2.279,2.154],["2028Q2",2.33,2.261],["2028Q3",2.391,2.305],["2028Q4",2.478,2.31],["2029Q1",2.556,2.315],["2029Q2",2.626,2.333],["2029Q3",2.694,2.38],["2029Q4",2.74,2.452],["2030Q1",2.741,2.491],["2030Q2",null,2.503],["2030Q3",null,2.494],["2030Q4",null,2.468],["2031Q1",null,2.445]],"cpi":[[2019,1.791,1.791,1.791],[2020,0.851,0.851,0.851],[2021,2.588,2.588,2.588],[2022,9.067,9.067,9.067],[2023,7.303,7.303,7.303],[2024,2.53,2.53,2.53],[2025,3.213,3.453,3.453],[2026,2.085,2.828,2.48],[2027,1.989,2.0,2.015],[2028,2.0,1.934,2.035],[2029,2.0,1.998,2.038],[2030,null,2.0,2.003]],"spend":[["1997-98",35.471,null,null,null],["1998-99",34.988,null,null,null],["1999-00",34.601,null,null,null],["2000-01",34.906,null,null,null],["2001-02",36.051,null,null,null],["2002-03",37.417,null,null,null],["2003-04",38.698,null,null,null],["2004-05",39.726,null,null,null],["2005-06",39.696,null,null,null],["2006-07",39.669,null,null,null],["2007-08",40.027,null,null,null],["2008-09",43.042,null,null,null],["2009-10",45.968,null,null,null],["2010-11",45.503,null,null,null],["2011-12",44.351,null,null,null],["2012-13",43.792,null,null,null],["2013-14",42.19,null,null,null],["2014-15",41.636,null,null,null],["2015-16",40.829,null,null,null],["2016-17",40.027,null,null,null],["2017-18",39.663,null,null,null],["2018-19",39.091,null,null,null],["2019-20",39.096,null,null,null],["2020-21",52.268,null,null,null],["2021-22",43.363,null,null,null],["2022-23",44.058,null,null,null],["2023-24",44.131,44.1,44.131,44.131],["2024-25",44.009,43.943,44.009,44.009],["2025-26",null,44.424,44.849,45.016],["2026-27",null,44.231,44.603,44.735],["2027-28",null,43.872,44.307,44.813],["2028-29",null,43.5,44.067,44.494],["2029-30",null,43.293,43.874,44.268],["2030-31",null,null,43.847,44.284]],"tax":[["1997-98",31.023,null,null,null],["1998-99",31.67,null,null,null],["1999-00",32.454,null,null,null],["2000-01",32.97,null,null,null],["2001-02",32.299,null,null,null],["2002-03",31.415,null,null,null],["2003-04",32.225,null,null,null],["2004-05",32.84,null,null,null],["2005-06",33.239,null,null,null],["2006-07",33.635,null,null,null],["2007-08",33.643,null,null,null],["2008-09",32.022,null,null,null],["2009-10",32.153,null,null,null],["2010-11",33.123,null,null,null],["2011-12",33.315,null,null,null],["2012-13",32.666,null,null,null],["2013-14",32.552,null,null,null],["2014-15",32.414,null,null,null],["2015-16",32.619,null,null,null],["2016-17",33.387,null,null,null],["2017-18",33.142,null,null,null],["2018-19",33.569,null,null,null],["2019-20",32.852,null,null,null],["2020-21",33.717,null,null,null],["2021-22",34.668,null,null,null],["2022-23",35.193,null,null,null],["2023-24",34.939,null,null,null],["2024-25",34.679,34.909,34.679,34.679],["2025-26",null,36.325,36.227,36.259],["2026-27",null,36.96,37.025,37.028],["2027-28",null,37.251,37.469,37.627],["2028-29",null,37.068,37.371,37.76],["2029-30",null,37.06,37.467,38.164],["2030-31",null,null,37.492,38.269]],"stance":[["Jun 10",-1.281],["Nov 10",-0.02],["Mar 11",0.039],["Nov 11",-0.516],["Mar 12",-0.103],["Dec 12",-0.304],["Mar 13",-0.134],["Dec 13",-0.296],["Mar 14",0.019],["Dec 14",-0.387],["Mar 15",0.424],["Jul 15",0.032],["Nov 15",0.18],["Mar 16",-0.141],["Nov 16",0.279],["Mar 17",0.049],["Nov 17",0.131],["Mar 18",0.005],["Oct 18",0.649],["Mar 19",0.058],["Mar 20",0.906],["Jul 20",1.975],["Nov 20",-0.314],["Mar 21",-0.205],["Oct 21",0.327],["Mar 22",0.135],["Nov 22",-0.291],["Mar 23",0.574],["Nov 23",0.638],["Mar 24",0.272],["Oct 24",1.016],["Mar 25",-0.121],["Nov 25",-0.043]],"gdpImpact":{"years":["2024-25","2025-26","2026-27","2027-28","2028-29","2029-30","2030-31"],"rows":[["Consumption",0.0,0.004,-0.044,-0.117,-0.19,-0.23,-0.289],["Residential and business investment",0.0,-0.005,-0.02,-0.029,0.004,0.04,0.048],["Government consumption and investment",0.0,0.018,0.163,0.207,0.137,0.114,0.139],["Net trade and other",0.0,-0.01,-0.031,-0.043,0.024,0.068,0.099],["Total",0.0,0.008,0.068,0.018,-0.025,-0.008,-0.002]]},"rhdi":[["2022-23",25.371,25.301,25.301],["2023-24",25.77,25.51,25.51],["2024-25",26.439,26.286,26.286],["2025-26",26.665,26.398,26.415],["2026-27",26.842,26.413,26.494],["2027-28",26.856,26.515,26.542],["2028-29",26.984,26.697,26.63],["2029-30",27.199,26.864,26.708],["2030-31",null,27.022,26.809]],"headroomAvg":29.423,"headroom":[["Nov 10",32.651],["Mar 11",29.023],["Nov 11",18.139],["Mar 12",18.139],["Dec 12",32.651],["Mar 13",14.511],["Dec 13",58.046],["Mar 14",54.418],["Dec 14",83.441],["Mar 15",29.023],["Jul 15",39.907],["Nov 15",18.139],["Mar 16",17.308],["Nov 16",42.812],["Mar 17",41.526],["Nov 17",24.066],["Mar 18",24.852],["Oct 18",24.569],["Mar 19",42.487],["Mar 20",17.167],["Oct 21",23.856],["Mar 22",37.02],["Nov 22",11.367],["Mar 23",7.986],["Nov 23",12.954],["Mar 24",8.946],["Oct 24",9.929],["Mar 25",9.932],["Nov 25",21.699]],"gdpGrowth":[[2024,0.935,1.126],[2025,0.972,1.483],[2026,1.862,1.371],[2027,1.79,1.543],[2028,1.723,1.467],[2029,1.801,1.523],[2030,null,1.549]],"events":[["Mar 20","Sunak",20.751,11.726,"Current budget balanced by 2022-23 (Budget 2020 rule)","March 2020 EFO, Table 4.6"],["Oct 21","Sunak",28.65,17.521,"Debt falling in 2024-25 (smaller of two margins; current budget margin larger)","October 2021 EFO, Table 4.3"],["Mar 22","Sunak",34.876,27.839,"Debt falling in 2024-25 (smaller of two margins)","March 2022 EFO, Table 4.1"],["Nov 22","Hunt",-28.88,9.191,"Debt falling in 2027-28 (smaller of two margins)","November 2022 EFO, Table 7"],["Mar 23","Hunt",14.452,6.493,"Debt falling in fifth year","March 2023 EFO, Table 5.1"],["Nov 23","Hunt",30.95,12.954,"Debt falling in fifth year","November 2023 EFO, Table 5.1"],["Mar 24","Hunt",12.183,8.946,"Debt falling in fifth year","March 2024 EFO, Table 5.1"],["Oct 24","Reeves",22.74,9.929,"Current budget in surplus by 2029-30 (smaller of two margins)","October 2024 EFO, Table 7.1"],["Mar 25","Reeves",-4.062,9.932,"Current budget in surplus by 2029-30 (smaller of two margins)","March 2025 EFO, Table 7.1"],["Nov 25","Reeves",4.185,21.699,"Current budget in surplus by 2029-30 (smaller of two margins)","November 2025 EFO, Table 7.1"]],"growth":[["Mar 2017",2021,1.367,1.198,87.7],["Nov 2017",2022,1.045,1.059,101.4],["Mar 2018",2022,0.94,0.918,97.7],["Oct 2018",2023,1.079,1.103,102.3],["Mar 2019",2023,1.107,1.293,116.7],["Mar 2020",2024,1.082,1.079,99.8],["Nov 2020",2025,1.491,1.058,70.9],["Mar 2021",2025,1.453,1.209,83.2],["Oct 2021",2026,1.411,1.057,74.9],["Mar 2022",2026,1.469,1.28,87.1],["Nov 2022",2027,1.955,1.676,85.7],["Mar 2023",2027,1.532,1.551,101.2],["Nov 2023",2028,1.414,1.646,116.4],["Mar 2024",2028,1.173,1.318,112.4],["Oct 2024",2029,1.052,0.699,66.4],["Mar 2025",2029,1.357,0.768,56.6],["Nov 2025",2030,1.102,0.35,31.8]],"rhdiGrowth":[["2022-23",-1.988,-3.152,4.149,2.955,-0.958,-9.297],["2023-24",1.574,0.826,3.184,1.422,1.387,-5.167],["2024-25",2.597,3.042,4.051,1.329,0.8,-3.139],["2025-26",0.856,0.492,3.42,1.2,-0.458,-3.67],["2026-27",0.664,0.299,2.362,1.282,-1.078,-2.267],["2027-28",0.051,0.183,1.861,1.047,-0.715,-2.01],["2028-29",0.475,0.331,1.797,0.782,-0.187,-2.061],["2029-30",0.799,0.294,1.894,0.663,-0.236,-2.027],["2030-31",null,0.377,1.889,0.646,-0.146,-2.011]],"forecastStart":"2025-26","fcStartQ":"2025-07","fcStartCY":"2025-01","fcStartFY":"2025-04","cpiFan":[[2015,0.04,0.04,0.04,null],[2016,0.66,0.66,0.66,null],[2017,2.683,2.683,2.683,null],[2018,2.478,2.478,2.478,null],[2019,1.791,1.791,1.791,null],[2020,0.851,0.851,0.851,null],[2021,2.588,2.588,2.588,null],[2022,9.067,9.067,9.067,null],[2023,7.303,7.303,7.303,null],[2024,2.53,2.53,2.53,null],[2025,3.213,3.453,3.453,[3.326,3.37,3.401,3.428,3.453,3.478,3.504,3.534,3.576]],[2026,2.085,2.828,2.48,[0.919,1.426,1.805,2.144,2.48,2.831,3.219,3.686,4.348]],[2027,1.989,2.0,2.015,[-0.454,0.321,0.914,1.461,2.015,2.602,3.258,4.052,5.187]],[2028,2.0,1.934,2.035,[-0.714,0.193,0.864,1.457,2.036,2.637,3.298,4.088,5.203]],[2029,2.0,1.998,2.038,[-0.799,0.13,0.821,1.435,2.038,2.667,3.361,4.193,5.37]],[2030,null,2.0,2.003,[-0.843,0.062,0.748,1.374,2.003,2.667,3.406,4.298,5.57]]],"saving":[[2015,9.821,10.092],[2016,6.471,6.884],[2017,5.331,5.575],[2018,5.321,5.452],[2019,5.531,5.912],[2020,16.73,16.716],[2021,12.742,12.766],[2022,6.047,5.491],[2023,7.311,6.462],[2024,9.767,10.149],[2025,10.233,10.593],[2026,9.801,10.14],[2027,8.932,9.359],[2028,8.122,8.537],[2029,7.529,7.597],[2030,null,6.73]],"bi":[[2000,9.877,9.383],[2001,9.589,9.214],[2002,9.246,8.904],[2003,8.863,8.581],[2004,8.33,8.0],[2005,9.624,9.556],[2006,8.974,9.042],[2007,9.507,9.498],[2008,9.208,9.392],[2009,8.035,8.463],[2010,8.194,8.493],[2011,8.582,8.788],[2012,9.05,9.19],[2013,9.209,9.442],[2014,9.414,9.751],[2015,10.071,10.385],[2016,10.552,10.946],[2017,10.253,10.726],[2018,9.942,10.46],[2019,9.995,10.482],[2020,10.004,10.579],[2021,9.378,10.327],[2022,9.475,10.355],[2023,9.87,10.558],[2024,9.858,10.676],[2025,9.739,10.815],[2026,9.735,10.63],[2027,9.723,10.528],[2028,9.703,10.468],[2029,9.683,10.434],[2030,null,10.419]],"trade":[[2019,100.0,100.0,100.0,100.0],[2020,88.208,87.985,84.115,84.816],[2021,91.057,90.504,89.002,89.293],[2022,102.501,104.273,100.557,101.718],[2023,99.254,101.827,96.082,100.087],[2024,97.103,102.494,97.653,102.682],[2025,96.964,105.849,97.79,106.478],[2026,98.28,106.234,98.641,106.664],[2027,98.854,106.598,99.59,108.059],[2028,99.382,107.147,100.669,109.516],[2029,100.201,108.005,101.611,110.764],[2030,null,108.957,null,112.034]],"housing":[["2019-20",291.0,284.932],["2020-21",248.0,250.152],["2021-22",266.24,270.535],["2022-23",269.46,269.638],["2023-24",265.423,253.194],["2024-25",236.076,225.889],["2025-26",192.149,216.638],["2026-27",214.95,215.299],["2027-28",256.953,250.175],["2028-29",292.551,282.577],["2029-30",305.236,297.37],["2030-31",null,304.878]],"gdpNominal":{"year":"2025-26","value":3094.2,"source":"OBR EFO November 2025, Economy detailed table 1.4"},"policySplit":{"year":"2030-31","receipts":29.7904,"spending":10.5086,"source":"OBR EFO November 2025, Policy detailed table 2.1"}};
@@ -1662,7 +1703,7 @@ function renderAttain(){
     document.getElementById('att-chart').setAttribute('aria-labelledby','att-tab-'+it.key);
     const d0=it.hours[0][1]-it.hours[0][0];
     document.getElementById('att-title').innerHTML=`The Budget adds <span style="color:var(--orange)">${words(d0)}</span> of work to ${it.phrase} for a retail worker on the minimum wage`;
-    document.getElementById('att-sub').textContent=`Total time a full-time worker would need to work to save for ${it.phrase} (${money(it.price)}) in 2030-31, putting all pay left after tax and essentials towards it. Wages and prices in 2025 prices.`;
+    document.getElementById('att-sub').textContent=`Work needed to afford ${it.phrase} (${money(it.price)}), 2030-31, in 2025 prices`;
     document.getElementById('att-src').textContent=it.source;
     const max=Math.max(...it.hours.map(h=>Math.max(h[0],h[1])));
     [...rows.children].forEach((r,j)=>{const[pre,post]=it.hours[j],bp=pre/max*100,ap=post/max*100,d=post-pre,[tb,ta]=r.querySelectorAll('.att-track');
@@ -1679,7 +1720,7 @@ function renderRingPanel(id,key,label,color,title){
   const rk=[...ev].sort((a,b)=>a.v-b.v).findIndex(e=>e.n===latest.n)+1;
   const pos=rk===1?'the lowest':rk===2?'the second lowest':rk===3?'the third lowest':rk===ev.length?'the highest':`the ${ordinal(rk)} lowest`;
   document.getElementById(`t-${id.slice(2)}`).innerHTML=title(pos);
-  document.getElementById(`t-${id.slice(2)}-sub`).textContent=`${label} in the final forecast year, against previous Budgets and Autumn Statements since 2017, per cent`;
+  document.getElementById(`t-${id.slice(2)}-sub`).textContent=`${label}, final forecast year, per cent`;
   onView(el,()=>{const svg=vb(el,760,520,label+' for each Budget and Autumn Statement'),g=svg.append('g');
     ring(g,{cx:380,cy:290,R:225,min:0,max:2,events:ev,latest,label,color,labelSep:12})});
 }
