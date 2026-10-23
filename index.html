@@ -251,10 +251,10 @@ button{font-family:var(--font)}
 .ggs-main{text-align:center}
 .ggs-rate{position:sticky;top:12px;text-align:left;padding:6px 0 0 26px;border-left:1px solid rgba(196,213,75,.3)}
 .ggs-rate .rl{font-size:.78rem;font-weight:800;color:var(--lime);letter-spacing:.02em}
-.ggs-rate .grade{display:flex;align-items:center;gap:16px;margin:8px 0 6px}
-.ggs-rate .big{font-size:4.6rem;font-weight:800;line-height:.9;color:var(--orange)}
-.ggs-rate .scale{display:flex;gap:4px}
-.ggs-rate .scale span{width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9rem;color:var(--navy);opacity:.35}
+.ggs-rate .grade{display:flex;align-items:center;gap:20px;margin:8px 0 10px}
+.ggs-rate .big{font-size:6.4rem;font-weight:800;line-height:.9;color:var(--orange)}
+.ggs-rate .scale{display:flex;gap:6px}
+.ggs-rate .scale span{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;color:var(--navy);opacity:.35}
 .ggs-rate .scale span.on{opacity:1;outline:2px solid #fff;outline-offset:2px}
 .ggs-rate .key{font-size:.7rem;color:var(--onNavyMuted);margin:0 0 16px}
 .ggs-rate h3{margin:0 0 4px;font-size:.92rem;font-weight:800;color:#fff}
@@ -367,6 +367,45 @@ button{font-family:var(--font)}
 }
 .back-hint{display:none;font-size:.7rem;font-weight:700;color:var(--blue);background:none;border:none;padding:0 0 6px;cursor:pointer;font-family:var(--font)}
 @media (prefers-reduced-motion:reduce){.swipe-hint{animation:none!important}}
+
+/* ===== Budget 2025: what work buys (attainability) ===== */
+.att-wrap{min-width:0}
+#b-ringg svg,#b-ringl svg{max-width:620px;margin:0 auto;display:block}
+.att-intro{margin:0 0 12px;font-size:1.45rem;font-weight:800;color:#fff;letter-spacing:-.01em}
+.att-pair{align-items:start}
+.att-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.att-tab{appearance:none;border:1.5px solid rgba(195,204,216,.35);background:transparent;color:var(--onNavy);font:inherit;font-size:.84rem;font-weight:600;
+  border-radius:999px;padding:7px 13px;cursor:pointer;display:flex;gap:7px;align-items:baseline;transition:background .15s,border-color .15s}
+.att-tab small{font-weight:500;color:var(--onNavyMuted);font-size:.75rem}
+.att-tab:hover{border-color:#C3CCD8}
+.att-tab[aria-selected="true"]{background:#C3CCD8;border-color:#C3CCD8;color:var(--navy)}
+.att-tab[aria-selected="true"] small{color:#33455f}
+.att-tab:focus-visible{outline:3px solid var(--pale);outline-offset:2px}
+.att-key i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.att-key i.b{border:2px solid var(--lime)} .att-key i.a{background:var(--lime)}
+.att-head,.att-row{display:grid;grid-template-columns:minmax(120px,170px) minmax(0,1fr) 120px;gap:0 20px}
+.att-head{font-weight:700;font-size:.84rem;color:var(--onNavy);margin:10px 0 4px}
+.att-head .e{grid-column:3}
+.att-row{grid-template-areas:"who bars eff";align-items:center;padding:10px 0;border-top:1px solid var(--navyLine)}
+.att-who{grid-area:who;text-align:left}
+.att-who b{display:block;font-size:.98rem;font-weight:800;color:#fff}
+.att-who span{display:block;color:var(--onNavyMuted);font-size:.78rem;margin-top:1px}
+.att-bars{grid-area:bars;display:grid;gap:4px}
+.att-track{position:relative;margin-right:86px;height:19px}
+.att-bar{position:absolute;left:0;top:0;bottom:0;border-radius:2px;width:0;transition:width .55s cubic-bezier(.2,.7,.2,1)}
+.att-bar.b{border:2px solid var(--lime);background:transparent}
+.att-bar.a{background:var(--lime)}
+.att-val{position:absolute;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:.8rem;padding-left:8px;transition:left .55s cubic-bezier(.2,.7,.2,1)}
+.att-val.b{color:var(--onNavyMuted)} .att-val.a{color:#fff;font-weight:800}
+.att-eff{grid-area:eff;color:var(--orange);font-weight:800;font-size:1.12rem;white-space:nowrap}
+.att-eff.zero{color:var(--onNavyMuted);font-weight:700;font-size:.95rem}
+@media (max-width:680px){
+  .att-head{display:none}
+  .att-row{grid-template-columns:1fr auto;grid-template-areas:"who eff" "bars bars";gap:6px 12px}
+  .att-who{text-align:left}
+  .att-track{margin-right:72px}
+}
+@media (prefers-reduced-motion: reduce){.att-bar,.att-val{transition:none}}
 </style>
 </head>
 <body>
@@ -620,6 +659,15 @@ button{font-family:var(--font)}
       <section class="b-part hidden" id="sec-growth" role="tabpanel">
       <div class="row">
         <article class="panel ind bpanel">
+          <h3 id="t-ringg"></h3>
+          <div class="sub" id="t-ringg-sub"></div>
+          <div class="chart" id="b-ringg"></div>
+          <p class="src">Notes: Growth in real GDP per person in the final year of each forecast. Grey marks are previous Budgets and Autumn Statements since March 2017; hover over a mark to see it. Spring Statements are excluded.<br>Source: GGF calculations using OBR economy tables (Table 1.5) for each Budget and Autumn Statement, March 2017 to November 2025.</p>
+        </article>
+        <aside class="poll" id="bp-ringg"></aside>
+      </div>
+      <div class="row">
+        <article class="panel ind bpanel">
           <h3>The Budget gives <span style="color:var(--lime)">GDP</span> a small, short-lived lift</h3>
           <div class="sub">Policy impacts on the level of real GDP and its components, per cent</div>
           <div class="bkey" id="k-gdp"></div>
@@ -669,6 +717,15 @@ button{font-family:var(--font)}
       <section class="b-part hidden" id="sec-living" role="tabpanel">
       <div class="row">
         <article class="panel ind bpanel">
+          <h3 id="t-ringl"></h3>
+          <div class="sub" id="t-ringl-sub"></div>
+          <div class="chart" id="b-ringl"></div>
+          <p class="src">Notes: Growth in real household disposable income per person in the final year of each forecast. Grey marks are previous Budgets and Autumn Statements since March 2017; hover over a mark to see it. Spring Statements are excluded.<br>Source: GGF calculations using OBR economy tables (Table 1.5) for each Budget and Autumn Statement, March 2017 to November 2025.</p>
+        </article>
+        <aside class="poll" id="bp-ringl"></aside>
+      </div>
+      <div class="row">
+        <article class="panel ind bpanel">
           <h3>Rising <span style="color:var(--orange)">prices</span> continue to hold back growth in <span style="color:var(--lime)">income</span> per person</h3>
           <div class="sub">Real household disposable income per person, annual growth and contributions, per cent</div>
           <div class="bkey" id="k-ls"></div>
@@ -676,6 +733,23 @@ button{font-family:var(--font)}
           <p class="src">Source: OBR EFO November 2025, Chart 2.16 (right-hand panel).</p>
         </article>
         <aside class="poll" id="bp-ls"></aside>
+      </div>
+      <div class="row att-pair">
+        <div class="att-wrap">
+          <h3 class="att-intro">How long would you need to work to afford:</h3>
+          <div class="att-tabs" role="tablist" aria-label="Choose an example" id="att-tabs"></div>
+          <article class="panel ind bpanel" id="att-panel">
+            <h3 id="att-title"></h3>
+            <div class="sub" id="att-sub"></div>
+            <div class="bkey att-key" aria-hidden="true"><span><i class="b"></i>Before Budget measures</span><span><i class="a"></i>After Budget measures</span></div>
+            <div class="chart" id="att-chart" role="tabpanel" aria-live="polite">
+              <div class="att-head" aria-hidden="true"><span></span><span></span><span class="e">Budget effect</span></div>
+              <div id="att-rows"></div>
+            </div>
+            <p class="src">Notes: Replicates the NEF and Best for Britain Attainability Index for 2025 and rolls it forward to 2030-31 with OBR forecasts for earnings and prices, before and after the Budget’s measures. A full-time single worker renting a one-bedroom home in the South-east; hours use pay left after tax and essentials, in 2025 prices. The Budget’s main tax change, a longer freeze on income tax and National Insurance thresholds, starts in April 2028, so effects are shown for 2030-31, the end of the OBR forecast. Times are totals, not per year. Weeks are 37.5-hour working weeks and years are 52 of them. <span id="att-src"></span><br>GGF calculations using the NEF and Best for Britain Attainability Index, ONS ASHE, the Living Wage Foundation and the OBR, with prices from the Dark Horse Gig Report, TravelSupermarket, Bridebook, Auto Trader and Halifax.</p>
+          </article>
+        </div>
+        <aside class="poll" id="bp-att"></aside>
       </div>
       <div class="row two">
         <article class="panel ind bpanel">
@@ -886,7 +960,7 @@ function poll(id,p){
     sv.append('text').attr('x',x(a1.d)+5).attr('y',y(a1.v)+3).attr('font-size',10).attr('font-weight',800).attr('fill',C.orange).text(Math.round(a1.v)+'%');
     sv.append('text').attr('x',m.l).attr('y',H-2).attr('font-size',8.5).attr('fill','#5d6b7e').text(d3.timeFormat('%b %Y')(a0.d));
     sv.append('text').attr('x',W-m.r).attr('y',H-2).attr('text-anchor','end').attr('font-size',8.5).attr('fill','#5d6b7e').text(d3.timeFormat('%b %Y')(a1.d));}
-  if(multi){const go=k=>{el._i=(k+p.items.length)%p.items.length;poll(id,p);addDownloads();if(typeof fitRow==='function'&&isMobile()){const r=el.closest('.row');if(r)fitRow(r)}};
+  if(multi){const go=k=>{el._i=(k+p.items.length)%p.items.length;poll(id,p);addDownloads();if(id==='poll-job'&&typeof matchHeight==='function')matchHeight('ch-unemp',el);if(typeof fitRow==='function'&&isMobile()){const r=el.closest('.row');if(r)fitRow(r)}};
     el.querySelectorAll('.sw button').forEach(b=>b.onclick=()=>go(el._i+ +b.dataset.d))}
 }
 const HARD=[C.orange,'#f4a98f','#b8462a'],NEU='#c3cad4',EASY=['#7fd0c0',C.green],DK='#dde1e7';
@@ -916,6 +990,7 @@ const POLLS={
   items:[{"l": "Healthcare", "v": [31, 37, 21, 4, 3, 4]}, {"l": "Education", "v": [13, 32, 39, 6, 3, 7]}, {"l": "Housing", "v": [18, 30, 32, 9, 5, 6]}, {"l": "Police, courts and emergency services", "v": [17, 38, 31, 6, 2, 6]}, {"l": "Defence and national security", "v": [18, 28, 30, 12, 5, 7]}, {"l": "Transport, business and jobs", "v": [8, 29, 45, 8, 2, 8]}, {"l": "Benefits and social care", "v": [10, 20, 28, 22, 14, 6]}, {"l": "Environment and waste services", "v": [10, 26, 41, 10, 6, 7]}, {"l": "Sport, culture and leisure", "v": [4, 11, 44, 23, 11, 7]}]},
  gdp:{q:'How confident are you that the government can handle this?',full:'How confident, if at all, are you that the UK Government can successfully handle each of the following issues?',n:'GGF poll, 13 to 16 Mar 2026, 2,000 adults',head:[0,1],bigl:'have little or no confidence',
   cats:[{l:'Not at all',c:HARD[0]},{l:'Not very',c:HARD[1]},{l:'Fairly',c:EASY[0]},{l:'Very',c:EASY[1]},{l:"Don't know",c:DK}],items:[{"l": "Job creation and economic growth", "v": [32, 39, 19, 4, 6]}, {"l": "The cost of living", "v": [43, 36, 13, 4, 4]}, {"l": "Housing affordability", "v": [35, 41, 14, 3, 7]}, {"l": "NHS waiting lists", "v": [36, 36, 19, 4, 5]}, {"l": "Crime and anti-social behaviour", "v": [32, 40, 19, 4, 5]}, {"l": "Immigration", "v": [50, 27, 14, 4, 5]}, {"l": "Climate change", "v": [32, 36, 19, 4, 9]}, {"l": "Air pollution", "v": [28, 35, 22, 4, 11]}]},
+ time:{q:'Do you want to spend more time with family and friends, and do you feel able to?',full:'Here is a list of things that some people want to do in their lives. For each one, please tell us whether this currently applies to you. Spend more time with family and friends.',n:'MRP poll, 6 to 10 Sep 2026, 10,074 adults',cats:LIFE1_C,head:[0],bigl:"want more time with family and friends, but don't feel able to",items:[{v:[33, 36, 14, 12, 5]}]},
  ls:{q:'How do you expect your finances to change over the next five years?',full:'Thinking about your own personal financial situation - how do you expect it to change over the next five years?',n:'MRP poll, 6 to 10 Sep 2026, 10,046 adults',head:[0,1],bigl:'expect them to get worse',
   cats:[{l:'A lot worse',c:HARD[0]},{l:'A little worse',c:HARD[1]},{l:'About the same',c:NEU},{l:'A little better',c:EASY[0]},{l:'A lot better',c:EASY[1]},{l:"Don't know",c:DK}],items:[{v:[13, 19, 33, 22, 7, 6]}]}
 };
@@ -970,7 +1045,7 @@ function renderGrowth(){
 const RENDER={work:renderWork,wages:renderWages,growth:renderGrowth};
 let curTab='work';
 function showTab(t){curTab=t;document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===t));
-  document.querySelectorAll('.tabpanel').forEach(p=>p.classList.toggle('hidden',p.id!=='tab-'+t));RENDER[t]();addDownloads();fitSoon()}
+  document.querySelectorAll('.tabpanel').forEach(p=>p.classList.toggle('hidden',p.id!=='tab-'+t));RENDER[t]();addDownloads();fitSoon();if(t==='work')setTimeout(()=>matchHeight('ch-unemp',document.getElementById('poll-job')),80)}
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
 
 /* ================= regional (local authority districts only) ================= */
@@ -1533,6 +1608,7 @@ function renderLivingB(){
   const sv=OBR.saving.filter(q=>q[0]>=2015),pt=k=>sv.filter(q=>q[k]!=null).map(q=>({d:new Date(q[0],0,1),v:q[k]}));
   lineChart(document.getElementById('b-save'),{height:250,series:[{data:pt(1),c:GREY,dash:true,w:1.8,name:'March 2025'},{data:pt(2),c:C.lime,w:2.8,name:'November 2025'}],bands:[{fc:OBR.fcStartCY}],yf:d=>d+'%',tf:v=>f1(v)+'%',df:'%Y',r:24,aria:'Household saving rate'});
   const s26=OBR.saving.find(q=>q[0]===2026),sl=OBR.saving[OBR.saving.length-1];
+  requestAnimationFrame(()=>matchHeight('b-save',document.getElementById('b-rlev').closest('.ind')));
   document.getElementById('t-save').innerHTML=`Households are expected to <span style="color:var(--lime)">save less</span>, from ${f1(s26[2])}% in 2026 to ${f1(sl[2])}% in ${sl[0]}`;
 }
 function renderGrowthB(){
@@ -1557,6 +1633,55 @@ function renderGrowthB(){
   const fc0=OBR.forecastStart||'2025-26',low=h.filter(q=>q[0]>=fc0).reduce((a,b)=>b[2]<a[2]?b:a),last=h[h.length-1];
   document.getElementById('t-house').innerHTML=`<span style="color:var(--lime)">Housing supply</span> falls to ${fc(Math.round(low[2])*1000)} homes in ${low[0]}, then recovers to ${fc(Math.round(last[2])*1000)}`;
 }
+
+/* ---- What work buys: NEF/Best for Britain Attainability Index rolled forward to 2030-31 (GGF calculations) ---- */
+const ATT={"workers": [{"name": "Retail worker", "qual": "minimum wage", "wage": 12.49}, {"name": "Call centre worker", "qual": "living wage", "wage": 12.89}, {"name": "Teaching assistant", "qual": "", "wage": 14.72}, {"name": "HGV driver", "qual": "", "wage": 16.65}, {"name": "Plumber", "qual": "", "wage": 18.63}, {"name": "Data analyst", "qual": "", "wage": 19.73}, {"name": "Solicitor (qualified)", "qual": "", "wage": 30.66}, {"name": "Banker", "qual": "", "wage": 37.3}], "items": [{"key": "night-out", "label": "Night out", "full": "Night out", "phrase": "a night out", "price": 58, "source": "Price from the NEF Attainability Index.", "hours": [[28.6, 29.76], [25.06, 25.94], [15.99, 16.33], [11.55, 11.72], [9.02, 9.11], [7.67, 7.74], [3.96, 4.03], [3.2, 3.25]]}, {"key": "evening-out", "label": "Evening out for two", "full": "Evening out for two", "phrase": "an evening out for two", "price": 75, "source": "Price from the NEF Attainability Index (evening out for parents).", "hours": [[36.98, 38.48], [32.4, 33.54], [20.68, 21.12], [14.94, 15.16], [11.66, 11.78], [9.92, 10.01], [5.12, 5.21], [4.14, 4.2]]}, {"key": "concert", "label": "Concert ticket", "full": "Concert ticket", "phrase": "a concert ticket", "price": 84.35, "source": "Price from the Dark Horse Gig Report 2025.", "hours": [[41.59, 43.28], [36.44, 37.72], [23.26, 23.75], [16.8, 17.05], [13.11, 13.25], [11.16, 11.26], [5.76, 5.86], [4.66, 4.72]]}, {"key": "theme-park", "label": "Theme park, family of four", "full": "Family theme park ticket (2 adults, 2 children)", "phrase": "a family day at a theme park", "price": 110, "source": "Price from the NEF Attainability Index.", "hours": [[54.24, 56.44], [47.52, 49.19], [30.33, 30.98], [21.91, 22.23], [17.1, 17.28], [14.56, 14.69], [7.51, 7.64], [6.07, 6.16]]}, {"key": "sofa", "label": "New sofa", "full": "New sofa", "phrase": "a new sofa", "price": 449, "source": "Price from the NEF Attainability Index (basic sofa).", "hours": [[221.39, 230.37], [193.97, 200.79], [123.8, 126.44], [89.44, 90.76], [69.8, 70.52], [59.41, 59.96], [30.66, 31.2], [24.78, 25.14]]}, {"key": "holiday", "label": "All-inclusive holiday, per person", "full": "All-inclusive holiday, per person (7 nights)", "phrase": "a week’s all-inclusive holiday for one person", "price": 914, "source": "Price from TravelSupermarket, Spain, August 2025, per person.", "hours": [[450.66, 468.94], [394.85, 408.74], [252.02, 257.38], [182.07, 184.75], [142.1, 143.56], [120.94, 122.05], [62.42, 63.51], [50.45, 51.18]]}, {"key": "car", "label": "Second-hand car", "full": "Second-hand car", "phrase": "a second-hand car", "price": 16984, "source": "Price from the Auto Trader Retail Price Index, average used car price, April 2025.", "hours": [[8374.24, 8713.92], [7337.09, 7595.25], [4683.06, 4782.69], [3383.21, 3433.04], [2640.45, 2667.62], [2247.39, 2267.9], [1159.94, 1180.21], [937.52, 951.1]]}, {"key": "wedding", "label": "Wedding", "full": "Wedding", "phrase": "a wedding", "price": 20822, "source": "Price from Bridebook 2025.", "hours": [[10266.63, 10683.07], [8995.1, 9311.6], [5741.32, 5863.48], [4147.74, 4208.82], [3237.13, 3270.44], [2755.25, 2780.39], [1422.06, 1446.92], [1149.37, 1166.03]]}, {"key": "deposit", "label": "House deposit", "full": "House deposit", "phrase": "a first home deposit", "price": 61090, "source": "Price from Halifax, average UK first-time buyer deposit, 2024.", "hours": [[30121.44, 31343.24], [26390.88, 27319.45], [16844.55, 17202.94], [12169.13, 12348.33], [9497.46, 9595.2], [8083.69, 8157.44], [4172.21, 4245.13], [3372.17, 3421.04]]}]};
+function alignAttPoll(){const panel=document.getElementById('att-panel'),wrap=panel&&panel.closest('.att-wrap'),pl=document.getElementById('bp-att');if(!panel||!pl)return;
+  pl.style.marginTop=window.matchMedia('(max-width:820px)').matches?'':Math.max(0,panel.getBoundingClientRect().top-wrap.getBoundingClientRect().top)+'px'}
+function renderAttain(){
+  const tabs=document.getElementById('att-tabs'),rows=document.getElementById('att-rows');if(!tabs||!rows)return;
+  const W=37.5,money=v=>'£'+v.toLocaleString('en-GB',{maximumFractionDigits:v<100?2:0,minimumFractionDigits:v<100&&v%1?2:0});
+  const fmtTime=h=>{const w=h/W;if(h<75)return Math.round(h)+' hrs';if(w<104)return (w<10?w.toFixed(1):Math.round(w))+' wks';return (w/52).toFixed(1)+' yrs'};
+  const fmtEff=d=>Math.abs(d)<0.05?'No change':(d<75?'+'+d.toFixed(1)+' hrs':'+'+(d/W).toFixed(1)+' wks');
+  const words=d=>{if(d<75)return (d<10?d.toFixed(1):Math.round(d))+(Math.abs(d-1)<0.05?' hour':' hours');const w=d/W;return (w<10?w.toFixed(1):Math.round(w))+' weeks'};
+  tabs.innerHTML='';rows.innerHTML='';
+  ATT.items.forEach((it,i)=>{const b=document.createElement('button');b.className='att-tab';b.type='button';b.setAttribute('role','tab');b.id='att-tab-'+it.key;
+    b.setAttribute('aria-controls','att-chart');b.innerHTML=`${it.label}<small>${money(it.price)}</small>`;b.addEventListener('click',()=>sel(i));
+    b.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();const n=(i+(e.key==='ArrowRight'?1:-1)+ATT.items.length)%ATT.items.length;sel(n);tabs.children[n].focus()}});
+    tabs.appendChild(b)});
+  ATT.workers.forEach(w=>{const r=document.createElement('div');r.className='att-row';const q=w.qual?w.qual[0].toUpperCase()+w.qual.slice(1):'';
+    r.innerHTML=`<div class="att-who"><b>${w.name}</b>${q?`<span>${q}</span>`:''}</div><div class="att-bars"><div class="att-track"><div class="att-bar b"></div><div class="att-val b"></div></div><div class="att-track"><div class="att-bar a"></div><div class="att-val a"></div></div></div><div class="att-eff"></div>`;
+    rows.appendChild(r)});
+  function sel(i){const it=ATT.items[i];
+    [...tabs.children].forEach((b,k)=>{b.setAttribute('aria-selected',k===i?'true':'false');b.tabIndex=k===i?0:-1});
+    document.getElementById('att-chart').setAttribute('aria-labelledby','att-tab-'+it.key);
+    const d0=it.hours[0][1]-it.hours[0][0];
+    document.getElementById('att-title').innerHTML=`The Budget adds <span style="color:var(--orange)">${words(d0)}</span> of work to ${it.phrase} for a retail worker on the minimum wage`;
+    document.getElementById('att-sub').textContent=`Total time a full-time worker would need to work to save for ${it.phrase} (${money(it.price)}) in 2030-31, putting all pay left after tax and essentials towards it. Wages and prices in 2025 prices.`;
+    document.getElementById('att-src').textContent=it.source;
+    const max=Math.max(...it.hours.map(h=>Math.max(h[0],h[1])));
+    [...rows.children].forEach((r,j)=>{const[pre,post]=it.hours[j],bp=pre/max*100,ap=post/max*100,d=post-pre,[tb,ta]=r.querySelectorAll('.att-track');
+      tb.querySelector('.att-bar').style.width=bp+'%';tb.querySelector('.att-val').style.left=bp+'%';tb.querySelector('.att-val').textContent=fmtTime(pre);
+      ta.querySelector('.att-bar').style.width=ap+'%';ta.querySelector('.att-val').style.left=ap+'%';ta.querySelector('.att-val').textContent=fmtTime(post);
+      const e=r.querySelector('.att-eff');e.textContent=fmtEff(d);e.classList.toggle('zero',Math.abs(d)<0.05);
+      r.setAttribute('aria-label',`${ATT.workers[j].name}: ${fmtTime(pre)} before, ${fmtTime(post)} after Budget measures, ${fmtEff(d)}`)})}
+  sel(Math.max(0,ATT.items.findIndex(x=>x.key==='holiday')));
+}
+/* ---- Growth and income per person: this Budget against earlier Budgets and Autumn Statements ---- */
+function renderRingPanel(id,key,label,color,title){
+  const el=document.getElementById(id);if(!el)return;
+  const ev=OBR.ggsBudget.after.map(a=>({n:a.n.replace(/^(\w{3}) \d{2}(\d{2})$/,'$1 $2'),v:a[key]})),latest=ev[ev.length-1];
+  const rk=[...ev].sort((a,b)=>a.v-b.v).findIndex(e=>e.n===latest.n)+1;
+  const pos=rk===1?'the lowest':rk===2?'the second lowest':rk===3?'the third lowest':rk===ev.length?'the highest':`the ${ordinal(rk)} lowest`;
+  document.getElementById(`t-${id.slice(2)}`).innerHTML=title(pos);
+  document.getElementById(`t-${id.slice(2)}-sub`).textContent=`${label} in the final forecast year, against previous Budgets and Autumn Statements since 2017, per cent`;
+  onView(el,()=>{const svg=vb(el,760,520,label+' for each Budget and Autumn Statement'),g=svg.append('g');
+    ring(g,{cx:380,cy:290,R:225,min:0,max:2,events:ev,latest,label,color,labelSep:12})});
+}
+function renderBudgetRings(){
+  renderRingPanel('b-ringg','gdp','GDP growth per person',C.orange,pos=>`Forecast <span style="color:var(--orange)">growth per person</span> is ${pos} of any Budget or Autumn Statement since 2017`);
+  renderRingPanel('b-ringl','rhdi','Income growth per person',C.green,pos=>`Forecast <span style="color:var(--green)">income growth per person</span> is ${pos} of any Budget or Autumn Statement since 2017`);
+}
 function renderBudget(){
   renderGGS();
   const ev=OBR.events,L=ev[ev.length-1];
@@ -1573,6 +1698,12 @@ function renderBudget(){
   gdpImpact(document.getElementById('b-gdp'));
   renderLS();
   renderLivingB();
+  renderAttain();
+  renderBudgetRings();
+  poll('bp-ringg',POLLS.g1);
+  poll('bp-ringl',POLLS.sol);
+  poll('bp-att',POLLS.time);
+  alignAttPoll();
   renderGrowthB();
   poll('bp-house',POLLS.g3);
   poll('bp-cpi',POLLS.wageup);
@@ -1591,8 +1722,8 @@ function showBudgetSec(id,scroll){
   document.querySelectorAll('.b-tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.sec===id));
   document.querySelectorAll('.b-part').forEach(p=>p.classList.toggle('hidden',p.id!=='sec-'+id));
   if(scroll)document.querySelector('.b-tabs').scrollIntoView({behavior:'smooth',block:'start'});
-  if(id==='living')requestAnimationFrame(renderLivingB);
-  if(id==='growth')requestAnimationFrame(renderGrowthB);
+  if(id==='living')requestAnimationFrame(()=>{renderLivingB();renderBudgetRings();if(typeof alignAttPoll==='function')alignAttPoll()});
+  if(id==='growth')requestAnimationFrame(()=>{renderGrowthB();renderBudgetRings()});
   setTimeout(fitRows,120);
 }
 document.querySelectorAll('.b-tabs button').forEach(b=>b.onclick=()=>showBudgetSec(b.dataset.sec,false));
@@ -1639,7 +1770,7 @@ async function loadONS(){try{const r=await fetch('data/ons.json',{cache:'no-stor
 /* Mobile: charts that have a poll become a swipeable pair, with a hint on the chart */
 function setupSwipe(){
   document.querySelectorAll('.row').forEach(r=>{
-    const poll=r.querySelector(':scope > .poll'),chart=r.querySelector(':scope > .ind');
+    const poll=r.querySelector(':scope > .poll'),chart=r.querySelector(':scope > .ind')||r.querySelector(':scope > .att-wrap > .ind');
     if(!poll||!chart)return;
     r.classList.add('has-poll');
     if(!chart.querySelector('.swipe-hint')){
@@ -1679,6 +1810,18 @@ function fitRow(r){
 }
 function fitRows(){if(!isMobile())return;document.querySelectorAll('.row.has-poll').forEach(fitRow)}
 let fitT;function fitSoon(){clearTimeout(fitT);fitT=setTimeout(fitRows,60)}
+
+/* Desktop: make a line chart's panel as tall as a neighbouring box by redrawing the chart taller */
+function matchHeight(chartId,targetEl){
+  const el=document.getElementById(chartId);if(!el||!el._cfg||!targetEl||window.matchMedia('(max-width:820px)').matches)return;
+  const panel=el.closest('.ind'),row=panel.parentElement;if(!panel.offsetParent)return;
+  if(el._baseH==null)el._baseH=el._cfg.height||230;
+  lineChart(el,{...el._cfg,height:el._baseH});
+  const old=row.style.alignItems;row.style.alignItems='start';
+  const gap=targetEl.getBoundingClientRect().height-panel.getBoundingClientRect().height;
+  if(gap>2)lineChart(el,{...el._cfg,height:el._baseH+gap});
+  row.style.alignItems=old;
+}
 /* ================= boot + resize ================= */
 setupSwipe();showTab('work');addDownloads();route();loadONS();
 let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{RENDER[curTab]();mini&&mini.draw();if(big&&!ex.classList.contains('hidden')){big.draw();refreshBig()}if(!BUD.classList.contains('hidden'))renderBudget();fitSoon()},180)});
