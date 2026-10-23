@@ -411,6 +411,17 @@ button{font-family:var(--font)}
   .att-track{margin-right:58px;height:16px}
 }
 @media (prefers-reduced-motion: reduce){.att-bar,.att-val{transition:none}}
+
+.ggs-rate .big small{font-size:.32em;font-weight:700;color:var(--onNavyMuted);margin-left:4px;letter-spacing:0}
+.ggs-rate .tenbar{position:relative;display:grid;grid-template-columns:repeat(10,1fr);gap:3px;flex:1 1 120px;min-width:0;max-width:220px;padding-bottom:16px;margin-right:4px}
+.ggs-rate .grade{flex-wrap:wrap;row-gap:6px}
+.ggs-rate .tenbar i{display:block;height:22px;border-radius:5px}
+.ggs-rate .tenbar .ends{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;font-size:.68rem;color:var(--onNavyMuted)}
+
+/* Wide screens: a poll card starts level with the top of its chart, follows the page as you scroll and stops at the chart's bottom */
+@media (min-width:821px){
+  .row>.poll{position:sticky;top:16px;align-self:start}
+}
 </style>
 </head>
 <body>
@@ -1245,29 +1256,48 @@ async function exportPanel(p,btn){
   p.classList.add('exporting');btn.disabled=true;hideTT();
   // boxes without their own background (the Good Growth Score) get the page colour and the same rounded corners
   if(clear){setStyle(p,'background',solidBg(p));setStyle(p,'borderRadius','16px');setStyle(p,'padding','22px 26px 18px')}
-  /* ===== Download layout rules (every chart, poll card and the Good Growth Score) =====
-     A. Fixed brand marks, sized from the box's inner width W so every image looks the same at any size:
-        - GGF logo mark, top right:      height = clamp(30px, 5.2% of W, 44px)
-        - 3-line wordmark, bottom right: height = clamp(40px, 6.6% of W, 58px)
-        Both sit exactly one text-margin (the box's left padding) in from the right edge.
-     B. The mark's top lines up with the top of the narrative title; the wordmark's bottom lines up with
-        the bottom of the last notes/source line.
-     C. Text makes room, never the marks: the title (and the subtitle if it reaches the mark) wraps to a
-        16px gap from the mark; the notes wrap to a 16px gap from the wordmark and are given at least the
-        wordmark's height so nothing sits under it.
-     D. Charts are trimmed to their drawn content: empty space above or below each chart's drawing is cut,
-        and no chart box keeps a minimum height, so titles, legends and charts sit at their normal spacing. */
-  const cs=getComputedStyle(p),edge=parseFloat(cs.paddingLeft)||16,GAP=16,W=p.clientWidth-2*edge;
+  /* ===== Download layout template (every chart, poll card and the Good Growth Score) =====
+     The image is split into fixed zones, following the GGF chart template:
+
+       ┌──────────────────────────────┬────────┐
+       │ NARRATIVE TITLE               │        │
+       ├──────────────────────────────┤  LOGO  │   header zone
+       │ TECHNICAL TITLE               │        │
+       ├──────────────────────────────┴────────┤
+       │                                        │
+       │ CHART (with any legend, key or tabs)   │   chart zone: full width
+       │                                        │
+       ├──────────────────────────────┬────────┤
+       │ NOTES                         │        │
+       ├──────────────────────────────┤WORDMARK│   footer zone
+       │ SOURCE                        │        │
+       └──────────────────────────────┴────────┘
+
+     1. Gutter: the outer margin is 3% of the image width (18px to 32px). Gaps between zones are 1.5% (10px to 20px).
+     2. Brand column: the logo and the wordmark each sit in a right-hand column of fixed width, 15% of the inner
+        width for square images (height at least 85% of width) and 12% for wide ones, never narrower than 72px.
+     3. Logo: fills the brand column's width, top-aligned with the narrative title.
+        Wordmark: fills the brand column's width, bottom-aligned with the last source line.
+     4. Keep-out: the titles and the notes/source never enter the brand column; they wrap at its edge minus the gap.
+        Only the chart zone runs full width, and it starts below the lower of the titles and the logo.
+     5. Chart drawings are trimmed to their content (no empty bands above or below), and chart boxes lose any
+        minimum height, so zones sit at their normal spacing.
+     6. Short notes are pushed down so the source line still finishes level with the bottom of the wordmark. */
   const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-  // D. trim each chart drawing to its content (vertical only, so axes and left edges stay put)
+  const Wb=p.getBoundingClientRect().width,Hb=p.getBoundingClientRect().height;
+  const gut=Math.round(clamp(Wb*.03,18,32)),zg=Math.round(clamp(Wb*.015,10,20));
+  setStyle(p,'paddingLeft',gut+'px');setStyle(p,'paddingRight',gut+'px');setStyle(p,'paddingTop',gut+'px');setStyle(p,'paddingBottom',gut+'px');
+  const W=p.clientWidth-2*gut,square=Hb>=Wb*.85;
+  const col=Math.round(Math.max(72,W*(square?.15:.12))),GAP=zg;
+  // 5. trim each chart drawing to its content (vertical only)
   p.querySelectorAll('svg').forEach(svg=>{
-    if(svg.closest('.exmark')||svg.closest('.head'))return;   // leave poll squares alone
+    if(svg.closest('.exmark')||svg.closest('.head'))return;
     let bb;try{bb=svg.getBBox()}catch(e){return}
     if(!bb||!bb.height)return;
     const vb=svg.viewBox&&svg.viewBox.baseVal&&svg.viewBox.baseVal.width?svg.viewBox.baseVal:null;
     const vw=vb?vb.width:svg.width.baseVal.value,vh=vb?vb.height:svg.height.baseVal.value,vx=vb?vb.x:0,vy=vb?vb.y:0;
     const y0=Math.max(vy,bb.y-6),y1=Math.min(vy+vh,bb.y+bb.height+6);
-    if(y1-y0>vh-8)return;                                       // nothing worth trimming
+    if(y1-y0>vh-8)return;
     saved.push([svg,'__vb',svg.getAttribute('viewBox')],[svg,'__h',svg.getAttribute('height')],[svg,'__w',svg.getAttribute('width')]);
     svg.setAttribute('viewBox',`${vx} ${y0} ${vw} ${y1-y0}`);
     if(!vb){svg.setAttribute('width',vw);svg.setAttribute('height',y1-y0);setStyle(svg,'width','100%');setStyle(svg,'height','auto')}
@@ -1277,28 +1307,32 @@ async function exportPanel(p,btn){
   const top=light?p.querySelector('.by'):p.querySelector('h3,h4,h2');
   const subt=light?p.querySelector('.q'):p.querySelector('.sub,.lede');
   const notes=[...p.querySelectorAll('.src,.flag')].filter(n=>n.offsetParent).pop();
-  const addMark=async(src,h,css)=>{const d=document.createElement('div');d.className='exmark';const im=new Image();im.src=src;
-    im.style.cssText=`height:${h}px;width:auto;display:block;${css||''}`;d.appendChild(im);
-    d.style.cssText=`position:absolute;z-index:5;line-height:0;right:${edge}px;`;p.appendChild(d);
+  const tint=light?'filter:brightness(0) saturate(100%) invert(12%) sepia(30%) saturate(2000%) hue-rotate(190deg)':'';
+  const addMark=async(src,w)=>{const d=document.createElement('div');d.className='exmark';const im=new Image();im.src=src;
+    im.style.cssText=`width:${w}px;height:auto;display:block;${tint}`;d.appendChild(im);
+    d.style.cssText=`position:absolute;z-index:5;line-height:0;right:${gut}px;`;p.appendChild(d);
     if(im.decode)await im.decode().catch(()=>{});return d};
-  // A/B/C. bottom wordmark
-  const wmH=Math.round(clamp(W*.066,40,58)),wmW=wmH*900/445;
-  const wm=await addMark(LOGO_SRC,wmH,light?'filter:brightness(0) saturate(100%) invert(12%) sepia(30%) saturate(2000%) hue-rotate(190deg)':'');
-  if(notes){setStyle(notes,'paddingRight',(wmW+GAP)+'px');
-    // short notes are pushed down so their last line ends level with the bottom of the wordmark
+  // 3/4. header: logo in the brand column, titles wrap before it
+  if(top){
+    const mk=await addMark(MARK_SRC,col);
+    setStyle(top,'paddingRight',(col+GAP)+'px');setStyle(top,'maxWidth','none');
+    if(subt){setStyle(subt,'paddingRight',(col+GAP)+'px');setStyle(subt,'maxWidth','none')}
+    const pr=p.getBoundingClientRect(),tr=top.getBoundingClientRect();
+    mk.style.top=(tr.top-pr.top)+'px';
+    // the chart zone starts below the lower of the titles and the logo
+    const headEnd=(subt||top),gapNeeded=mk.getBoundingClientRect().bottom+GAP-headEnd.getBoundingClientRect().bottom;
+    if(gapNeeded>0){const next=headEnd.nextElementSibling;
+      if(next&&!next.classList.contains('exmark'))setStyle(next,'marginTop',(parseFloat(getComputedStyle(next).marginTop)+gapNeeded)+'px')}
+  }
+  // 3/4/6. footer: wordmark in the brand column, notes and source wrap before it
+  const wm=await addMark(LOGO_SRC,col),wmH=col*445/900;
+  if(notes){setStyle(notes,'paddingRight',(col+GAP)+'px');
     const ncs=getComputedStyle(notes),pt=parseFloat(ncs.paddingTop)||0,pb=parseFloat(ncs.paddingBottom)||0;
     const textH=notes.getBoundingClientRect().height-pt-pb;
     if(textH<wmH)setStyle(notes,'paddingTop',(pt+wmH-textH)+'px');
     const pr=p.getBoundingClientRect(),nr=notes.getBoundingClientRect();
     wm.style.top=(nr.bottom-pb-wmH-pr.top)+'px';}
-  else wm.style.bottom=edge+'px';
-  // A/B/C. top logo mark
-  const mkH=Math.round(clamp(W*.052,light?24:30,light?30:44)),mkW=mkH*672/273;
-  if(top){const mk=await addMark(MARK_SRC,mkH,light?'filter:brightness(0) saturate(100%) invert(12%) sepia(30%) saturate(2000%) hue-rotate(190deg)':'');
-    setStyle(top,'paddingRight',(mkW+GAP)+'px');
-    const pr=p.getBoundingClientRect(),tr=top.getBoundingClientRect(),capPad=parseFloat(getComputedStyle(top).fontSize)*.12;
-    mk.style.top=(tr.top-pr.top+capPad)+'px';
-    if(subt&&subt.getBoundingClientRect().top<mk.getBoundingClientRect().bottom+4)setStyle(subt,'paddingRight',(mkW+GAP)+'px');}
+  else wm.style.bottom=gut+'px';
   try{
     const blob=await htmlToImage.toBlob(p,{pixelRatio:Math.min(8,Math.max(3,window.devicePixelRatio||1,1800/p.offsetWidth)),cacheBust:true,
       filter:n=>!(n.classList&&(n.classList.contains('dl')||n.classList.contains('swipe-hint')||n.classList.contains('mapctl')||n.classList.contains('explore-btn')||n.classList.contains('search')||(n.dataset&&n.dataset.step)))});
@@ -1435,19 +1469,20 @@ function changeRing(g,o){
 function renderRating(){
   const B=OBR.ggsBudget,L=B.latest,prev=B.after.filter(a=>a.n!==L.n),avg=d3.mean(prev,a=>a.pt);
   const low=prev.every(a=>a.pt>L.ptPost),first=prev[0].n.replace(/^(\w{3})/,m=>({Mar:'March',Nov:'November',Oct:'October',Jun:'June',Jul:'July',Dec:'December'}[m]||m));
-  const grade=v=>v>=100?'A':v>=75?'B':v>=50?'C':v>=25?'D':'E',gr=grade(L.ptPost);
-  const col={A:C.green,B:'#7fd0c0',C:C.lime,D:'#F5A98C',E:C.orange};
+  // Score out of 10: where the Budget's pass-through sits on the dial's 0 to 150% scale (0% = 1, 150% or more = 10)
+  const score10=v=>Math.round((1+9*Math.max(0,Math.min(1,v/150)))*10)/10,sc=score10(L.ptPost);
+  const scol=d3.scaleLinear().domain([1,4,7,10]).range([C.orange,'#F5A98C',C.lime,C.green]).clamp(true),col=scol(sc);
   const p1=v=>v.toFixed(1)+'%',p2=v=>v.toFixed(2)+'%';
   document.getElementById('ggsRate').innerHTML=`
-    <div class="grade"><div class="big" style="color:${col[gr]}">${gr}</div>
-      <div class="scale">${'EDCBA'.split('').map(k=>`<span class="${k===gr?'on':''}" style="background:${col[k]}">${k}</span>`).join('')}</div></div>
+    <div class="grade"><div class="big" style="color:${col}">${sc.toFixed(1)}<small>/10</small></div>
+      <div class="tenbar" aria-hidden="true">${d3.range(1,11).map(k=>`<i style="background:${scol(k)};opacity:${k<=Math.floor(sc)?1:k-1<sc?.4+.6*(sc-k+1):.18}"></i>`).join('')}<span class="ends"><b>1</b><b>10</b></span></div></div>
     <h3 class="rtitle">Budget 2025: Good Growth Rating</h3>
     <p>Before the Budget's measures, incomes were forecast to grow at about ${Math.round(L.ptPre)}% of the rate of the economy by ${L.year}. After them, the figure is <b>${Math.round(L.ptPost)}%</b>, a fall of ${Math.round(-L.eff)} points.</p>
     <p>Growth in the economy is almost unchanged, at about ${p1(L.gdpPost)} a year per person. Growth in incomes falls from ${p2(L.rhdiPre)} to ${p2(L.rhdiPost)}, mainly because tax rises take effect in the later years of the forecast.</p>
     <p>By ${L.year}, each 1% of growth in the economy per person is expected to raise household incomes per person by about ${(L.ptPost/100).toFixed(2)}%.</p>
-    <p>${low?`This is the lowest score of any Budget or Autumn Statement since ${first}. `:''}The average across earlier events is ${Math.round(avg)}%.</p>
+    <p>${low?`This is the lowest score of any Budget or Autumn Statement since ${first}. `:''}The average across earlier events is ${score10(avg).toFixed(1)} out of 10.</p>
     <p>Keeping income tax thresholds frozen for longer and raising tax rates on dividends, savings and property income reduce income growth in the final years. Removing the two-child limit in Universal Credit raises incomes for some families, but is smaller by ${L.year}.</p>
-    <p class="how howh">The rating looks at how much of the economy's growth per person reaches household incomes per person in the final year of the forecast. A Budget scores A when incomes keep pace with the economy or grow faster (100% or more). It scores B at 75 to 99%, C at 50 to 74%, D at 25 to 49% and E below 25%.</p>`;
+    <p class="how howh">The score runs from 1 to 10, to one decimal place. It is set by where the Budget's pass-through sits on the dial below: the share of the economy's growth per person that reaches household incomes per person in the final forecast year, on a scale from 0% (a score of 1) to 150% or more (a score of 10). Incomes keeping pace with the economy (100%) scores 7.0.</p>`;
 }
 function renderGGS(){renderRating();
   const B=OBR.ggsBudget,L=B.latest,W=1160,cx=580,R=430,r0=R*.78;
